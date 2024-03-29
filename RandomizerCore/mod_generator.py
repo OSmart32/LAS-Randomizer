@@ -488,100 +488,100 @@ class ModsProcess(QtCore.QThread):
 
 
 
-    def walrusChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Walrus.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def walrusChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Walrus.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        item_index = self.placements['indexes']['walrus'] if 'walrus' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['walrus']]['item-key'],
-            item_index, 'Event53', 'Event110')
+    #     item_index = self.placements['indexes']['walrus'] if 'walrus' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['walrus']]['item-key'],
+    #         item_index, 'Event53', 'Event110')
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Walrus.bfevfl', flow)
-
-
-
-    def christineChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Christine.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
-
-        item_index = self.placements['indexes']['christine-grateful'] if 'christine-grateful' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['christine-grateful']]['item-key'],
-            item_index, 'Event44', 'Event36')
-
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Christine.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Walrus.bfevfl', flow)
 
 
 
-    def invisibleZoraChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/SecretZora.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def christineChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Christine.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        item_index = self.placements['indexes']['invisible-zora'] if 'invisible-zora' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['invisible-zora']]['item-key'],
-            item_index, 'Event23', 'Event27')
+    #     item_index = self.placements['indexes']['christine-grateful'] if 'christine-grateful' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['christine-grateful']]['item-key'],
+    #         item_index, 'Event44', 'Event36')
 
-        event_tools.insertEventAfter(flow.flowchart, 'Event32', 'Event23')
-
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'SecretZora.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Christine.bfevfl', flow)
 
 
 
-    def marinChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Marin.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def invisibleZoraChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/SecretZora.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
+    #     item_index = self.placements['indexes']['invisible-zora'] if 'invisible-zora' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['invisible-zora']]['item-key'],
+    #         item_index, 'Event23', 'Event27')
+
+    #     event_tools.insertEventAfter(flow.flowchart, 'Event32', 'Event23')
+
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'SecretZora.bfevfl', flow)
+
+
+
+    # def marinChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Marin.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
+
+    #     if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
             
-            # Remove Link holding the ocarina and make him sad that you chose to skip such a beautiful song :(
-            sad_face = event_tools.createActionEvent(flow.flowchart, 'Link', 'SetFacialExpression',
-                {'expression': 'sad'}, None)
+    #         # Remove Link holding the ocarina and make him sad that you chose to skip such a beautiful song :(
+    #         sad_face = event_tools.createActionEvent(flow.flowchart, 'Link', 'SetFacialExpression',
+    #             {'expression': 'sad'}, None)
             
-            flag_set = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
-                {'symbol': 'MarinsongGet', 'value': True}, sad_face)
-            event_tools.insertEventAfter(flow.flowchart, 'Event92', flag_set)
+    #         flag_set = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
+    #             {'symbol': 'MarinsongGet', 'value': True}, sad_face)
+    #         event_tools.insertEventAfter(flow.flowchart, 'Event92', flag_set)
 
-            item_index = self.placements['indexes']['marin'] if 'marin' in self.placements['indexes'] else -1
-            item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['marin']]['item-key'],
-                item_index, sad_face, 'Event666')
+    #         item_index = self.placements['indexes']['marin'] if 'marin' in self.placements['indexes'] else -1
+    #         item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['marin']]['item-key'],
+    #             item_index, sad_face, 'Event666')
         
-        else:
-            item_index = self.placements['indexes']['marin'] if 'marin' in self.placements['indexes'] else -1
-            item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['marin']]['item-key'],
-                item_index, 'Event246', 'Event666')
+    #     else:
+    #         item_index = self.placements['indexes']['marin'] if 'marin' in self.placements['indexes'] else -1
+    #         item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['marin']]['item-key'],
+    #             item_index, 'Event246', 'Event666')
             
-        marin.makeEventChanges(flow)
+    #     marin.makeEventChanges(flow)
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Marin.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Marin.bfevfl', flow)
 
 
 
-    def ghostRewardChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Owl.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def ghostRewardChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Owl.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        new = event_tools.createActionEvent(flow.flowchart, 'Owl', 'Destroy', {})
+    #     new = event_tools.createActionEvent(flow.flowchart, 'Owl', 'Destroy', {})
 
-        item_index = self.placements['indexes']['ghost-reward'] if 'ghost-reward' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['ghost-reward']]['item-key'],
-            item_index, 'Event34', new)
+    #     item_index = self.placements['indexes']['ghost-reward'] if 'ghost-reward' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['ghost-reward']]['item-key'],
+    #         item_index, 'Event34', new)
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Owl.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Owl.bfevfl', flow)
 
 
 
     def clothesFairyChanges(self):
         flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/FairyQueen.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+        # actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        item_index = self.placements['indexes']['D0-fairy-2'] if 'D0-fairy-2' in self.placements['indexes'] else -1
-        item2 = item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['D0-fairy-2']]['item-key'],
-            item_index, 'Event0', 'Event180')
+        # item_index = self.placements['indexes']['D0-fairy-2'] if 'D0-fairy-2' in self.placements['indexes'] else -1
+        # item2 = item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['D0-fairy-2']]['item-key'],
+        #     item_index, 'Event0', 'Event180')
 
-        item_index = self.placements['indexes']['D0-fairy-1'] if 'D0-fairy-1' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['D0-fairy-1']]['item-key'],
-            item_index, 'Event0', item2)
+        # item_index = self.placements['indexes']['D0-fairy-1'] if 'D0-fairy-1' in self.placements['indexes'] else -1
+        # item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['D0-fairy-1']]['item-key'],
+        #     item_index, 'Event0', item2)
 
-        event_tools.insertEventAfter(flow.flowchart, 'Event128', 'Event58')
+        # event_tools.insertEventAfter(flow.flowchart, 'Event128', 'Event58')
 
         # make the fairy queen send the player to the proper exit if Shuffle Dungeons is on
         if self.settings['shuffle-dungeons']:
@@ -597,105 +597,105 @@ class ModsProcess(QtCore.QThread):
 
 
 
-    def goriyaChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Goriya.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def goriyaChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Goriya.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
-            {'symbol': data.GORIYA_FLAG, 'value': True}, 'Event4')
+    #     flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
+    #         {'symbol': data.GORIYA_FLAG, 'value': True}, 'Event4')
 
-        item_index = self.placements['indexes']['goriya-trader'] if 'goriya-trader' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['goriya-trader']]['item-key'],
-            item_index, 'Event87', flag_event)
+    #     item_index = self.placements['indexes']['goriya-trader'] if 'goriya-trader' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['goriya-trader']]['item-key'],
+    #         item_index, 'Event87', flag_event)
 
-        flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
-            {'symbol': data.GORIYA_FLAG}, {0: 'Event7', 1: 'Event15'})
-        event_tools.insertEventAfter(flow.flowchart, 'Event24', flag_check)
+    #     flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
+    #         {'symbol': data.GORIYA_FLAG}, {0: 'Event7', 1: 'Event15'})
+    #     event_tools.insertEventAfter(flow.flowchart, 'Event24', flag_check)
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Goriya.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Goriya.bfevfl', flow)
 
 
 
-    def manboChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/ManboTamegoro.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def manboChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/ManboTamegoro.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
-            {'symbol': data.MANBO_FLAG, 'value': True}, 'Event13')
+    #     flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
+    #         {'symbol': data.MANBO_FLAG, 'value': True}, 'Event13')
         
-        if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
-            before_item = 'Event44'
-        else:
-            before_item = 'Event31'
+    #     if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
+    #         before_item = 'Event44'
+    #     else:
+    #         before_item = 'Event31'
         
-        item_index = self.placements['indexes']['manbo'] if 'manbo' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['manbo']]['item-key'],
-            item_index, before_item, flag_event)
+    #     item_index = self.placements['indexes']['manbo'] if 'manbo' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['manbo']]['item-key'],
+    #         item_index, before_item, flag_event)
 
-        flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
-        {'symbol': data.MANBO_FLAG}, {0: 'Event37', 1: 'Event35'})
-        event_tools.insertEventAfter(flow.flowchart, 'Event9', flag_check)
+    #     flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
+    #     {'symbol': data.MANBO_FLAG}, {0: 'Event37', 1: 'Event35'})
+    #     event_tools.insertEventAfter(flow.flowchart, 'Event9', flag_check)
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'ManboTamegoro.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'ManboTamegoro.bfevfl', flow)
 
 
 
-    def mamuChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Mamu.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def mamuChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Mamu.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
-            {'symbol': data.MAMU_FLAG, 'value': True}, 'Event40')
+    #     flag_event = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
+    #         {'symbol': data.MAMU_FLAG, 'value': True}, 'Event40')
         
-        if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
-            before_item = 'Event55'
-        else:
-            before_item = 'Event85'
+    #     if self.settings['fast-songs']: # skip the cutscene if fast-songs is enabled
+    #         before_item = 'Event55'
+    #     else:
+    #         before_item = 'Event85'
         
-        item_index = self.placements['indexes']['mamu'] if 'mamu' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['mamu']]['item-key'],
-            item_index, before_item, flag_event)
+    #     item_index = self.placements['indexes']['mamu'] if 'mamu' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['mamu']]['item-key'],
+    #         item_index, before_item, flag_event)
 
-        flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
-        {'symbol': data.MAMU_FLAG}, {0: 'Event14', 1: 'Event98'})
-        event_tools.insertEventAfter(flow.flowchart, 'Event10', flag_check)
+    #     flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
+    #     {'symbol': data.MAMU_FLAG}, {0: 'Event14', 1: 'Event98'})
+    #     event_tools.insertEventAfter(flow.flowchart, 'Event10', flag_check)
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Mamu.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Mamu.bfevfl', flow)
 
 
 
-    def rapidsChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/RaftShopMan.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
-        rapids.makePrizesStack(flow.flowchart, self.placements, self.item_defs)
+    # def rapidsChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/RaftShopMan.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
+    #     rapids.makePrizesStack(flow.flowchart, self.placements, self.item_defs)
 
-        # removed rapids BGM because of it being broken in music rando, so remove the StopBGM events for it
-        if self.settings['randomize-music']:
-            event_tools.insertEventAfter(flow.flowchart, 'timeAttackGoal', 'Event27')
-            event_tools.insertEventAfter(flow.flowchart, 'normalGoal', 'Event20')
+    #     # removed rapids BGM because of it being broken in music rando, so remove the StopBGM events for it
+    #     if self.settings['randomize-music']:
+    #         event_tools.insertEventAfter(flow.flowchart, 'timeAttackGoal', 'Event27')
+    #         event_tools.insertEventAfter(flow.flowchart, 'normalGoal', 'Event20')
         
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'RaftShopMan.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'RaftShopMan.bfevfl', flow)
 
 
 
-    def fishingChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Fisherman.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
-        fishing.makeEventChanges(flow.flowchart, self.placements, self.item_defs)
-        fishing.fixFishingBottle(flow.flowchart)
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Fisherman.bfevfl', flow)
+    # def fishingChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/Fisherman.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
+    #     fishing.makeEventChanges(flow.flowchart, self.placements, self.item_defs)
+    #     fishing.fixFishingBottle(flow.flowchart)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'Fisherman.bfevfl', flow)
 
 
 
-    def trendyChanges(self):
-        flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/GameShopOwner.bfevfl')
-        actors.addNeededActors(flow.flowchart, self.rom_path)
+    # def trendyChanges(self):
+    #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/GameShopOwner.bfevfl')
+    #     actors.addNeededActors(flow.flowchart, self.rom_path)
 
-        item_index = self.placements['indexes']['trendy-prize-final'] if 'trendy-prize-final' in self.placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['trendy-prize-final']]['item-key'],
-            item_index, 'Event112', 'Event239')
+    #     item_index = self.placements['indexes']['trendy-prize-final'] if 'trendy-prize-final' in self.placements['indexes'] else -1
+    #     item_get.insertItemGetAnimation(flow.flowchart, self.item_defs[self.placements['trendy-prize-final']]['item-key'],
+    #         item_index, 'Event112', 'Event239')
 
-        self.writeModFile(f'{self.romfs_dir}/region_common/event', 'GameShopOwner.bfevfl', flow)
+    #     self.writeModFile(f'{self.romfs_dir}/region_common/event', 'GameShopOwner.bfevfl', flow)
 
 
 

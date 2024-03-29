@@ -1,0 +1,17 @@
+-----Changes the item given when learning the Frog's Song of Soul-----
+
+GiveItem:
+    if settings[fast-songs]:
+        Event55
+    else:
+        Event85
+    ItemGet(mamu)
+    SetFlag(unused0433)
+    Event40
+
+CheckItem:
+    Event10
+    if CheckFlag(unused0433):
+        Event98
+    else:
+        Event14

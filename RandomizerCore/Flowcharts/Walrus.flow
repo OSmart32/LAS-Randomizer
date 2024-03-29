@@ -1,0 +1,6 @@
+-----Changes the item given from playing Ballad to the Walrus-----
+
+GiveItem:
+    Event53
+    ItemGet(walrus)
+    Event110

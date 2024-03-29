@@ -1,0 +1,35 @@
+-----Changes the item given when learning Ballad of the Wind Fish-----
+
+GiveItem:
+    if settings[fast-songs]:
+        Event92
+        SetFlag(MarinsongGet, True)
+        Link.SetFacialExpression(sad)
+        ItemGet(marin)
+        Event666
+    else:
+        Event246
+        ItemGet(marin)
+        Event666
+
+Connect:
+    Event27
+    Event249
+
+Edit:
+    Event249:
+        pop forks[0]
+    Event160:
+        actor = ""
+        actor_query = ""
+        params[symbol] = MarinsongGet
+    Event676:
+        actor = ""
+        actor_query = ""
+        params[symbol] = MarinsongGet
+    Event21:
+        switch 0:
+            Event674
+    Event2:
+        switch 1:
+            Event21

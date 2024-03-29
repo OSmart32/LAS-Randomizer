@@ -1,0 +1,6 @@
+-----Changes the item given when going to the Ghost's grave-----
+
+Connect:
+    Event34
+    ItemGet(ghost-reward)
+    Owl.Destroy()

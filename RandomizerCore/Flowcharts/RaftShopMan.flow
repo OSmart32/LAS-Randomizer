@@ -1,0 +1,30 @@
+-----Makes the Rapids Race prizes stack if multiple goals are met in a single race-----
+
+Prize45:
+    Event42
+    ItemGet(rapids-race-45)
+    Event88
+
+Prize35:
+    Event40
+    if !CheckFlag(5minGaul):
+        SubFlow(5minfirst)
+    ItemGet(rapids-race-35)
+    Event86
+
+Prize30:
+    Event38
+    if !CheckFlag(3minGaul):
+        SubFlow(3minfirst)
+    ItemGet(rapids-race-30)
+    Event85
+
+Connect:
+    if settings[randomize-music]:
+        timeAttackGoal
+        Event27
+
+Connect:
+    if settings[randomize-music]:
+        normalGoal
+        Event20

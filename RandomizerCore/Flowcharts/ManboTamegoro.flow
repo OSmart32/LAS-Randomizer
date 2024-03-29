@@ -1,0 +1,17 @@
+-----Changes the item given when learning Manbo's Mambo-----
+
+GiveItem:
+    if settings[fast-songs]:
+        Event44
+    else:
+        Event31
+    ItemGet(manbo)
+    SetFlag(unused0434)
+    Event13
+
+CheckItem:
+    Event9
+    if CheckFlag(unused0434):
+        Event35
+    else:
+        Event37

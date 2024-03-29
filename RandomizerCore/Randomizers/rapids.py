@@ -2,9 +2,8 @@ import RandomizerCore.Tools.event_tools as event_tools
 from RandomizerCore.Randomizers import item_get
 
 
-
 def makePrizesStack(flowchart, placements, item_defs):
-    """Makes the rapids time attack prizes stack, so getting faster times give the slower prizes as well if you do not have them"""
+    """Makes the Rapids Race prizes stack if multiple goals are met in a single race"""
 
     # 45 prize event doesn't need anything special :)
     item_index = placements['indexes']['rapids-race-45'] if 'rapids-race-45' in placements['indexes'] else -1
