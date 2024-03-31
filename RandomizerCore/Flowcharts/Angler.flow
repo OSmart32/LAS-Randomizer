@@ -1,0 +1,22 @@
+-----Edits Angler Fish to give the randomized item over spawning the Heart Container-----
+
+GiveItem:
+    Event25
+    ItemGet(D4-angler)
+    Event50
+
+edit Event5:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS]
+
+edit Event28:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS]
+
+edit Event29:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS]
+
+edit Event51:
+    if settings[randomize-music]:
+        label = music[BGM_PANEL_RESULT]

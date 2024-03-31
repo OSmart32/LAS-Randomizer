@@ -5,31 +5,40 @@ GiveItem:
         Event92
         SetFlag(MarinsongGet, True)
         Link.SetFacialExpression(sad)
-        ItemGet(marin)
-        Event666
     else:
         Event246
-        ItemGet(marin)
-        Event666
+    ItemGet(marin)
+    Event666
+
+entry CheckSong1:
+    if CheckFlag(MarinsongGet):
+        Event225
+    else:
+        Event78
+
+entry CheckSong2:
+    if CheckFlag(MarinsongGet):
+        Event689
+    else:
+        Event675
 
 Connect:
     Event27
     Event249
 
-Edit:
-    Event249:
-        pop forks[0]
-    Event160:
-        actor = ""
-        actor_query = ""
-        params[symbol] = MarinsongGet
-    Event676:
-        actor = ""
-        actor_query = ""
-        params[symbol] = MarinsongGet
-    Event21:
-        switch 0:
-            Event674
-    Event2:
-        switch 1:
-            Event21
+edit Event249:
+    pop forks[0]
+
+edit Event21:
+    case 0:
+        Event674
+    case 1:
+        CheckSong1
+
+edit Event674:
+    case 1:
+        CheckSong2
+
+edit Event2:
+    case 1:
+        Event21

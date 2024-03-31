@@ -1,0 +1,28 @@
+-----Changes the items given from the three Mad Batter locations-----
+
+entry BatterA:
+    SubFlow(talk2)
+    ItemGet(mad-batter-bay)
+    Event23
+
+entry BatterB:
+    SubFlow(talk2)
+    ItemGet(mad-batter-woods)
+    Event23
+
+entry BatterC:
+    SubFlow(talk2)
+    ItemGet(mad-batter-taltal)
+    Event23
+
+Connect:
+    Event19
+    Event13
+
+edit Event18:
+    if settings[randomize-music]:
+        label = music[BGM_MADBATTER]
+
+edit Event150:
+    if settings[randomize-music]:
+        label = music[BGM_MADBATTER]

@@ -1,0 +1,20 @@
+-----Changes the items rewards from Danpei-----
+
+GiveItems:
+    Event39
+    if CheckFlag(Dampe1):
+        ItemGet(dampe-page-1)
+        SetFlag(Dampe1, False)
+    if CheckFlag(DampeHeart):
+        ItemGet(dampe-heart-challenge)
+        SetFlag(DampeHeart, False)
+    if CheckFlag(Dampe2):
+        ItemGet(dampe-page-2)
+        SetFlag(Dampe2, False)
+    if CheckFlag(DampeBottle):
+        ItemGet(dampe-bottle-challenge)
+        SetFlag(DampeBottle, False)
+    if CheckFlag(DampeFinal):
+        ItemGet(dampe-final)
+        SetFlag(DampeFinal, False)
+    Event42

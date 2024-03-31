@@ -1,0 +1,18 @@
+-----Edits Lanmola to give the randomized item over dropping the Angler Key-----
+
+GiveItem:
+    Event34
+    ItemGet(lanmola)
+    Event9
+
+edit Event2:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+
+edit Event18:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+
+edit Event22:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS_MIDDLE]

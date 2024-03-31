@@ -1,0 +1,17 @@
+-----Edits Armos Knight to open the doors before giving the randomized item-----
+
+GiveItem:
+    Event47
+    ItemGet(armos-knight)
+
+Connect:
+    Event2
+    Event8
+
+edit Event4:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+
+edit Event23:
+    if settings[randomize-music]:
+        label = music[BGM_DUNGEON_BOSS_MIDDLE]
