@@ -1,0 +1,18 @@
+-----Edits Moldorm to give the randomized item over spawning the Heart Container-----
+
+GiveItem:
+    - Event8
+    - ItemGet(D1-moldorm)
+    - Event45
+
+Event16:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event19:
+    label: music[BGM_PANEL_RESULT]
+
+Event65:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event30:
+    label: music[BGM_DUNGEON_BOSS]

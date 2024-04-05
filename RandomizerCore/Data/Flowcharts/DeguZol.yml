@@ -1,0 +1,15 @@
+-----Edits Slime Eye to give the randomized item over spawning the Heart Container-----
+
+GiveItem:
+    - Event29
+    - ItemGet(D3-slime-eye)
+    - Event43
+
+Event17:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event36:
+    label: music[BGM_PANEL_RESULT]
+
+Event32:
+    label: music[BGM_DUNGEON_BOSS]

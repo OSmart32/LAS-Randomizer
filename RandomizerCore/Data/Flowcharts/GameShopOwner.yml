@@ -1,6 +1,6 @@
 -----Changes the item given as the final Trendy Game prize-----
 
 GiveItem:
-    Event112
-    ItemGet(trendy-prize-final)
-    Event239
+    - Event112
+    - ItemGet(trendy-prize-final)
+    - Event239

@@ -1,0 +1,80 @@
+-----Changes the item rewards from the Fishing Pond-----
+
+OrangeFish:
+    - Event113
+    - ItemGet(fishing-orange)
+    - Event212
+
+CheepCheep:
+    - Event20
+    - Event3
+    - ItemGet(fishing-cheep-cheep)
+    - Event10
+
+Baron:
+    - Event18
+    - Event133
+    - ItemGet(fishing-ol-baron)
+    - Event140
+
+Fishing50:
+    - Event182
+    - ItemGet(fishing-50)
+    - Event240
+
+Fishing100:
+    - Event24
+    - Event191
+    - ItemGet(fishing-100)
+    - Event247
+
+Fishing150:
+    - Event193
+    - ItemGet(fishing-150)
+    - Event255
+
+Bottle:
+    - Event264
+    - ItemGet(fishing-loose)
+    - Event265
+
+SetBottleFlag:
+    - FishingGetBottle
+    - SetFlag(FishingBottleGet)
+    - Event264
+
+entry RemoveRealBottle:
+    - CheckFlag(FishingBottleGet):
+        0:
+            - Inventory.RemoveItem(0)
+            - Event74
+        1:
+            - Event83
+
+entry GiveRealBottle:
+    - CheckFlag(Bottle2Get):
+        0:
+            - Inventory.RemoveItem(0)
+        1:
+            - Inventory.AddBottle(1)
+    - Event45
+
+Connect0:
+    - Event83
+    - Event74
+
+Connect1:
+    - Event315
+    - RemoveRealBottle
+
+Connect2:
+    - Event316
+    - RemoveRealBottle
+
+Connect3:
+    - Event317
+    - RemoveRealBottle
+
+Connect4:
+    - Event189
+    - GiveRealBottle

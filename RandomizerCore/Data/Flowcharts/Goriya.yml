@@ -1,0 +1,15 @@
+-----Changes the item given when trading with Goriya-----
+
+GiveItem:
+    - Event87
+    - ItemGet(goriya-trader)
+    - SetFlag(unused0432, True)
+    - Event4
+
+CheckItem:
+    - Event24
+    - CheckFlag(unused0432):
+        0:
+            - Event7
+        1:
+            - Event15

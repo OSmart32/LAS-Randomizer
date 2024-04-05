@@ -1,0 +1,21 @@
+-----Edits HotHead to give the randomized item over spawning the Heart Container-----
+
+GiveItem:
+    - Event13
+    - ItemGet(D8-hothead)
+    - Event15
+
+Event28:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event40:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event63:
+    label: music[BGM_PANEL_RESULT]
+
+Event17:
+    label: music[BGM_DUNGEON_BOSS]
+
+Event70:
+    label: music[BGM_DUNGEON_BOSS]

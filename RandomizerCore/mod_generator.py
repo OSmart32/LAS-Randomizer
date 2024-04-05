@@ -1,7 +1,8 @@
 from PySide6 import QtCore
+from .Paths.randomizer_paths import DATA_PATH
 
 from RandomizerCore.Tools.exefs_editor.patcher import Patcher
-from RandomizerCore.Tools import (bntx_tools, event_tools, leb, oead_tools)
+from RandomizerCore.Tools import (bntx_tools, event_tools, flow_tool, leb, oead_tools)
 from RandomizerCore.Randomizers import (actors, chests, conditions, crane_prizes, dampe, data, fishing, flags, golden_leaves,
 heart_pieces, instruments, item_drops, item_get, mad_batter, marin, miscellaneous, npcs, owls, patches, player_start, rapids,
 seashell_mansion, shop, small_keys, tarin, trade_quest, tunic_swap)
@@ -9,6 +10,7 @@ seashell_mansion, shop, small_keys, tarin, trade_quest, tunic_swap)
 import os
 import re
 import copy
+import yaml
 import random
 import traceback
 
@@ -108,8 +110,8 @@ class ModsProcess(QtCore.QThread):
     # automatically called when this thread is started
     def run(self):
         try:
-            if self.settings['randomize-music'] and self.thread_active:
-                self.randomizeMusic() # map new music at the beginning so that it is the same by seed, regardless of settings
+            # map new music at the beginning so that it is the same by seed, regardless of settings
+            if self.thread_active: self.randomizeMusic()
             
             if self.thread_active: self.makeGeneralLEBChanges()
             if self.thread_active: self.makeGeneralDatasheetChanges()
@@ -337,7 +339,15 @@ class ModsProcess(QtCore.QThread):
         if self.thread_active: self.clothesFairyChanges()
         if self.thread_active: self.seashellMansionChanges()
         if self.thread_active: self.dampeChanges()
-    
+
+        for flowchart in [f for f in os.listdir(os.path.join(DATA_PATH, "Flowchart")) if f.endswith(".yml")]:
+            with open(os.path.join(DATA_PATH, f"Flowchart/{flowchart}"), "r") as f:
+                rand_flow = yaml.safe_load(f)
+            flowchart = flowchart.split(".")[0]
+            flow = event_tools.readFlow(f"{self.rom_path}/region_common/event/{flowchart}.bfevfl")
+            flow_tool.readFlow(flow.flowchart, rand_flow, self.placements, self.settings)
+            self.writeModFile(f"{self.romfs_dir}/region_common/event", "{flowchart}.bfevfl", flow)
+
 
 
     def tarinChanges(self):

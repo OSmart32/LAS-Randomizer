@@ -1,5 +1,5 @@
 -----Makes the Player able to read the book of dark secrets without the magnifying lens-----
 
 Connect:
-    Event18
-    Event73
+    - Event18
+    - Event73
