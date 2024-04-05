@@ -1,4 +1,4 @@
------Changes the item given as the final Trendy Game prize-----
+# Changes the item given as the final Trendy Game prize
 
 GiveItem:
     - Event112

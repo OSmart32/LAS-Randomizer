@@ -1,4 +1,4 @@
------Changes the item rewards from the Fishing Pond-----
+# Changes the item rewards from the Fishing Pond
 
 OrangeFish:
     - Event113
@@ -59,22 +59,19 @@ entry GiveRealBottle:
             - Inventory.AddBottle(1)
     - Event45
 
-Connect0:
-    - Event83
-    - Event74
-
-Connect1:
-    - Event315
-    - RemoveRealBottle
-
-Connect2:
-    - Event316
-    - RemoveRealBottle
-
-Connect3:
-    - Event317
-    - RemoveRealBottle
-
-Connect4:
-    - Event189
-    - GiveRealBottle
+Connect:
+    0:
+        - Event83
+        - Event74
+    1:
+        - Event315
+        - RemoveRealBottle
+    2:
+        - Event316
+        - RemoveRealBottle
+    3:
+        - Event317
+        - RemoveRealBottle
+    4:
+        - Event189
+        - GiveRealBottle

@@ -1,44 +1,43 @@
------Changes the item given when learning Ballad of the Wind Fish-----
+# Changes the item given when learning Ballad of the Wind Fish
 
 GiveItem:
-    if settings[fast-songs]:
-        Event92
-        SetFlag(MarinsongGet, True)
-        Link.SetFacialExpression(sad)
-    else:
-        Event246
-    ItemGet(marin)
-    Event666
+    - settings[fast-songs]:
+        0: Event246
+        1:
+            - Event92
+            - SetFlag(MarinsongGet, True)
+            - Link.SetFacialExpression(sad)
+    - ItemGet(marin)
+    - Event666
 
 entry CheckSong1:
-    if CheckFlag(MarinsongGet):
-        Event225
-    else:
-        Event78
+    - CheckFlag(MarinsongGet):
+        0: Event78
+        1: Event225
 
 entry CheckSong2:
-    if CheckFlag(MarinsongGet):
-        Event689
-    else:
-        Event675
+    - CheckFlag(MarinsongGet):
+        0: Event675
+        1: Event689
 
 Connect:
-    Event27
-    Event249
+    0:
+        - Event27
+        - Event249
 
-edit Event249:
-    pop forks[0]
+Event249:
+    fork:
+        0: del
 
-edit Event21:
-    case 0:
-        Event674
-    case 1:
-        CheckSong1
+Event21:
+    switch:
+        0: Event674
+        1: CheckSong1
 
-edit Event674:
-    case 1:
-        CheckSong2
+Event674:
+    switch:
+        1: CheckSong2
 
-edit Event2:
-    case 1:
-        Event21
+Event2:
+    switch:
+        1: Event21

@@ -1,4 +1,4 @@
------Edits Angler Fish to give the randomized item over spawning the Heart Container-----
+# Edits Angler Fish to give the randomized item over spawning the Heart Container
 
 GiveItem:
     - Event25
@@ -6,13 +6,17 @@ GiveItem:
     - Event50
 
 Event5:
-    label: music[BGM_DUNGEON_BOSS]
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
 Event28:
-    label: music[BGM_DUNGEON_BOSS]
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
 Event29:
-    label: music[BGM_DUNGEON_BOSS]
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
 Event51:
-    label: music[BGM_PANEL_RESULT]
+    params:
+        label: music[BGM_PANEL_RESULT]

@@ -16,11 +16,14 @@ entry BatterC:
     - Event23
 
 Connect:
-    - Event19
-    - Event13
+    0:
+        - Event19
+        - Event13
 
 Event18:
-    label: music[BGM_MADBATTER]
+    params:
+        label: music[BGM_MADBATTER]
 
 Event150:
-    label: music[BGM_MADBATTER]
+    params:
+        label: music[BGM_MADBATTER]

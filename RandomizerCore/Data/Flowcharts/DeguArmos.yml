@@ -1,15 +1,18 @@
------Edits Armos Knight to open the doors before giving the randomized item-----
+# Edits Armos Knight to open the doors before giving the randomized item
 
 GiveItem:
     - Event47
     - ItemGet(armos-knight)
 
 Connect:
-    - Event2
-    - Event8
+    0:
+        - Event2
+        - Event8
 
 Event4:
-    label: music[BGM_DUNGEON_BOSS_MIDDLE]
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
 Event23:
-    label: music[BGM_DUNGEON_BOSS_MIDDLE]
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]

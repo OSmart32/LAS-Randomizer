@@ -1,4 +1,4 @@
------Changes the 2 items given by the Fairy Queen in the Color Dungeon-----
+# Changes the 2 items given by the Fairy Queen in the Color Dungeon
 
 GiveItem:
     - Event0
@@ -7,5 +7,6 @@ GiveItem:
     - Event180
 
 Connect:
-    - Event128
-    - Event58
+    0:
+        - Event128
+        - Event58

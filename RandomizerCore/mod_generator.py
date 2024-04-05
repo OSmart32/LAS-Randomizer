@@ -1013,6 +1013,11 @@ class ModsProcess(QtCore.QThread):
         
         This mapping is used in a couple places throughout when changing music"""
         
+        if not self.settings["randomize-music"]:
+            for i in data.BGM_TRACKS:
+                self.songs_dict[i] = i
+            return
+        
         ### Change the BGM entry in the level info files (.lvb) to a new BGM
         bgms = list(copy.deepcopy(data.BGM_TRACKS)) # make a duplicate list of the tracks tuple and shuffle it
         random.shuffle(bgms)

@@ -1,5 +1,5 @@
------Edits the witch to give the randomized item instead of Magic Powder-----
+# Edits the witch to give the randomized item instead of Magic Powder
 
 GiveItem:
-    Event93
-    ItemGet(syrup)
+    - Event93
+    - ItemGet(syrup)

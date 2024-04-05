@@ -6,10 +6,13 @@ GiveItem:
     - Event51
 
 Event15:
-    label: music[BGM_DUNGEON_LV7_BOSS]
+    params:
+        label: music[BGM_DUNGEON_LV7_BOSS]
 
 Event20:
-    label: music[BGM_DUNGEON_BOSS]
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
 Event66:
-    label: music[BGM_PANEL_RESULT]
+    params:
+        label: music[BGM_PANEL_RESULT]

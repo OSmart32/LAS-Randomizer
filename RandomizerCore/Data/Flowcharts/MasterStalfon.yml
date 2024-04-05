@@ -1,42 +1,42 @@
------Edits Master Stalfos to give the randomized item over dropping the Hookshot-----
+# Edits Master Stalfos to give the randomized item over dropping the Hookshot
 
 GiveItem:
-    Event37
-    ItemGet(D5-master-stalfos)
-    Event194
+    - Event37
+    - ItemGet(D5-master-stalfos)
+    - Event194
 
-edit Event0:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event0:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event1:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event1:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event2:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event2:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event3:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event3:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event4:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event4:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event10:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event10:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event23:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event23:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event132:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event132:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]
 
-edit Event157:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS_MIDDLE]
+Event157:
+    params:
+        label: music[BGM_DUNGEON_BOSS_MIDDLE]

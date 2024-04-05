@@ -1,22 +1,22 @@
------Edits Slime Eel to give the randomized item over spawning the Heart Container-----
+# Edits Slime Eel to give the randomized item over spawning the Heart Container
 
 GiveItem:
     Event28
     ItemGet(D5-slime-eel)
     Event13
 
-edit Event26:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS]
+Event26:
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
-edit Event33:
-    if settings[randomize-music]:
-        label = music[BGM_PANEL_RESULT]
+Event33:
+    params:
+        label: music[BGM_PANEL_RESULT]
 
-edit Event49:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS]
+Event49:
+    params:
+        label: music[BGM_DUNGEON_BOSS]
 
-edit Event20:
-    if settings[randomize-music]:
-        label = music[BGM_DUNGEON_BOSS]
+Event20:
+    params:
+        label: music[BGM_DUNGEON_BOSS]

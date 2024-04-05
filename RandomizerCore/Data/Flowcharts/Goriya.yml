@@ -1,4 +1,4 @@
------Changes the item given when trading with Goriya-----
+# Changes the item given when trading with Goriya
 
 GiveItem:
     - Event87
