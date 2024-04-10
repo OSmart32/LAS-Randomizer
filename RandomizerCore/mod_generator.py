@@ -1,5 +1,5 @@
 from PySide6 import QtCore
-from .Paths.randomizer_paths import DATA_PATH
+from RandomizerCore.Data.randomizer_data import FLOWCHARTS
 
 from RandomizerCore.Tools.exefs_editor.patcher import Patcher
 from RandomizerCore.Tools import (bntx_tools, event_tools, flow_tool, leb, oead_tools)
@@ -10,7 +10,6 @@ seashell_mansion, shop, small_keys, tarin, trade_quest, tunic_swap)
 import os
 import re
 import copy
-import yaml
 import random
 import traceback
 
@@ -340,13 +339,10 @@ class ModsProcess(QtCore.QThread):
         if self.thread_active: self.seashellMansionChanges()
         if self.thread_active: self.dampeChanges()
 
-        for flowchart in [f for f in os.listdir(os.path.join(DATA_PATH, "Flowchart")) if f.endswith(".yml")]:
-            with open(os.path.join(DATA_PATH, f"Flowchart/{flowchart}"), "r") as f:
-                rand_flow = yaml.safe_load(f)
-            flowchart = flowchart.split(".")[0]
+        for flowchart in FLOWCHARTS:
             flow = event_tools.readFlow(f"{self.rom_path}/region_common/event/{flowchart}.bfevfl")
-            flow_tool.readFlow(flow.flowchart, rand_flow, self.placements, self.settings)
-            self.writeModFile(f"{self.romfs_dir}/region_common/event", "{flowchart}.bfevfl", flow)
+            flow_tool.readFlow(flow.flowchart, flowchart, self.placements, self.settings)
+            self.writeModFile(f"{self.romfs_dir}/region_common/event", f"{flowchart}.bfevfl", flow)
 
 
 

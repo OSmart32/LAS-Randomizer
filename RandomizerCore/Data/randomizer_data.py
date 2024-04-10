@@ -1,11 +1,18 @@
-from RandomizerCore.Paths.randomizer_paths import DATA_PATH, RESOURCE_PATH, SETTINGS_PATH, LOGIC_PATH
+from RandomizerCore.Paths.randomizer_paths import DATA_PATH, FLOWCHARTS_PATH, RESOURCE_PATH, SETTINGS_PATH, LOGIC_PATH
 
 import yaml
 import os
 
 VERSION = 0.3
-
 DOWNLOAD_PAGE = 'https://github.com/Owen-Splat/LAS-Randomizer/releases/latest'
+
+try:
+    with open(SETTINGS_PATH, 'r') as settingsFile:
+        SETTINGS = yaml.safe_load(settingsFile)
+        DEFAULTS = False
+except FileNotFoundError:
+    DEFAULTS = True
+    SETTINGS = {}
 
 with open(os.path.join(RESOURCE_PATH, 'light_theme.txt'), 'r') as f:
     LIGHT_STYLESHEET = f.read()
@@ -21,6 +28,12 @@ with open(os.path.join(RESOURCE_PATH, 'issues.txt'), 'r') as f:
 
 with open(os.path.join(RESOURCE_PATH, 'about.txt'), 'r') as f:
     ABOUT_INFO = f.read()
+
+with open(os.path.join(RESOURCE_PATH, 'adjectives.txt'), 'r') as f:
+    ADJECTIVES = f.read().splitlines()
+
+with open(os.path.join(RESOURCE_PATH, 'characters.txt'), 'r') as f:
+    CHARACTERS = f.read().splitlines()
 
 with open(os.path.join(DATA_PATH, 'items.yml'), 'r') as f:
     items = yaml.safe_load(f)
@@ -39,19 +52,11 @@ with open(os.path.join(DATA_PATH, 'enemies.yml'), 'r') as f:
 with open(os.path.join(DATA_PATH, 'locations.yml'), 'r') as f:
     LOCATIONS = yaml.safe_load(f)
 
-with open(os.path.join(RESOURCE_PATH, 'adjectives.txt'), 'r') as f:
-    ADJECTIVES = f.read().splitlines()
-
-with open(os.path.join(RESOURCE_PATH, 'characters.txt'), 'r') as f:
-    CHARACTERS = f.read().splitlines()
-
-try:
-    with open(SETTINGS_PATH, 'r') as settingsFile:
-        SETTINGS = yaml.safe_load(settingsFile)
-        DEFAULTS = False
-except FileNotFoundError:
-    DEFAULTS = True
-    SETTINGS = {}
+FLOWCHARTS = {}
+flows = [f for f in FLOWCHARTS_PATH if f.endswith(".yml")]
+for flow in flows:
+    with open(os.path.join(FLOWCHARTS_PATH, flow), "r") as f:
+        FLOWCHARTS[flow.split(".")[0]] = yaml.safe_load(f)
 
 MISCELLANEOUS_CHESTS = LOCATIONS['Chest_Locations']
 FISHING_REWARDS = LOCATIONS['Fishing_Rewards']

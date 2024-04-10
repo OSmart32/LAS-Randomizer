@@ -27,3 +27,4 @@ else:
     LOGS_PATH = os.path.join(ROOT_PATH, 'log.txt')
 
 LOGIC_PATH = os.path.join(DATA_PATH, 'logic.yml')
+FLOWCHARTS_PATH = os.path.join(DATA_PATH, "Flowcharts")
