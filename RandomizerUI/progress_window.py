@@ -25,11 +25,14 @@ class ProgressWindow(QtWidgets.QMainWindow):
         self.settings = copy.deepcopy(settings)
         
         self.valid_placements = 155 - len(settings['starting-items'])
-        self.num_of_mod_tasks = 257
+        self.num_of_mod_tasks = 258 # + 1 of actual amount so that it does a step when switching to the "done!" text
         
         # if not settings['shuffle-companions']:
         #     self.num_of_mod_files += 8
 
+        if settings['randomize-shells']:
+            self.num_of_mod_tasks += 3
+        
         if settings['blupsanity']:
             self.num_of_mod_tasks += 1
         

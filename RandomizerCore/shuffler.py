@@ -1,4 +1,5 @@
 from PySide6 import QtCore
+from RandomizerCore.Data.randomizer_data import SHELL_REPLACEMENTS
 import RandomizerCore.spoiler as spoiler
 import re
 import copy
@@ -58,18 +59,20 @@ class ItemShuffler(QtCore.QThread):
             self.item_defs['rupee-20']['quantity'] += 24 # 33 total owl statues, 24 in dungeons
 
         # TEMPORARY CODE HERE to make it so that everything that isn't randomized yet is set to vanilla
+        shuffled_types = ['chest', 'boss', 'enemy', 'drop', 'npc', 'standing', 'overworld-statue', 'dungeon-statue']
+        if self.settings['randomize-shells']:
+            shuffled_types.append('hidden')
+        
         vanilla_locations = [k for k, v in self.logic_defs.items()
                             if v['type'] == 'item'
-                            and v['subtype'] not in ('chest', 'boss', 'enemy', 'drop', 'npc', 'standing', 'overworld-statue', 'dungeon-statue')]
+                            and v['subtype'] not in shuffled_types]
         vanilla_locations.append('trendy-prize-1') # yoshi doll stays until trendy is properly shuffled
         vanilla_locations.append('trendy-prize-2')
         vanilla_locations.append('trendy-prize-3')
         vanilla_locations.append('trendy-prize-4')
         vanilla_locations.append('trendy-prize-5')
         vanilla_locations.append('trendy-prize-6')
-        # vanilla_locations.append('kanalet-final-guard')
-        # vanilla_locations.append('fishing-loose')
-        
+                
         # vanilla_locations.remove('shop-slot3-1st')
         # vanilla_locations.remove('shop-slot3-2nd')
         # vanilla_locations.remove('shop-slot6')
@@ -619,9 +622,16 @@ class ItemShuffler(QtCore.QThread):
             if verbose: print(chests[0])
             self.progress_value += 1 # update progress bar
             self.progress_update.emit(self.progress_value)
-                
+        
         # Keep track of where we placed items. this is necessary to undo placements if we get stuck
         placement_tracker = []
+
+        # # test specific items coming out of trees
+        # test_item = 'heart-container'
+        # test_location = 'beach-bonk-tree'
+        # placements[test_location] = test_item
+        # locations.remove(test_location)
+        # items.remove(test_item)
 
         # Since Tarin is the only check available with no items, he has to have something out of a certain subset of items
         # Only do this if Tarin has no item placed, i.e. not forced to be vanilla
@@ -632,7 +642,7 @@ class ItemShuffler(QtCore.QThread):
                 success = (self.canReachLocation('can-shop', placements, settings_access, logic)
                         or self.canReachLocation(dungeon_entrances['tail-cave'], placements, settings_access, logic)
                         or self.canReachLocation('beach', placements, settings_access, logic)
-                        # or self.canReachLocation('mamasha', placements, settings_access, logic)
+                        # or self.canReachLocation('mamasha', placements, settings_access, logic) # once Trendy is shuffled
                         or self.canReachLocation('ciao-ciao', placements, settings_access, logic)
                         or self.canReachLocation('marin', placements, settings_access, logic)
                         or self.canReachLocation('trendy', placements, settings_access, logic))
@@ -666,9 +676,11 @@ class ItemShuffler(QtCore.QThread):
                 placements[locations[0]] = item
                 access = self.removeAccess(access, item)
                 
-                # Check for item type restrictions, i.e. songs can't be standing items
+                # Check for item type restrictions, i.e. tunics can't be standing items
                 subtype = self.logic_defs[locations[0]]['subtype']
                 if item in ('red-tunic', 'blue-tunic') and subtype in ('standing', 'hidden', 'dig', 'drop', 'underwater', 'shop', 'enemy'):
+                    valid_placement = False
+                elif item not in SHELL_REPLACEMENTS and subtype == 'hidden':
                     valid_placement = False
                 elif item in self.force_chests and subtype != 'chest':
                     valid_placement = False

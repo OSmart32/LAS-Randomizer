@@ -1,50 +1,61 @@
-from RandomizerCore.Randomizers import data
-import RandomizerCore.Tools.oead_tools as oead_tools
-import oead
-
-
-
-def makeDatasheetChanges(sheet, settings):
+def makeDatasheetChanges(sheet, placements, item_defs, settings):
     """Iterates through all the values in the ItemDrop datasheet and makes changes"""
     
-    for i in range(len(sheet['values'])):
+    for value in sheet['values']:
+        if value['mKey'].startswith('HeartContainer'):
+            value['mLotTable'][0]['mType'] = ''
         
-        if sheet['values'][i]['mKey'] == 'HeartContainer0':
-            first_heart_index = i
+        if value['mKey'] == 'AnglerKey':
+            value['mLotTable'][0]['mType'] = ''
+        if value['mKey'] == 'FaceKey':
+            value['mLotTable'][0]['mType'] = ''
+        if value['mKey'] == 'HookShot':
+            value['mLotTable'][0]['mType'] = ''
         
-        if sheet['values'][i]['mKey'] == 'AnglerKey':
-            sheet['values'][i]['mLotTable'][0]['mType'] = ''
-        if sheet['values'][i]['mKey'] == 'FaceKey':
-            sheet['values'][i]['mLotTable'][0]['mType'] = ''
-        if sheet['values'][i]['mKey'] == 'HookShot':
-            sheet['values'][i]['mLotTable'][0]['mType'] = ''
-        
-        if sheet['values'][i]['mKey'] == 'Bomb':
+        if value['mKey'] == 'Bomb':
             if settings['reduce-farming']:
-                sheet['values'][i]['mLotTable'][0]['mCookie'] = 3
+                value['mLotTable'][0]['mCookie'] = 3
         
-        if sheet['values'][i]['mKey'] == 'MagicPowder':
+        if value['mKey'] == 'MagicPowder':
             if settings['reduce-farming']:
-                sheet['values'][i]['mLotTable'][0]['mCookie'] = 3
+                value['mLotTable'][0]['mCookie'] = 3
         
-        if sheet['values'][i]['mKey'] == 'Arrow' and settings['reduce-farming']:
-            sheet['values'][i]['mLotTable'][0]['mCookie'] = 3
-        if sheet['values'][i]['mKey'] == 'Grass' and settings['reduce-farming']:
-            sheet['values'][i]['mLotTable'][1]['mWeight'] = 18
-            sheet['values'][i]['mLotTable'][2]['mWeight'] = 3
-            sheet['values'][i]['mLotTable'][3]['mWeight'] = 71
+        if value['mKey'] == 'Arrow' and settings['reduce-farming']:
+            value['mLotTable'][0]['mCookie'] = 3
+        if value['mKey'] == 'Grass' and settings['reduce-farming']:
+            value['mLotTable'][1]['mWeight'] = 18
+            value['mLotTable'][2]['mWeight'] = 3
+            value['mLotTable'][3]['mWeight'] = 71
+        
+        if value['mKey'] in SEASHELL_DROPS:
+            item_key, item_index = getItemInfo(value['mKey'], placements, item_defs)
+            value['mLotTable'][0]['mType'] = item_key
+            value['mLotTable'][0]['mCookie'] = item_index
 
-    for i in range(8):
-        sheet['values'][first_heart_index+i]['mLotTable'][0]['mType'] = ''
+
+def getItemInfo(key, placements, item_defs):
+    check = SEASHELL_DROPS[key]
+    item = placements[check]
+    item_key = item_defs[item]['item-key']
+    item_index = placements['indexes'][check] if check in placements['indexes'] else 1 # mCookie of 1 if not for index
+
+    return item_key, item_index
 
 
-
-# def createDatasheetConditions(sheet):
-#     # {name: gettingFlag, type_name: GlobalFlags, type: 4, flags: 9, fields: null}
-#     sheet['root_fields'].append(oead_tools.createField(
-#     name='mCondition',
-#     type_name='Conditions',
-#     type=oead.gsheet.Field.Type.String,
-#     flags=oead.gsheet.Field.Flag.IsNullable,
-#     offset=28
-# ))
+SEASHELL_DROPS = {
+    'Seashell0':    'mabe-bushes',
+    'Seashell8':    'plains-rock-maze',
+    'Seashell9':    'beside-seashell-mansion',
+    'Seashell11':   'southwest-bay-bush',
+    'Seashell13':   'tail-cave-bonk-tree',
+    'Seashell14':   'ukuku-bonk-tree',
+    'Seashell16':   'desert-south',
+    'Seashell18':   'pond-island',
+    'Seashell19':   'small-coast-island',
+    'Seashell20':   'ghost-house-pot',
+    'Seashell21':   'taltal-east-bridge',
+    'Seashell32':   'north-of-moblin-cave',
+    'Seashell33':   'rock-maze',
+    'Seashell40':   'taltal-west-rock',
+    'Seashell49':   'beach-bonk-tree'
+}

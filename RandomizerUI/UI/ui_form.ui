@@ -480,20 +480,17 @@
          <property name="font">
           <font>
            <pointsize>9</pointsize>
-           <strikeout>true</strikeout>
+           <strikeout>false</strikeout>
           </font>
          </property>
          <property name="whatsThis">
-          <string>This controls whether seashells can be progress items&lt;br&gt;&lt;/br&gt;&lt;u&gt;Not yet implemented&lt;/u&gt;</string>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">color: rgb(80, 80, 80);</string>
+          <string>This controls whether seashells from Trees, Grass, Rocks, and Pots can be progress items&lt;br&gt;&lt;/br&gt;&lt;u&gt;If this is not checked,&lt;/u&gt; they will not be randomized</string>
          </property>
          <property name="text">
           <string>Seashells</string>
          </property>
          <property name="checkable">
-          <bool>false</bool>
+          <bool>true</bool>
          </property>
         </widget>
         <widget class="QCheckBox" name="shopCheck">
@@ -1247,7 +1244,7 @@
           <string/>
          </property>
          <property name="whatsThis">
-          <string>Randomizes the size of the enemies between 50% and 150%</string>
+          <string>Randomizes the size of the enemies. Required kills are left vanilla</string>
          </property>
          <property name="text">
           <string>Randomize Enemy Sizes</string>

@@ -1,29 +1,22 @@
+v0.4
+<br></br><br></br>
+
 <b>New Features:</b>
 <br></br><br></br>
-- Patches tab: Additional, unrequired ASM patches to spice up gameplay elements
+- Partial Seashell randomization. This is currently just for testers
 <br></br><br></br>
-- Automatically adjusts the output for console or emulator
+- Open-Mabe setting (NOT YET IMPLEMENTED IN MAIN BRANCH)
+<br></br><br></br>
+- Settings string. Easily randomize or share your settings
 <br></br><br></br>
 
 <b>Changes:</b>
 <br></br><br></br>
-- Songs now display Marin/Manbo/Mamu when obtaining them
-<br></br><br></br>
-- The green zol in a chest is now randomized if randomizing enemies
-<br></br><br></br>
-- Seashells and Trade Items now will be in normal sized chests instead of big chests
+- Random Enemy Sizes now keeps required kills as normal sized
 <br></br><br></br>
 
 <b>Bug Fixes:</b>
 <br></br><br></br>
-- Shuffled Bombs/Powder made it impossible to obtain from specific sources
+- Obtaining Bottle[1] in some ways caused issues with fishing
 <br></br><br></br>
-- Bad Pets setting would not work with randomized music
-<br></br><br></br>
-- Having Bottle[1] made the Fishing Bottle not spawn
-<br></br><br></br>
-- Having GoldenLeaf[4] made the Kanalet Final Guard not spawn
-<br></br><br></br>
-- The D6-pot-chest did nothing when an enemy was shuffled to it
-<br></br><br></br>
-- The romfs path no longer requires a folder named "romfs"
+- Shuffling enemies but not sizes could result in a big pincer

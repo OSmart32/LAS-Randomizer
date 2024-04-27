@@ -874,4 +874,43 @@ Starting_Items:
   - shell-sensor
   - red-tunic
   - blue-tunic
+
+# very early seashell randomization for grass, rocks, pots, and trees - this adds 15 checks to the randomizer
+# We can edit ItemDrop.gsheet mType to point to any item in Items.gsheet, however, it uses the actorID
+# This means we are stuck to regular actors with no way of adding parameters for things like the model or getEvent
+# Since Seashells, Heart Pieces, and Heart Containers work fine, it most likely passes ItemDrop.gsheet mCookie to parameter[0]
+# Maybe somehow we can make use of that?
+# We also edit NpcPhysicsTraits.gsheet to turn off the axisLock so that items can properly fall out of trees
+# I had an Ocarina get stuck in a tree though so we'll need to later finish .leb point & rail editing
+# Reason for this is that those define coordinates for actors to use, in this case the drop point
+Shell_Replacements:
+  - boots
+  - flippers # flag to enable water loading zones gets set this way so this is fine
+  - feather
+  - shovel
+  - hookshot
+  - bow
+  - rod
+  - boomerang
+  - ocarina
+  - mushroom
+  - tail-key
+  - slime-key
+  - angler-key
+  - face-key
+  - bird-key
+  - seashell
+  - heart-container
+  - heart-piece
+  - shell-sensor
+  # - chamber-stone # since this isn't an actor you normally find, it seems like it doesn't accept parameter[0] as an index?
+  # - rupee-300 # we don't mind some easy rupee grinding but free 300s is a bit much
+  - rupee-100
+  - rupee-50
+  - rupee-20
+  - rupee-5
+  # - bomb # might be messy with shuffled bombs/powder
+  # - powder
+  # instruments can work, but we'll need to make the randomized ones not flash the screen white and try to warp the player
+
 ...

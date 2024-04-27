@@ -1,39 +1,61 @@
-from RandomizerCore.Randomizers import data
+from RandomizerCore.Randomizers.data import BOMBS_FOUND_FLAG
 import RandomizerCore.Tools.oead_tools as oead_tools
 import copy
 
 
 
-def makeNpcChanges(npc, placements, settings):
+def makeNpcChanges(npc, placements, settings, shell_items):
     """Makes lots of changes to the Npc datasheet to make this randomizer work, 
     ranging from event triggers to layout conditions to even graphics changes. 
     Also makes the shell sensor go off if the Npc holds a seashell"""
-    
-    if npc['symbol'] == 'NpcMadBatter':
-        npc['eventTriggers'][0]['entryPoint'] = '$2'
-        del npc['layoutConditions'][1]
-        return
-    
-    if npc['symbol'] == 'ItemGoldenLeaf': # Makes it so golden leaf actors will not spawn, and also removes event just in case
-        npc['eventTriggers'] = []
+
+    if npc['symbol'] in shell_items:
+        # collect objects on touch rather than button press
+        npc['eventTriggers'][0]['condition'] = 0
+        # remove doAction since it will now trigger on touch
+        npc['doAction'] =\
+            {'type': 0, 'yOffset': 0.0, 'xzDistance': 0.0, 'yDistance': 0.0, 'playerAngleRange': 0.0, 'reactionAngleRange': 0.0}
+        # remove layout conditions so the item will always spawn unless you have it in inventory
+        npc['layoutConditions'] = []
+        # set collision data to match ItemSecretSeashell
+        npc['collision:'] = {
+            'shape': 3,
+            'traits': 'SecretSeashell',
+            'component': 1,
+            'isStatic': False,
+            'filter': 7,
+            'material': 0,
+            'groundCheck': True,
+            'offset': {'x': 0.0, 'y': 0.0, 'z': 0.0},
+            'rotation': {'x': 0.0, 'y': 0.0, 'z': 0.0},
+            'parameters': [0.5, 0.6499999761581421, 0.5]
+        }
+
+    # ItemGoldenLeaf could spawn from shell locations just fine, but currently needs spawning turned off
+    # This is because the Mad Bomber spawns a GoldenLeaf when killed
+    # ItemGoldenLeaf can be added to the above when ASM work gets done to get around this
+    if npc['symbol'] == 'ItemGoldenLeaf':
+        npc['eventTriggers'] = [] # removes getEvent just in case one does somehow spawn, shouldn't happen but just to be safe
         del npc['layoutConditions'][0]
         del npc['layoutConditions'][0]
         del npc['layoutConditions'][0]
         return
-    
+
     if npc['symbol'] == 'ItemSmallKey':
         npc['graphics']['path'] = '$1'
         npc['graphics']['model'] = '$2'
         npc['eventTriggers'][2]['entryPoint'] = '$3'
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific smallkey actors trigger the shell sensor
         return
-    
+
     if npc['symbol'] == 'ItemYoshiDoll': # This is for Ocarina and Instruments since I still want the player to press A to get them
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         npc['eventInfo'] = {'eventAsset': 'SinkingSword.bfevfl', 'actorName': 'SinkingSword'}
         npc['eventTriggers'][0]['entryPoint'] = '$2'
-        npc['doAction'] = {'type': 7, 'yOffset': 0.0, 'xzDistance': 1.2999999523162842, 'yDistance': 1.7999999523162842, 'playerAngleRange': 45.0, 'reactionAngleRange': 180.0}
+        npc['doAction'] =\
+            {'type': 7, 'yOffset': 0.0, 'xzDistance': 1.2999999523162842, 'yDistance': 1.7999999523162842,
+             'playerAngleRange': 45.0, 'reactionAngleRange': 180.0}
         npc['layoutConditions'].append({'category': 1, 'parameter': '$3', 'layoutID': -1})
         npc['collision']['traits'] = ''
         npc['collision']['isStatic'] = True
@@ -41,29 +63,26 @@ def makeNpcChanges(npc, placements, settings):
         # npc['collision']['offset']['y'] = 0.5
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific yoshidoll actors trigger the shell sensor
         return
-    
+
     if npc['symbol'] == 'ItemHoneycomb': # Make the Honeycomb object ring the sensor instead of Tarin
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         if placements['tarin-ukuku'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['tarin-ukuku']}"})
         return
-    
+
     if npc['symbol'] == 'ObjClothBag': # Make it so Papahl's bag appears with him when you get the Pineapple
         npc['layoutConditions'][1] = {'category': 1, 'parameter': 'TradePineappleGet', 'layoutID': 0}
         return
 
-    if npc['symbol'] == 'NpcGrandmaUlrira':
-        npc['layoutConditions'][1] = {'category': 9, 'parameter': 'true', 'layoutID': 4}
-        return
-    
     if npc['symbol'] == 'ObjSinkingSword':
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         npc['graphics']['waterChannel']['limitDepth'] = 0.5 # idk what this does but probably helps see the item?
         npc['eventTriggers'][0]['condition'] = 0
         npc['eventTriggers'][0]['entryPoint'] = '$2'
-        npc['doAction'] = {'type': 0, 'yOffset': 0.0, 'xzDistance': 0.0, 'yDistance': 0.0, 'playerAngleRange': 0.0, 'reactionAngleRange': 0.0}
+        npc['doAction'] =\
+            {'type': 0, 'yOffset': 0.0, 'xzDistance': 0.0, 'yDistance': 0.0, 'playerAngleRange': 0.0, 'reactionAngleRange': 0.0}
         npc['layoutConditions'][0]['parameter'] = '$3'
         npc['collision']['traits'] = 'HeartPiece'
         npc['collision']['isStatic'] = False
@@ -71,23 +90,23 @@ def makeNpcChanges(npc, placements, settings):
         npc['collision']['offset']['y'] = 0.25
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific sinkingsword actors trigger the shell sensor
         return
-    
+
     if npc['symbol'] == 'ObjRoosterBones':
         del npc['layoutConditions'][0]
         return
-    
+
     if npc['symbol'] == 'ObjTelephone': # since telephones swap tunics, make it so the Fairy Queen is talking
         npc['talk'] = {'personalSpace': 1.5, 'talkerLabel': 'NpcFairyQueen'}
         return
-    
+
     # make the bomb refills not appear until you find your bombs
     if npc['symbol'] == 'ItemBomb' and settings['shuffle-bombs']:
-        npc['layoutConditions'].append({'category': 1, 'parameter': f'!{data.BOMBS_FOUND_FLAG}', 'layoutID': -1})
+        npc['layoutConditions'].append({'category': 1, 'parameter': f'!{BOMBS_FOUND_FLAG}', 'layoutID': -1})
         return
     if npc['symbol'] == 'ItemFeatherBomb' and settings['shuffle-bombs']:
-        npc['layoutConditions'].append({'category': 1, 'parameter': f'!{data.BOMBS_FOUND_FLAG}', 'layoutID': -1})
+        npc['layoutConditions'].append({'category': 1, 'parameter': f'!{BOMBS_FOUND_FLAG}', 'layoutID': -1})
         return
-    
+
     # make the powder refills not appear until you find your powder
     if npc['symbol'] == 'ItemMagicPowder' and settings['shuffle-powder']:
         npc['layoutConditions'].append({'category': 1, 'parameter': '!GetMagicPowder', 'layoutID': -1})
@@ -95,8 +114,17 @@ def makeNpcChanges(npc, placements, settings):
     if npc['symbol'] == 'ItemFeatherMagicPowder' and settings['shuffle-powder']:
         npc['layoutConditions'].append({'category': 1, 'parameter': '!GetMagicPowder', 'layoutID': -1})
         return
-    
+
     # Adjustments to NPC layouts and shell sensor trigger conditions
+    if npc['symbol'] == 'NpcMadBatter':
+        npc['eventTriggers'][0]['entryPoint'] = '$2'
+        del npc['layoutConditions'][1]
+        return
+
+    if npc['symbol'] == 'NpcGrandmaUlrira':
+        npc['layoutConditions'][1] = {'category': 9, 'parameter': 'true', 'layoutID': 4}
+        return
+
     if npc['symbol'] == 'NpcBowWow':
         npc['layoutConditions'][2] = {'category': 3, 'parameter': 'BowWow', 'layoutID': -1}
         return
@@ -105,15 +133,15 @@ def makeNpcChanges(npc, placements, settings):
         npc['layoutConditions'][2] = {'category': 1, 'parameter': 'BowWowJoin', 'layoutID': 3}
         del npc['layoutConditions'][1]
         return
-    
+
     if npc['symbol'] == 'NpcChorusFrog':
         del npc['layoutConditions'][0]
         return
-    
+
     if npc['symbol'] == 'NpcKiki' and settings['open-bridge']:
         npc['layoutConditions'][0] = {'category': 1, 'parameter': 'KikiGone', 'layoutID': -1}
         return
-    
+
     if npc['symbol'] == 'NpcChristine':
         del npc['shellSensor'][0]
         if placements['christine-trade'] == 'seashell':
@@ -121,14 +149,14 @@ def makeNpcChanges(npc, placements, settings):
         if placements['christine-grateful'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['christine-grateful']}"})
         return
-    
+
     if npc['symbol'] == 'NpcTarin':
         npc['eventTriggers'][5]['additionalConditions'][0] = {'category': 1, 'parameter': '!ShieldGet'} # Make Tarin detain based on talking to him, not having Shield
         npc['eventTriggers'][1]['additionalConditions'][0] = {'category': 4, 'parameter': '3'} # Only the instance of Tarin-Ukuku should trigger the trade event
         npc['layoutConditions'][2] = {'category': 1, 'parameter': 'HoneycombDrop', 'layoutID': -1}
         npc['layoutConditions'][4] = {'category': 1, 'parameter': 'TradeStickGet', 'layoutID': 3} # Make Tarin-ukuku appear when you get the stick
         return
-    
+
     if npc['symbol'] == 'NpcPapahl':
         npc['layoutConditions'][1] = {'category': 1, 'parameter': 'TradePineappleGet', 'layoutID': 2}
         if placements['papahl'] == 'seashell':
@@ -146,7 +174,7 @@ def makeNpcChanges(npc, placements, settings):
         if placements['invisible-zora'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['invisible-zora']}"})
         return
-    
+
     if npc['symbol'] == 'NpcGoriya':
         if placements['goriya-trader'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['goriya-trader']}"})

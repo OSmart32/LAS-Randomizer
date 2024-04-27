@@ -41,6 +41,7 @@ def generateSpoilerLog(placements, logic_defs, out_dir, seed):
             output.write(f'{key}:\n')
             for location in regions[key]:
                 item = placements[location]
+                index = f"[{placements['indexes'][location]}]" if location in placements['indexes'] else ''
                 if item.endswith('trap'):
                     item = 'trap'
-                output.write('    {0}:  {1}\n'.format(location, item))
+                output.write(f'    {location}:  {item}{index}\n')

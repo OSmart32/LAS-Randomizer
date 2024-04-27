@@ -1,5 +1,6 @@
 from PySide6 import QtCore
 from RandomizerCore.Paths.randomizer_paths import IS_RUNNING_FROM_SOURCE
+from RandomizerCore.Data.randomizer_data import SHELL_REPLACEMENTS
 
 from RandomizerCore.Tools.exefs_editor.patcher import Patcher
 from RandomizerCore.Tools import (bntx_tools, event_tools, leb, oead_tools)
@@ -154,6 +155,7 @@ class ModsProcess(QtCore.QThread):
             
             if self.thread_active: self.fixWaterLoadingZones()
             if self.thread_active: self.fixRapidsRespawn()
+            if self.thread_active: self.fixShellDropPoints()
             
             # current asm does not appear to break anything, can finally include :)
             if self.thread_active: self.makeExefsPatches()
@@ -164,7 +166,8 @@ class ModsProcess(QtCore.QThread):
             self.error.emit(er)
         
         finally: # regardless if there was an error or not, we want to tell the progress window that this thread has finished
-            # print(f'total tasks: {self.progress_value}')
+            if IS_RUNNING_FROM_SOURCE:
+                print(f'total tasks: {self.progress_value}')
             self.is_done.emit()
     
 
@@ -1095,10 +1098,11 @@ class ModsProcess(QtCore.QThread):
         ### Make Papahl appear in the mountains after trading for the pineapple instead of the getting the Bell
         if self.thread_active:
             sheet = oead_tools.readSheet(f'{self.rom_path}/region_common/datasheets/Npc.gsheet')
+            shell_items = [self.item_defs[i]['npc-key'] for i in SHELL_REPLACEMENTS]
             for npc in sheet['values']:
                 if not self.thread_active:
                     break
-                npcs.makeNpcChanges(npc, self.placements, self.settings)
+                npcs.makeNpcChanges(npc, self.placements, self.settings, shell_items)
             
             npcs.makeNewNpcs(sheet)
             self.writeModFile(f'{self.romfs_dir}/region_common/datasheets', 'Npc.gsheet', sheet)
@@ -1106,7 +1110,7 @@ class ModsProcess(QtCore.QThread):
         ### ItemDrop datasheet: remove HeartContainer drops 0-7, HookShot drop, AnglerKey and FaceKey drops.
         if self.thread_active:
             sheet = oead_tools.readSheet(f'{self.rom_path}/region_common/datasheets/ItemDrop.gsheet')
-            item_drops.makeDatasheetChanges(sheet, self.settings)
+            item_drops.makeDatasheetChanges(sheet, self.placements, self.item_defs, self.settings)
             self.writeModFile(f'{self.romfs_dir}/region_common/datasheets', 'ItemDrop.gsheet', sheet)
 
         ### Items datasheet: Set npcKeys so certain items will show something when you get them.
@@ -1118,7 +1122,9 @@ class ModsProcess(QtCore.QThread):
                 if not self.thread_active:
                     break
                 
-                if item['symbol'] == 'Flippers': # this custom flag is for water loading zones to use
+                # Set a gettingFlag for when the player obtains Flippers. AddItemByItemKey automatically sets this
+                # This is to enable water loading zones, otherwise the player could fly in with the rooster, softlocking
+                if item['symbol'] == 'Flippers':
                     item['gettingFlag'] = 'FlippersFound'
                 
                 # Set new npcKeys for items to change how they appear when Link holds it up
@@ -1190,9 +1196,9 @@ class ModsProcess(QtCore.QThread):
                 sheet['values'].append(oead_tools.dictToStruct(dummy))
 
                 # seashell mansion presents need traps to be items entries each with a unique ID, otherwise gives a GreenRupee
-                # even though IDs 128+ cause a crash when they get added to the inventory, traps never actually get added
                 # instead of just passing the itemKey to the present event, it checks the ID and passes the first itemKey with that ID
                 # so if all the traps had the same ID, every trap would act as the first one (ZapTrap)
+                # IDs 128+ cause a crash when they get added to the inventory, but they'll never actually get added
                 if self.settings['traps'] != 'none':
                     dummy['symbol'] = 'ZapTrap'
                     dummy['itemID'] = 127
@@ -1258,11 +1264,23 @@ class ModsProcess(QtCore.QThread):
             for fish in sheet['values']:
                 if not self.thread_active:
                     break
-
                 if len(fish['mOpenItem']) > 0:
-                    fish['mOpenItem'] = 'ClothesGreen'
+                    fish['mOpenItem'] = 'ClothesGreen' # you always have this in inventory even with red/blue
             
             self.writeModFile(f'{self.romfs_dir}/region_common/datasheets', 'FishingFish.gsheet', sheet)
+        
+        ### NpcPhysicsTraits datasheet: Allows movement for items over seashells
+        if self.thread_active:
+            sheet = oead_tools.readSheet(f'{self.rom_path}/region_common/datasheets/NpcPhysicsTraits.gsheet')
+
+            for npc in sheet['values']:
+                if not self.thread_active:
+                    break
+                # nothing is locked on the Y axis so we don't need to edit it
+                npc['axisLock']['positionX'] = False
+                npc['axisLock']['positionZ'] = False
+            
+            self.writeModFile(f'{self.romfs_dir}/region_common/datasheets', 'NpcPhysicsTraits.gsheet', sheet)
     
 
 
@@ -2111,6 +2129,44 @@ class ModsProcess(QtCore.QThread):
             for tile in room_data.grid.tilesdata:
                 if tile.flags3['iswaterlava']:
                     tile.flags3['respawnload'] = 0
+            
+            self.writeModFile(f'{self.romfs_dir}/region_common/level/Field', f'{room}.leb', room_data)
+
+
+
+    def fixShellDropPoints(self):
+        """This edits the coordinates that trees use to know where to drop the seashell
+        
+        Of course, these were made with Seashells in mind. Other items have larger models, and will get stuck on the tree
+        
+        So we edit the corresponding X or Z coords so that the item drops further away to always clear the tree"""
+
+        rooms_to_fix = {
+            'Field_11E': (0, 'Z'),
+            'Field_14C': (1, 'Z'),
+            'Field_15A': (0, 'X')
+        }
+
+        for room in rooms_to_fix:
+            if not self.thread_active:
+                break
+
+            if not os.path.exists(f'{self.romfs_dir}/region_common/level/Field/{room}.leb'):
+                with open(f'{self.rom_path}/region_common/level/Field/{room}.leb', 'rb') as f:
+                    room_data = leb.Room(f.read())
+            else:
+                with open(f'{self.romfs_dir}/region_common/level/Field/{room}.leb', 'rb') as f:
+                    room_data = leb.Room(f.read())
+            
+            point_index = rooms_to_fix[room][0]
+            axis = rooms_to_fix[room][1]
+
+            # we attempt to move the item to drop further, but it seems there is a hardcoded cap
+            # luckily for us, it's enough so that nothing gets stuck - HAVE NOT TESTED IM COPING HERE
+            if axis == 'Z':
+                room_data.points[point_index].posZ += 1.5 # move south an extra 2 tiles
+            else:
+                room_data.points[point_index].posX -= 1.5 # move left an 2 extra tiles
             
             self.writeModFile(f'{self.romfs_dir}/region_common/level/Field', f'{room}.leb', room_data)
 

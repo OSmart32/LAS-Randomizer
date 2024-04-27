@@ -150,10 +150,10 @@ class Room:
 	def __init__(self, data, edit_grid=False):
 		self.fixed_hash = FixedHash(data)
 
-		# self.points = []
-		# point_entry = [e for e in self.fixed_hash.entries if e.name == b'point'][0]
-		# for entry in point_entry.data.entries:
-		# 	self.points.append(Point(entry.data))
+		self.points = []
+		point_entry = [e for e in self.fixed_hash.entries if e.name == b'point'][0]
+		for entry in point_entry.data.entries:
+			self.points.append(Point(entry.data))
 		
 		# self.rails = []
 		# rail_entry = [e for e in self.fixed_hash.entries if e.name == b'rail'][0]
@@ -247,11 +247,11 @@ class Room:
 		new_names = b''
 
 		for entry in self.fixed_hash.entries:
-			# if entry.name == b'point':
-			# 	entry.data.entries = []
-			# 	for point in self.points:
-			# 		# Create a new point entry for actors to use
-			# 		entry.data.entries.append(Entry(0xFFF3, b'', 0xFFFFFFFF, point.pack()))
+			if entry.name == b'point':
+				entry.data.entries = []
+				for point in self.points:
+					# Create a new point entry for actors to use
+					entry.data.entries.append(Entry(0xFFF3, b'', 0xFFFFFFFF, point.pack()))
 			
 			# if entry.name == b'rail':
 			# 	entry.data.entries = []
@@ -290,14 +290,11 @@ class Room:
 			if entry.name == b'grid' and self.grid != None:
 				entry.data.entries = []
 				entry.data.entries.append(Entry(0xFFF0, b'data', 0xFFFFFFFF, self.grid.pack()))
-				# new_names += b'data' + b'\x00'
 
 				if self.grid.chain_entry != None:
 					entry.data.entries.append(Entry(0xFFF0, b'chain', 0xFFFFFFFF, self.grid.chain_entry.data))
-					# new_names += b'chain' + b'\x00'
 				
 				entry.data.entries.append(Entry(0xFFF0, b'info', 0x0, self.grid.info.pack()))
-				# new_names += b'info' + b'\x00'
 			
 			new_names += entry.name + b'\x00'
 
@@ -454,22 +451,22 @@ class Relationship:
 
 
 
-# # EXPERIMENTAL POINT AND RAIL SECTIONS
-# class Point:
-# 	def __init__(self, data):
-# 			self.posX = readFloat(data, 0x0, 4)
-# 			self.posY = readFloat(data, 0x4, 4)
-# 			self.posZ = readFloat(data, 0x8, 4)
-# 			self.xC = data[0xC:]
+# EXPERIMENTAL POINT AND RAIL SECTIONS
+class Point:
+	def __init__(self, data):
+			self.posX = readFloat(data, 0x0, 4)
+			self.posY = readFloat(data, 0x4, 4)
+			self.posZ = readFloat(data, 0x8, 4)
+			self.xC = data[0xC:]
 	
-# 	def pack(self):
-# 		packed = b''
-# 		packed += struct.pack('<f', self.posX)
-# 		packed += struct.pack('<f', self.posY)
-# 		packed += struct.pack('<f', self.posZ)
-# 		packed += self.xC
+	def pack(self):
+		packed = b''
+		packed += struct.pack('<f', self.posX)
+		packed += struct.pack('<f', self.posY)
+		packed += struct.pack('<f', self.posZ)
+		packed += self.xC
 
-# 		return packed
+		return packed
 
 
 

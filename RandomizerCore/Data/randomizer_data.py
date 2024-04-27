@@ -26,6 +26,7 @@ with open(os.path.join(DATA_PATH, 'items.yml'), 'r') as f:
     items = yaml.safe_load(f)
     ITEM_DEFS = items['Item_Pool']
     STARTING_ITEMS = list(items['Starting_Items'])
+    SHELL_REPLACEMENTS = list(items['Shell_Replacements'])
 
 with open(LOGIC_PATH, 'r') as f:
     LOGIC_VERSION = float(f.readline().strip('#'))
@@ -64,6 +65,7 @@ TRADE_GIFT_LOCATIONS = LOCATIONS['Trade_Gifts']
 BOSS_LOCATIONS = LOCATIONS['Boss_Locations']
 MISC_LOCATIONS = LOCATIONS['Misc_Items']
 SEASHELL_REWARDS = LOCATIONS['Mansion']
+SEASHELL_LOCATIONS = LOCATIONS['Seashells']
 HEART_PIECE_LOCATIONS = LOCATIONS['Heart_Pieces']
 LEAF_LOCATIONS = LOCATIONS['Golden_Leaves']
 DUNGEON_OWLS = LOCATIONS['Dungeon_Owl_Statues']
@@ -75,7 +77,7 @@ TOTAL_CHECKS = set([
     *DAMPE_REWARDS, *FREE_GIFT_LOCATIONS, *TRADE_GIFT_LOCATIONS,
     *BOSS_LOCATIONS, *MISC_LOCATIONS, *SEASHELL_REWARDS,
     *HEART_PIECE_LOCATIONS, *TRENDY_REWARDS, *LEAF_LOCATIONS,
-    *DUNGEON_OWLS, *OVERWORLD_OWLS, *BLUE_RUPEES, #*SHOP_ITEMS
+    *DUNGEON_OWLS, *OVERWORLD_OWLS, *BLUE_RUPEES, *SEASHELL_LOCATIONS
 ])
 
 SEASHELL_VALUES = (0, 5, 15, 30, 40, 50)

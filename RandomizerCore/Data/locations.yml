@@ -212,4 +212,22 @@ Blue_Rupees:
   - D0-rupee-26
   - D0-rupee-27
   - D0-rupee-28
+
+Seashells:
+  - north-of-moblin-cave
+  - desert-south
+  - ghost-house-pot
+  - mabe-bushes
+  - tail-cave-bonk-tree
+  - beach-bonk-tree
+  - rock-maze
+  - pond-island
+  - southwest-bay-bush
+  - beside-seashell-mansion
+  - small-coast-island
+  - plains-rock-maze
+  - ukuku-bonk-tree
+  - taltal-east-bridge
+  - taltal-west-rock
+
 ...

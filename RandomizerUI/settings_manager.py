@@ -14,6 +14,7 @@ BASE_OPTIONS = {
     'bossCheck': True,
     'miscellaneousCheck': True,
     'heartsCheck': True,
+    'seashellsCheck': False,
     'rupCheck': False,
     'instrumentCheck': True,
     'instrumentsComboBox': 0,
@@ -72,6 +73,7 @@ CHECK_LOCATIONS = {
     'heartsCheck': HEART_PIECE_LOCATIONS,
     'rupCheck': BLUE_RUPEES,
     'leavesCheck': LEAF_LOCATIONS,
+    'seashellsCheck': SEASHELL_LOCATIONS
 }
 
 
@@ -104,6 +106,7 @@ def applyDefaults(window):
     window.excluded_checks.difference_update(MISC_LOCATIONS)
     window.excluded_checks.difference_update(HEART_PIECE_LOCATIONS)
     window.excluded_checks.difference_update(BLUE_RUPEES)
+    window.excluded_checks.difference_update(SEASHELL_LOCATIONS)
     window.updateSeashells()
     window.updateOwls()
     window.excluded_checks.difference_update(LEAF_LOCATIONS)
@@ -374,6 +377,7 @@ def loadRandomizerSettings(window, seed):
         'open-mamu': window.ui.mazeCheck.isChecked(),
         'traps': TRAP_SETTINGS[window.ui.trapsComboBox.currentIndex()],
         'blupsanity': window.ui.rupCheck.isChecked(),
+        'randomize-shells': window.ui.seashellsCheck.isChecked(),
         'classic-d2': window.ui.swampCheck.isChecked(),
         'owl-overworld-gifts': window.overworld_owls,
         'owl-dungeon-gifts': window.dungeon_owls,

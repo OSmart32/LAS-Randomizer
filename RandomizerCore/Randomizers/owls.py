@@ -2,20 +2,6 @@ import RandomizerCore.Tools.event_tools as event_tools
 from RandomizerCore.Randomizers import item_get
 
 
-
-def addSlimeKeyCheck(flowchart):
-    '''Places an item on the owl in front of the slime key regardless if owl gifts are on or not'''
-
-    key_drop = event_tools.createActionEvent(flowchart, 'EventFlags', 'SetFlag',
-        {'symbol': 'PotholeKeySpawn', 'value': True}, 'Event21')
-    shovel_check = event_tools.createSwitchEvent(flowchart, 'Inventory', 'HasItem',
-        {'itemType': 10, 'count': 1}, {0: 'Event21', 1: key_drop})
-    chest_check = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
-        {'symbol': 'PotholeKeySpawn'}, {0: shovel_check, 1: 'Event21'})
-    event_tools.insertEventAfter(flowchart, 'examine_anaboko', chest_check)
-
-
-
 def makeFieldChanges(flowchart, placements, item_defs):
     '''Places items on the field owls. Hint system not implemented'''
 
@@ -44,7 +30,7 @@ def makeFieldChanges(flowchart, placements, item_defs):
         
         event_tools.insertEventAfter(flowchart, v, flag_check)
     
-    # Now lets prevent Link from backing up. This is what causes the get item animation to sometimes not play
+    # Prevent Link from backing up. This would cause the itemGet animation to sometimes not play
     dist_evs = (
         'Event17',
         'Event41',
@@ -133,6 +119,6 @@ def makeDungeonChanges(flowchart, placements, item_defs):
         
         event_tools.insertEventAfter(flowchart, v, flag_check)
     
-    # I dont know if the get item animation breaks in dungeons but same thing here as we did with the overworld ones
+    # I dont know if the itemGet animation breaks in dungeons but same thing here as we did with the overworld ones
     fork = event_tools.findEvent(flowchart, 'Event50')
     fork.data.forks.pop(5)
