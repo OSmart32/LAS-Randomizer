@@ -2136,6 +2136,7 @@ class ModsProcess(QtCore.QThread):
             self.writeModFile(f'{self.romfs_dir}/region_common/level/Field', f'{room}.leb', room_data)
 
 
+
     def openMabe(self):
         """Removing grass / monsters / rocks that may block access to go outside of Mabe village"""
 
@@ -2164,6 +2165,7 @@ class ModsProcess(QtCore.QThread):
                         break
 
             self.writeModFile(f'{self.romfs_dir}/region_common/level/Field', f'{room}.leb', room_data)
+
 
 
     def fixShellDropPoints(self):
