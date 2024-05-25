@@ -1,5 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
 from RandomizerCore.Randomizers.data import (BEACH_LOOSE_FLAG, WOODS_LOOSE_FLAG, DREAM_SHRINE_FLAG,
 ROOSTER_CAVE_FLAG, MERMAID_CAVE_FLAG)
 
@@ -17,7 +16,7 @@ def changeSunkenSword(flowchart, item_key, item_index, model_path, model_name, r
             {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False}, end_ev)
         event_tools.insertEventAfter(flowchart, 'Event5', rup_collect)
     else:
-        item_get.insertItemGetAnimation(flowchart, item_key, item_index, 'Event5', end_ev)
+        event_tools.createGetItemEvent(flowchart, item_key, item_index, 'Event5', end_ev)
 
     fork = event_tools.findEvent(flowchart, 'Event0')
     fork.data.forks.pop(0) # remove the itemget animation event
@@ -52,7 +51,7 @@ def changeMushroom(flowchart, item_key, item_index, model_path, model_name, room
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
             {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.addEntryPoint(flowchart, 'Woods')
     event_tools.createActionChain(flowchart, 'Woods', [
@@ -77,7 +76,7 @@ def changeOcarina(flowchart, item_key, item_index, model_path, model_name, room)
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
             {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.addEntryPoint(flowchart, 'DreamShrine')
     event_tools.createActionChain(flowchart, 'DreamShrine', [
@@ -102,7 +101,7 @@ def changeBirdKey(flowchart, item_key, item_index, model_path, model_name, room)
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
             {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.addEntryPoint(flowchart, 'TalTal')
     event_tools.createActionChain(flowchart, 'TalTal', [
@@ -127,7 +126,7 @@ def changeLens(flowchart, item_key, item_index, model_path, model_name, room):
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
             {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.addEntryPoint(flowchart, 'MermaidCave')
     event_tools.createActionChain(flowchart, 'MermaidCave', [

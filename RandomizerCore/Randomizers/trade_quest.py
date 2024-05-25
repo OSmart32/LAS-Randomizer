@@ -1,11 +1,10 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
 
 
-def mamashaChanges(flowchart, placements, item_defs, rom_path):
+def mamashaChanges(flowchart, placements, item_defs):
     item = placements['mamasha']
     item_index = placements['indexes']['mamasha'] if 'mamasha' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event15')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event15')
 
     event1 = event_tools.findEvent(flowchart, 'Event1')
     event3 = event_tools.findEvent(flowchart, 'Event3')
@@ -14,11 +13,10 @@ def mamashaChanges(flowchart, placements, item_defs, rom_path):
     event3.data.params.data = {'symbol': 'TradeYoshiDollGet'}
 
 
-
-def ciaociaoChanges(flowchart, placements, item_defs, rom_path):
+def ciaociaoChanges(flowchart, placements, item_defs):
     item = placements['ciao-ciao']
     item_index = placements['indexes']['ciao-ciao'] if 'ciao-ciao' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event21')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event21')
 
     event1 = event_tools.findEvent(flowchart, 'Event1')
     event3 = event_tools.findEvent(flowchart, 'Event3')
@@ -27,18 +25,16 @@ def ciaociaoChanges(flowchart, placements, item_defs, rom_path):
     event3.data.params.data = {'symbol': 'TradeRibbonGet'}
 
 
-
-def saleChanges(flowchart, placements, item_defs, rom_path):
+def saleChanges(flowchart, placements, item_defs):
     item = placements['sale']
     item_index = placements['indexes']['sale'] if 'sale' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event31')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event31')
 
     event0 = event_tools.findEvent(flowchart, 'Event0')
     event2 = event_tools.findEvent(flowchart, 'Event2')
     event2.data.actor = event0.data.actor
     event2.data.actor_query = event0.data.actor_query
     event2.data.params.data = {'symbol': 'TradeDogFoodGet'}
-
 
 
 # def move_kiki(roomData): # move kiki and remove other monkeys since we don't need them
@@ -56,13 +52,12 @@ def saleChanges(flowchart, placements, item_defs, rom_path):
 #     #     roomData.actors.remove(monke)
 
 
-
-def kikiChanges(flowchart, placements, settings, item_defs, rom_path):
+def kikiChanges(flowchart, placements, settings, item_defs):
 
     item = placements['kiki']
     item_index = placements['indexes']['kiki'] if 'kiki' in placements['indexes'] else -1
 
-    get_event = item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, None, 'Event102')
+    get_event = event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, None, 'Event102')
 
     bananas_check = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
     {'symbol': 'TradeBananasGet'}, {0: 'Event118', 1: 'Event32'})
@@ -95,18 +90,16 @@ def kikiChanges(flowchart, placements, settings, item_defs, rom_path):
         event_tools.insertEventAfter(flowchart, 'Event89', get_event)
 
 
-
 def tarinChanges(flowchart, placements, item_defs):
     item = placements['tarin-ukuku']
     item_index = placements['indexes']['tarin-ukuku'] if 'tarin-ukuku' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event130', 'Event29')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event130', 'Event29')
 
 
-
-def chefChanges(flowchart, placements, item_defs, rom_path):
+def chefChanges(flowchart, placements, item_defs):
     item = placements['chef-bear']
     item_index = placements['indexes']['chef-bear'] if 'chef-bear' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event16', None) # Event4
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event16', None) # Event4
 
     event1 = event_tools.findEvent(flowchart, 'Event1')
     event11 = event_tools.findEvent(flowchart, 'Event11')
@@ -115,11 +108,10 @@ def chefChanges(flowchart, placements, item_defs, rom_path):
     event11.data.params.data = {'symbol': 'TradeHoneycombGet'}
 
 
-
-def papahlChanges(flowchart, placements, item_defs, rom_path):
+def papahlChanges(flowchart, placements, item_defs):
     item = placements['papahl']
     item_index = placements['indexes']['papahl'] if 'papahl' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event32', 'Event62')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event32', 'Event62')
 
     event81 = event_tools.findEvent(flowchart, 'Event81')
     event2 = event_tools.findEvent(flowchart, 'Event2')
@@ -128,11 +120,10 @@ def papahlChanges(flowchart, placements, item_defs, rom_path):
     event2.data.params.data = {'symbol': 'TradePineappleGet'}
 
 
-
-def christineChanges(flowchart, placements, item_defs, rom_path):
+def christineChanges(flowchart, placements, item_defs):
     item = placements['christine-trade']
     item_index = placements['indexes']['christine-trade'] if 'christine-trade' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event15', 'Event22')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event15', 'Event22')
 
     event0 = event_tools.findEvent(flowchart, 'Event0')
     event10 = event_tools.findEvent(flowchart, 'Event10')
@@ -143,11 +134,10 @@ def christineChanges(flowchart, placements, item_defs, rom_path):
     event_tools.insertEventAfter(flowchart, 'Event28', 'Event15')
 
 
-
-def mrWriteChanges(flowchart, placements, item_defs, rom_path):
+def mrWriteChanges(flowchart, placements, item_defs):
     item = placements['mr-write']
     item_index = placements['indexes']['mr-write'] if 'mr-write' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event48', 'Event46')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event48', 'Event46')
 
     event0 = event_tools.findEvent(flowchart, 'Event0')
     event2 = event_tools.findEvent(flowchart, 'Event2')
@@ -161,11 +151,10 @@ def mrWriteChanges(flowchart, placements, item_defs, rom_path):
     fork.data.forks.pop(1)
 
 
-
-def grandmaYahooChanges(flowchart, placements, item_defs, rom_path):
+def grandmaYahooChanges(flowchart, placements, item_defs):
     item = placements['grandma-yahoo']
     item_index = placements['indexes']['grandma-yahoo'] if 'grandma-yahoo' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event54', 'Event33')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event54', 'Event33')
 
     broom_check = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
     {'symbol': 'TradeBroomGet'}, {0: 'Event69', 1: 'Event79'})
@@ -180,11 +169,10 @@ def grandmaYahooChanges(flowchart, placements, item_defs, rom_path):
     fork.data.forks.pop(1)
 
 
-
-def fishermanChanges(flowchart, placements, item_defs, rom_path):
+def fishermanChanges(flowchart, placements, item_defs):
     item = placements['bay-fisherman']
     item_index = placements['indexes']['bay-fisherman'] if 'bay-fisherman' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event28', 'Event42')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event28', 'Event42')
 
     event0 = event_tools.findEvent(flowchart, 'Event0')
     event2 = event_tools.findEvent(flowchart, 'Event2')
@@ -198,11 +186,10 @@ def fishermanChanges(flowchart, placements, item_defs, rom_path):
     fork.data.forks.pop(1)
 
 
-
-def mermaidChanges(flowchart, placements, item_defs, rom_path):
+def mermaidChanges(flowchart, placements, item_defs):
     item = placements['mermaid-martha']
     item_index = placements['indexes']['mermaid-martha'] if 'mermaid-martha' in placements['indexes'] else -1
-    item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, 'Event73', 'Event55')
+    event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index, 'Event73', 'Event55')
 
     event0 = event_tools.findEvent(flowchart, 'Event0')
     event2 = event_tools.findEvent(flowchart, 'Event2')
@@ -214,10 +201,7 @@ def mermaidChanges(flowchart, placements, item_defs, rom_path):
     fork.data.forks.pop(1)
 
 
-
-def statueChanges(flowchart, rom_path):
-
+def statueChanges(flowchart):
     scale_check = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
-    {'symbol': 'TradeMermaidsScaleGet'}, {0: 'Event28', 1: 'Event32'})
-    
+        {'symbol': 'TradeMermaidsScaleGet'}, {0: 'Event28', 1: 'Event32'})
     event_tools.setSwitchEventCase(flowchart, 'Event3', 0, scale_check)

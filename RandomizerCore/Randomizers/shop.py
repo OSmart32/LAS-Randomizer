@@ -1,6 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
-
 
 
 def makeDatasheetChanges(sheet, placements, item_defs):
@@ -28,7 +26,6 @@ def makeDatasheetChanges(sheet, placements, item_defs):
             slot['mGoods'][0]['mIndex'] = -1
 
 
-
 def makeBuyingEventChanges(flowchart, placements, item_defs):
     """edit the ToolShopKeeper event flow for the new items. Incomplete, was only testing"""
 
@@ -38,7 +35,7 @@ def makeBuyingEventChanges(flowchart, placements, item_defs):
     item_index = placements['indexes']['shop-slot3-1st'] if 'shop-slot3-1st' in placements['indexes'] else -1
     event_tools.setSwitchEventCase(flowchart, 'Event50', 1, 'Event52')
     event_tools.insertEventAfter(flowchart, 'Event52', 'Event61')
-    item_get.insertItemGetAnimation(flowchart, item_key, item_index, 'Event53', 'Event43')
+    event_tools.createGetItemEvent(flowchart, item_key, item_index, 'Event53', 'Event43')
     # event_tools.findEvent(flowchart, 'Event43').data.params.data['symbol'] = 'ShopShovelGet'
 
     # bow
@@ -47,7 +44,7 @@ def makeBuyingEventChanges(flowchart, placements, item_defs):
     item_index = placements['indexes']['shop-slot3-2nd'] if 'shop-slot3-2nd' in placements['indexes'] else -1
     event_tools.setSwitchEventCase(flowchart, 'Event12', 1, 'Event14')
     event_tools.insertEventAfter(flowchart, 'Event14', 'Event65')
-    item_get.insertItemGetAnimation(flowchart, item_key, item_index, 'Event17', 'Event151')
+    event_tools.createGetItemEvent(flowchart, item_key, item_index, 'Event17', 'Event151')
     # event_tools.findEvent(flowchart, 'Event151').data.params.data['symbol'] = 'ShopBowGet'
 
     # heart piece
@@ -56,11 +53,14 @@ def makeBuyingEventChanges(flowchart, placements, item_defs):
     item_index = placements['indexes']['shop-slot6'] if 'shop-slot6' in placements['indexes'] else -1
     set_flag = event_tools.createActionEvent(flowchart, 'EventFlags', 'SetFlag',
         {'symbol': 'ShopHeartGet', 'value': True})
-    item_get.insertItemGetAnimation(flowchart, item_key, item_index, 'Event122', set_flag)
-
+    event_tools.createGetItemEvent(flowchart, item_key, item_index, 'Event122', set_flag)
 
 
 def makeStealingEventChanges(flowchart, placements, item_defs):
+    """The idea is that after we steal, we check the gettingFlag to see what item was stolen
+    
+    Currently, the game does not set the gettingFlag when stealing. This will need ASM to work"""
+
     # if placements['settings']['fast-stealing']:
     #     end_event = 'AutoEvent22'
     # else:
@@ -70,7 +70,7 @@ def makeStealingEventChanges(flowchart, placements, item_defs):
         ('EventFlags', 'SetFlag', {'symbol': 'ShopHeartGet', 'value': True}),
         ('EventFlags', 'SetFlag', {'symbol': 'ShopHeartSteal', 'value': False}),
     ], None)
-    give_heart = item_get.insertItemGetAnimation(flowchart,
+    give_heart = event_tools.createGetItemEvent(flowchart,
         item_defs[placements['shop-slot6']]['item-key'],
         placements['indexes']['shop-slot6'] if 'shop-slot6' in placements['indexes'] else -1,
         before=None, after=remove_heart
@@ -82,7 +82,7 @@ def makeStealingEventChanges(flowchart, placements, item_defs):
         ('EventFlags', 'SetFlag', {'symbol': 'ShopBowGet', 'value': True}),
         ('EventFlags', 'SetFlag', {'symbol': 'BowGet', 'value': False}),
     ], check_heart)
-    give_bow = item_get.insertItemGetAnimation(flowchart,
+    give_bow = event_tools.createGetItemEvent(flowchart,
         item_defs[placements['shop-slot3-2nd']]['item-key'],
         placements['indexes']['shop-slot3-2nd'] if 'shop-slot3-2nd' in placements['indexes'] else -1,
         before=None, after=remove_bow
@@ -94,7 +94,7 @@ def makeStealingEventChanges(flowchart, placements, item_defs):
         ('EventFlags', 'SetFlag', {'symbol': 'ShopShovelGet', 'value': True}),
         ('EventFlags', 'SetFlag', {'symbol': 'ScoopGet', 'value': False}),
     ], check_bow)
-    give_shovel = item_get.insertItemGetAnimation(flowchart,
+    give_shovel = event_tools.createGetItemEvent(flowchart,
         item_defs[placements['shop-slot3-1st']]['item-key'],
         placements['indexes']['shop-slot3-1st'] if 'shop-slot3-1st' in placements['indexes'] else -1,
         before=None, after=remove_shovel

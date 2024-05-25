@@ -362,7 +362,7 @@ class ModsProcess(QtCore.QThread):
     def walrusChanges(self):
         flow = self.readFile('Walrus.bfevfl')
         item_key, item_index = self.getItemInfo('walrus')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event53', 'Event110')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event53', 'Event110')
         self.writeFile('Walrus.bfevfl', flow)
 
 
@@ -370,7 +370,7 @@ class ModsProcess(QtCore.QThread):
     def christineChanges(self):
         flow = self.readFile('Christine.bfevfl')
         item_key, item_index = self.getItemInfo('christine-grateful')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event44', 'Event36')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event44', 'Event36')
         self.writeFile('Christine.bfevfl', flow)
 
 
@@ -378,7 +378,7 @@ class ModsProcess(QtCore.QThread):
     def invisibleZoraChanges(self):
         flow = self.readFile('SecretZora.bfevfl')
         item_key, item_index = self.getItemInfo('invisible-zora')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event23', 'Event27')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event23', 'Event27')
         event_tools.insertEventAfter(flow.flowchart, 'Event32', 'Event23')
         self.writeFile('SecretZora.bfevfl', flow)
 
@@ -394,9 +394,9 @@ class ModsProcess(QtCore.QThread):
             flag_set = event_tools.createActionEvent(flow.flowchart, 'EventFlags', 'SetFlag',
                 {'symbol': 'MarinsongGet', 'value': True}, sad_face)
             event_tools.insertEventAfter(flow.flowchart, 'Event92', flag_set)
-            item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, sad_face, 'Event666')
+            event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, sad_face, 'Event666')
         else:
-            item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event246', 'Event666')
+            event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event246', 'Event666')
             
         marin.makeEventChanges(flow)
         self.writeFile('Marin.bfevfl', flow)
@@ -407,7 +407,7 @@ class ModsProcess(QtCore.QThread):
         flow = self.readFile('Owl.bfevfl')
         new = event_tools.createActionEvent(flow.flowchart, 'Owl', 'Destroy', {})
         item_key, item_index = self.getItemInfo('ghost-reward')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event34', new)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event34', new)
         self.writeFile('Owl.bfevfl', flow)
 
 
@@ -416,10 +416,10 @@ class ModsProcess(QtCore.QThread):
         flow = self.readFile('FairyQueen.bfevfl')
 
         item_key, item_index = self.getItemInfo('D0-fairy-2')
-        item2 = item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event0', 'Event180')
+        item2 = event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event0', 'Event180')
 
         item_key, item_index = self.getItemInfo('D0-fairy-1')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event0', item2)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event0', item2)
 
         event_tools.insertEventAfter(flow.flowchart, 'Event128', 'Event58')
 
@@ -444,7 +444,7 @@ class ModsProcess(QtCore.QThread):
             {'symbol': data.GORIYA_FLAG, 'value': True}, 'Event4')
         
         item_key, item_index = self.getItemInfo('goriya-trader')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event87', flag_event)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event87', flag_event)
 
         flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
             {'symbol': data.GORIYA_FLAG}, {0: 'Event7', 1: 'Event15'})
@@ -466,7 +466,7 @@ class ModsProcess(QtCore.QThread):
             before_item = 'Event31'
         
         item_key, item_index = self.getItemInfo('manbo')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, before_item, flag_event)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, before_item, flag_event)
 
         flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
         {'symbol': data.MANBO_FLAG}, {0: 'Event37', 1: 'Event35'})
@@ -488,7 +488,7 @@ class ModsProcess(QtCore.QThread):
             before_item = 'Event85'
         
         item_key, item_index = self.getItemInfo('mamu')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, before_item, flag_event)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, before_item, flag_event)
 
         flag_check = event_tools.createSwitchEvent(flow.flowchart, 'EventFlags', 'CheckFlag',
         {'symbol': data.MAMU_FLAG}, {0: 'Event14', 1: 'Event98'})
@@ -522,7 +522,7 @@ class ModsProcess(QtCore.QThread):
     def trendyChanges(self):
         flow = self.readFile('GameShopOwner.bfevfl')
         item_key, item_index = self.getItemInfo('trendy-prize-final')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event112', 'Event239')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event112', 'Event239')
         self.writeFile('GameShopOwner.bfevfl', flow)
 
 
@@ -547,7 +547,7 @@ class ModsProcess(QtCore.QThread):
             {'pointIndex': 0, 'itemKey': item_key, 'itemIndex': item_index, 'flag': 'GetSeashell50'}
 
         item_key, item_index = self.getItemInfo('40-seashell-reward')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event91', 'Event79')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event91', 'Event79')
 
         seashell_mansion.makeEventChanges(flow.flowchart, self.placements)
         self.writeFile('ShellMansionMaster.bfevfl', flow)
@@ -558,13 +558,13 @@ class ModsProcess(QtCore.QThread):
         flow = self.readFile('MadBatter.bfevfl')
 
         item_key, item_index = self.getItemInfo('mad-batter-bay')
-        item1 = item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, None, 'Event23')
+        item1 = event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, None, 'Event23')
 
         item_key, item_index = self.getItemInfo('mad-batter-woods')
-        item2 = item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, None, 'Event23')
+        item2 = event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, None, 'Event23')
 
         item_key, item_index = self.getItemInfo('mad-batter-taltal')
-        item3 = item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, None, 'Event23')
+        item3 = event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, None, 'Event23')
 
         mad_batter.writeEvents(flow, item1, item2, item3)
 
@@ -602,7 +602,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('DeguTail.bfevfl')
         item_key, item_index = self.getItemInfo('D1-moldorm')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event8', 'Event45')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event8', 'Event45')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event16', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -619,7 +619,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('PotDemonKing.bfevfl')
         item_key, item_index = self.getItemInfo('D2-genie')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event29', 'Event56')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event29', 'Event56')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event5', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -636,7 +636,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('DeguZol.bfevfl')
         item_key, item_index = self.getItemInfo('D3-slime-eye')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event29', 'Event43')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event29', 'Event43')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event17', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -652,7 +652,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('Angler.bfevfl')
         item_key, item_index = self.getItemInfo('D4-angler')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event25', 'Event50')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event25', 'Event50')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event5', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -669,7 +669,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('Hooker.bfevfl')
         item_key, item_index = self.getItemInfo('D5-slime-eel')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event28', 'Event13')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event28', 'Event13')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event26', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -686,7 +686,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('MatFace.bfevfl')
         item_key, item_index = self.getItemInfo('D6-facade')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event8', 'Event35')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event8', 'Event35')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event22', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -703,7 +703,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('Albatoss.bfevfl')
         item_key, item_index = self.getItemInfo('D7-eagle')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event40', 'Event51')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event40', 'Event51')
         
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event15', self.songs_dict['BGM_DUNGEON_LV7_BOSS'])
@@ -719,7 +719,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('DeguFlame.bfevfl')
         item_key, item_index = self.getItemInfo('D8-hothead')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event13', 'Event15')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event13', 'Event15')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event28', self.songs_dict['BGM_DUNGEON_BOSS'])
@@ -737,7 +737,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('Lanmola.bfevfl')
         item_key, item_index = self.getItemInfo('lanmola')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event34', 'Event9')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event34', 'Event9')
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event2', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
@@ -755,7 +755,7 @@ class ModsProcess(QtCore.QThread):
         event_tools.removeEventAfter(flow.flowchart, 'Event2')
         event_tools.insertEventAfter(flow.flowchart, 'Event2', 'Event8')
         item_key, item_index = self.getItemInfo('armos-knight')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event47', None)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event47', None)
 
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event4', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
@@ -770,7 +770,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('MasterStalfon.bfevfl')
         item_key, item_index = self.getItemInfo('D5-master-stalfos')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event37', 'Event194')
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event37', 'Event194')
         
         if self.settings['randomize-music']:
             event_tools.setEventSong(flow.flowchart, 'Event0', self.songs_dict['BGM_DUNGEON_BOSS_MIDDLE'])
@@ -792,7 +792,7 @@ class ModsProcess(QtCore.QThread):
 
         flow = self.readFile('Syrup.bfevfl')
         item_key, item_index = self.getItemInfo('syrup')
-        item_get.insertItemGetAnimation(flow.flowchart, item_key, item_index, 'Event93', None)
+        event_tools.createGetItemEvent(flow.flowchart, item_key, item_index, 'Event93', None)
         
         # if self.settings['randomize-music']:
         #     event_tools.setEventSong(flow.flowchart, 'Event56', self.songs_dict['BGM_SHOP_FAST'])
@@ -884,7 +884,7 @@ class ModsProcess(QtCore.QThread):
         ### ShellMansionPresent event: Similar to TreasureBox, must make some items progressive and add custom events for other items.
         if self.thread_active:
             flow = self.readFile('ShellMansionPresent.bfevfl')
-            seashell_mansion.changeRewards(flow.flowchart)
+            event_tools.createGetItemEvent(flow.flowchart, 'itemKey', 'itemIndex', 'Event25', 'Event0')
             self.writeFile('ShellMansionPresent.bfevfl', flow)
         
         ### Item: Add and fix some entry points for the ItemGetSequence
@@ -947,6 +947,12 @@ class ModsProcess(QtCore.QThread):
             
             self.writeFile('Item.bfevfl', flow)
         
+        ### ItemCommon: Use this flowchart as a base for our generic Randomizer flowchart
+        if self.thread_active:
+            flow = self.readFile('ItemCommon.bfevfl')
+            item_get.createRandomizerFlowchart(flow, set([v['item-key'] for k,v in self.item_defs.items()]))
+            self.writeFile('Randomizer.bfevfl', flow)
+
         ### MadamMeowMeow: Change her behaviour to always take back BowWow if you have him, and not do anything based on having the Horn
         if self.thread_active:
             flow = self.readFile('MadamMeowMeow.bfevfl')
@@ -1561,22 +1567,22 @@ class ModsProcess(QtCore.QThread):
 
         if self.thread_active:
             flow = self.readFile('QuadrupletsMother.bfevfl')
-            trade_quest.mamashaChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.mamashaChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('QuadrupletsMother.bfevfl', flow)
         
         if self.thread_active:
             flow = self.readFile('RibbonBowWow.bfevfl')
-            trade_quest.ciaociaoChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.ciaociaoChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('RibbonBowWow.bfevfl', flow)
         
         if self.thread_active:
             flow = self.readFile('Sale.bfevfl')
-            trade_quest.saleChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.saleChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('Sale.bfevfl', flow)
         
         if self.thread_active:
             flow = self.readFile('Kiki.bfevfl')
-            trade_quest.kikiChanges(flow.flowchart, self.placements, self.settings, self.item_defs, self.rom_path)
+            trade_quest.kikiChanges(flow.flowchart, self.placements, self.settings, self.item_defs)
             # # shuffle bridge building music
             # if self.settings['randomize-music']:
             #     event_tools.findEvent(flow.flowchart, 'Event114').data.params.data['label'] = self.songs_dict['BGM_EVENT_MONKEY']
@@ -1596,42 +1602,42 @@ class ModsProcess(QtCore.QThread):
         
         if self.thread_active:
             flow = self.readFile('ChefBear.bfevfl')
-            trade_quest.chefChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.chefChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('ChefBear.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('Papahl.bfevfl')
-            trade_quest.papahlChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.papahlChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('Papahl.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('Christine.bfevfl')
-            trade_quest.christineChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.christineChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('Christine.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('DrWrite.bfevfl')
-            trade_quest.mrWriteChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.mrWriteChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('DrWrite.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('GrandmaUlrira.bfevfl')
-            trade_quest.grandmaYahooChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.grandmaYahooChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('GrandmaUlrira.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('MarthasBayFisherman.bfevfl')
-            trade_quest.fishermanChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.fishermanChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('MarthasBayFisherman.bfevfl', flow)
 
         if self.thread_active:
             flow = self.readFile('MermaidMartha.bfevfl')
-            trade_quest.mermaidChanges(flow.flowchart, self.placements, self.item_defs, self.rom_path)
+            trade_quest.mermaidChanges(flow.flowchart, self.placements, self.item_defs)
             self.writeFile('MermaidMartha.bfevfl', flow)
         
         if self.thread_active:
             flow = self.readFile('MarthaStatue.bfevfl')
-            trade_quest.statueChanges(flow.flowchart, self.rom_path)
+            trade_quest.statueChanges(flow.flowchart)
             self.writeFile('MarthaStatue.bfevfl', flow)
     
 

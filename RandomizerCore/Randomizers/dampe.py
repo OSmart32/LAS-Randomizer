@@ -1,5 +1,5 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get, data
+from RandomizerCore.Randomizers import item_get
 
 
 

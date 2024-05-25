@@ -1,5 +1,5 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get, data
+from RandomizerCore.Randomizers import data
 
 
 
@@ -9,13 +9,13 @@ def writeSwapEvents(flowchart):
     # telephone needs dialog query 'GetLastResult4' to get dialog result
     event_tools.addActorQuery(event_tools.findActor(flowchart, 'Dialog'), 'GetLastResult4')
 
-    green_get = item_get.insertItemGetAnimation(flowchart, 'ClothesGreen', -1, None, None)
+    green_get = event_tools.createGetItemEvent(flowchart, 'ClothesGreen', -1)
 
-    red_get = item_get.insertItemGetAnimation(flowchart, 'ClothesRed', -1, None, None)
+    red_get = event_tools.createGetItemEvent(flowchart, 'ClothesRed', -1)
     check_red = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
     {'symbol': data.RED_TUNIC_FOUND_FLAG}, {0: None, 1: red_get})
 
-    blue_get = item_get.insertItemGetAnimation(flowchart, 'ClothesBlue', -1, None, None)
+    blue_get = event_tools.createGetItemEvent(flowchart, 'ClothesBlue', -1)
     check_blue = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
     {'symbol': data.BLUE_TUNIC_FOUND_FLAG}, {0: None, 1: blue_get})
 

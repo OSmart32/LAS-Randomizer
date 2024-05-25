@@ -1,6 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
-
 
 
 def writeKeyEvent(flowchart, item_key, item_index, room):
@@ -12,7 +10,7 @@ def writeKeyEvent(flowchart, item_key, item_index, room):
             ('Inventory', 'AddItemByKey', {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
         ], None)
     else:
-        item_event = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        item_event = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.addEntryPoint(flowchart, room)
 
@@ -21,7 +19,6 @@ def writeKeyEvent(flowchart, item_key, item_index, room):
         ('SmallKey', 'SetActorSwitch', {'value': True, 'switchIndex': 1}),
         ('SmallKey', 'Destroy', {})
     ], item_event)
-
 
 
 def makeKeysFaster(flowchart):
@@ -33,7 +30,6 @@ def makeKeysFaster(flowchart):
 
     event_tools.insertEventAfter(flowchart, 'Lv4_04E_pop', 'Event7')
     event_tools.insertEventAfter(flowchart, 'Event10', None)
-
 
 
 # def writeSunkenKeyEvent(flowchart):

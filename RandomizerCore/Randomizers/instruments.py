@@ -1,5 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
 from RandomizerCore.Randomizers.data import INSTRUMENT_FLAGS, MODEL_SIZES
 import re
 
@@ -39,7 +38,7 @@ def changeInstrument(flowchart, item_key, item_index, model_path, model_name, ro
         act.scaleZ = size
 
     fade_event = insertInstrumentFadeEvent(flowchart, level, location)
-    instrument_get = item_get.insertItemGetAnimation(flowchart, item_key, item_index, None, fade_event)
+    instrument_get = event_tools.createGetItemEvent(flowchart, item_key, item_index, None, fade_event)
 
     event_tools.addEntryPoint(flowchart, room)
     event_tools.createActionChain(flowchart, room, [

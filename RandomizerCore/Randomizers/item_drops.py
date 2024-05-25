@@ -1,9 +1,3 @@
-from RandomizerCore.Randomizers import data
-import RandomizerCore.Tools.oead_tools as oead_tools
-import oead
-
-
-
 def makeDatasheetChanges(sheet, settings):
     """Iterates through all the values in the ItemDrop datasheet and makes changes"""
     
@@ -36,15 +30,3 @@ def makeDatasheetChanges(sheet, settings):
 
     for i in range(8):
         sheet['values'][first_heart_index+i]['mLotTable'][0]['mType'] = ''
-
-
-
-# def createDatasheetConditions(sheet):
-#     # {name: gettingFlag, type_name: GlobalFlags, type: 4, flags: 9, fields: null}
-#     sheet['root_fields'].append(oead_tools.createField(
-#     name='mCondition',
-#     type_name='Conditions',
-#     type=oead.gsheet.Field.Type.String,
-#     flags=oead.gsheet.Field.Flag.IsNullable,
-#     offset=28
-# ))

@@ -276,6 +276,9 @@ def createSubFlowEvent(flowchart, refChart, entryPoint, params, nextev=None):
 	new = evfl.event.Event()
 	new.data = evfl.event.SubFlowEvent()
 	new.data.params = evfl.container.Container()
+	for key in params:
+		if params[key] == key:
+			params[key] = evfl.common.Argument(params[key])
 	new.data.params.data = params
 	new.data.res_flowchart_name = refChart
 	new.data.entry_point_name = entryPoint
@@ -367,3 +370,11 @@ def addForkEventForks(flowchart, forkevent, forks):
 
 def setEventSong(flowchart, event_name, song):
 	findEvent(flowchart, event_name).data.params.data['label'] = song
+
+
+def createGetItemEvent(flowchart, item, index, before=None, after=None):
+	subfl = createSubFlowEvent(flowchart, 'Randomizer', item,
+		{'itemKey': item, 'itemCount': 1, 'itemIndex': index}, after)
+	if before is not None:
+		insertEventAfter(flowchart, before, subfl)
+	return subfl

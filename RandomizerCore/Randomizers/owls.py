@@ -1,6 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
-
 
 
 def addSlimeKeyCheck(flowchart):
@@ -13,7 +11,6 @@ def addSlimeKeyCheck(flowchart):
     chest_check = event_tools.createSwitchEvent(flowchart, 'EventFlags', 'CheckFlag',
         {'symbol': 'PotholeKeySpawn'}, {0: shovel_check, 1: 'Event21'})
     event_tools.insertEventAfter(flowchart, 'examine_anaboko', chest_check)
-
 
 
 def makeFieldChanges(flowchart, placements, item_defs):
@@ -34,7 +31,7 @@ def makeFieldChanges(flowchart, placements, item_defs):
         item = placements[k]
         item_index = placements['indexes'][k] if k in placements['indexes'] else -1
         
-        gift_event = item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, None, None)
+        gift_event = event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index)
 
         flag_set = event_tools.createActionEvent(flowchart, 'EventFlags', 'SetFlag',
             {'symbol': k, 'value': True}, gift_event)
@@ -59,8 +56,6 @@ def makeFieldChanges(flowchart, placements, item_defs):
     for ev in dist_evs:
         dist_ev = event_tools.findEvent(flowchart, ev)
         dist_ev.data.params.data['keepPersonalSpace'] = False
-        
-
 
 
 def makeDungeonChanges(flowchart, placements, item_defs):
@@ -123,7 +118,7 @@ def makeDungeonChanges(flowchart, placements, item_defs):
         item = placements[k]
         item_index = placements['indexes'][k] if k in placements['indexes'] else -1
 
-        gift_event = item_get.insertItemGetAnimation(flowchart, item_defs[item]['item-key'], item_index, None, None)
+        gift_event = event_tools.createGetItemEvent(flowchart, item_defs[item]['item-key'], item_index)
 
         flag_set = event_tools.createActionEvent(flowchart, 'EventFlags', 'SetFlag',
             {'symbol': k, 'value': True}, gift_event)

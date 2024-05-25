@@ -1,6 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
-
 
 
 def makeEventChanges(flowchart, rup_index, item_key, item_index):
@@ -13,7 +11,7 @@ def makeEventChanges(flowchart, rup_index, item_key, item_index):
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
         {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
 
     event_tools.createActionChain(flowchart, f'Lv10Rupee_{rup_index + 1}', [
         ('SinkingSword', 'Destroy', {}),

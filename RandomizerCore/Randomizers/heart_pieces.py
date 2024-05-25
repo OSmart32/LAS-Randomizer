@@ -1,5 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
 from RandomizerCore.Randomizers.data import HEART_FLAGS, MODEL_SIZES
 
 
@@ -23,7 +22,7 @@ def changeHeartPiece(flowchart, item_key, item_index, model_path, model_name, ro
         get_anim = event_tools.createActionEvent(flowchart, 'Inventory', 'AddItemByKey',
         {'itemKey': item_key, 'count': 1, 'index': item_index, 'autoEquip': False})
     else:
-        get_anim = item_get.insertItemGetAnimation(flowchart, item_key, item_index)
+        get_anim = event_tools.createGetItemEvent(flowchart, item_key, item_index)
     
     event_tools.addEntryPoint(flowchart, room)
     event_tools.createActionChain(flowchart, room, [

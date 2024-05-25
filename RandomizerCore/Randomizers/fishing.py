@@ -1,6 +1,4 @@
 import RandomizerCore.Tools.event_tools as event_tools
-from RandomizerCore.Randomizers import item_get
-
 
 
 def makeEventChanges(flowchart, placements, item_defs):
@@ -17,7 +15,7 @@ def makeEventChanges(flowchart, placements, item_defs):
     for defs in change_defs:
         item_key = item_defs[placements[defs[0]]]['item-key']
         item_index = placements['indexes'][defs[0]] if defs[0] in placements['indexes'] else -1
-        item_get.insertItemGetAnimation(flowchart, item_key, item_index, defs[1], defs[2], False, False)
+        event_tools.createGetItemEvent(flowchart, item_key, item_index, defs[1], defs[2])
     
     bottle_get = event_tools.createActionEvent(flowchart, 'EventFlags', 'SetFlag',
         {'symbol': 'FishingBottleGet', 'value': True}, 'Event264')
