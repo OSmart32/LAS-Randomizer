@@ -2,17 +2,7 @@ import RandomizerCore.Tools.event_tools as event_tools
 from RandomizerCore.Randomizers import data
 
 
-# blue_tunic_get = item_get.insertItemGetAnimation(flowchart, 'ClothesBlue', -1, None, auto_save)
-# blue_tunic_check = event_tools.createSwitchEvent(flowchart, 'FlowControl', 'CompareString',
-#     {'value1': 'itemKey', 'value2': 'ClothesBlue'},
-#     {0: blue_tunic_get, 1: red_tunic_check})
-
-# cello_get = item_get.insertItemGetAnimation(flowchart, 'FullMoonCello', -1, None, auto_save)
-# cello_check = event_tools.createSwitchEvent(flowchart, 'FlowControl', 'CompareString',
-#     {'value1': 'itemKey', 'value2': 'FullMoonCello'},
-#     {0: cello_get, 1: blue_tunic_check})
-
-def createItemComparison(flowchart, items):
+def createItemComparison(flowchart, items: list):
     event_tools.addEntryPoint(flowchart, 'itemKey')
     last_item = None
 
@@ -29,7 +19,7 @@ def createItemComparison(flowchart, items):
     event_tools.insertEventAfter(flowchart, 'itemKey', last_item)
 
 
-def createRandomizerFlowchart(flow, items: set):
+def createRandomizerFlowchart(flow, items: list):
     """Creates a new Randomizer flowchart using ItemCommon.bfevfl as a base
     
     Instead of needing to do a massive item check for each individual placement, we only need to make the item events once
@@ -41,9 +31,9 @@ def createRandomizerFlowchart(flow, items: set):
     flowchart = flow.flowchart
 
     event_tools.insertEventAfter(flowchart, 'get', 'Event0')
-    event_tools.insertEventAfter(flowchart, 'Event1', None)
+    event_tools.removeEventAfter(flowchart, 'Event1')
 
-    items.add('ClothesGreen')
+    items.append('ClothesGreen')
     
     for item in items:
         if item.startswith('$'):

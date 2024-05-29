@@ -950,7 +950,9 @@ class ModsProcess(QtCore.QThread):
         ### ItemCommon: Use this flowchart as a base for our generic Randomizer flowchart
         if self.thread_active:
             flow = self.readFile('ItemCommon.bfevfl')
-            item_get.createRandomizerFlowchart(flow, set([v['item-key'] for k,v in self.item_defs.items()]))
+            item_list = list(set([v['item-key'] for k,v in self.item_defs.items()]))
+            item_list.sort()
+            item_get.createRandomizerFlowchart(flow, item_list)
             self.writeFile('Randomizer.bfevfl', flow)
 
         ### MadamMeowMeow: Change her behaviour to always take back BowWow if you have him, and not do anything based on having the Horn
@@ -973,7 +975,7 @@ class ModsProcess(QtCore.QThread):
         ### WindFishsEgg: Removes the Owl cutscene after opening the egg
         if self.thread_active:
             flow = self.readFile('WindFishsEgg.bfevfl')
-            event_tools.insertEventAfter(flow.flowchart, 'Event142', None)
+            event_tools.removeEventAfter(flow.flowchart, 'Event142')
             self.writeFile('WindFishsEgg.bfevfl', flow)
 
         ### SkeletalGuardBlue: Make him sell 20 bombs in addition to the 20 powder
@@ -1015,7 +1017,7 @@ class ModsProcess(QtCore.QThread):
             # shuffle Rapids race music
             if self.settings['randomize-music']:
                 # remove the music for now since it gets cut off due to something with setting the new BGM in the lvb file
-                event_tools.insertEventAfter(flow.flowchart, 'Event167', None)
+                event_tools.removeEventAfter(flow.flowchart, 'Event167')
                 #
                 # event_tools.findEvent(flow.flowchart, 'Event78').data.params.data['label'] = self.songs_dict['BGM_RAFTING_TIMEATTACK']
             self.writeFile('Common.bfevfl', flow)
