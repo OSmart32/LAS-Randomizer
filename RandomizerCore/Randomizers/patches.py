@@ -38,6 +38,10 @@ def requiredPatches(patcher: Patcher):
     patcher.addPatch(0x8049d8, 'mov w8, #0x1')
     patcher.addPatch(0x8049dc, 'csel w0, w8, wzr, eq')
 
+    # make ItemHeartPiece actors check for YoshiDoll in inventory for if they spawn or not
+    # you never get YoshiDoll, so they should always spawn until the corresponding flag is set
+    patcher.addPatch(0x8c26b0, 'mov w9, #0x1D')
+
 
 def optionalPatches(patcher: Patcher, settings: dict, rand_state: tuple):
     """Writes the settings-based ASM for the randomizer"""

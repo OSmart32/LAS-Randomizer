@@ -73,11 +73,11 @@ class ItemShuffler(QtCore.QThread):
         # vanilla_locations.remove('shop-slot3-1st')
         # vanilla_locations.remove('shop-slot3-2nd')
         # vanilla_locations.remove('shop-slot6')
-        # vanilla_locations.remove('bay-passage-sunken')
-        # vanilla_locations.remove('river-crossing-cave')
-        # vanilla_locations.remove('kanalet-moat-south')
-        # vanilla_locations.remove('south-bay-sunken')
-        # vanilla_locations.remove('taltal-east-drop')
+        vanilla_locations.remove('bay-passage-sunken')
+        vanilla_locations.remove('river-crossing-cave')
+        vanilla_locations.remove('kanalet-moat-south')
+        vanilla_locations.remove('south-bay-sunken')
+        vanilla_locations.remove('taltal-east-drop')
         
         # if not self.settings['shuffle-companions']:
         # vanilla_locations.append('moblin-cave')

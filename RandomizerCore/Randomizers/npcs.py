@@ -12,23 +12,20 @@ def makeNpcChanges(npc, placements, settings):
     if npc['symbol'] == 'NpcMadBatter':
         npc['eventTriggers'][0]['entryPoint'] = '$2'
         del npc['layoutConditions'][1]
-        return
     
-    if npc['symbol'] == 'ItemGoldenLeaf': # Makes it so golden leaf actors will not spawn, and also removes event just in case
+    elif npc['symbol'] == 'ItemGoldenLeaf': # Makes it so golden leaf actors will not spawn, and also removes event just in case
         npc['eventTriggers'] = []
         del npc['layoutConditions'][0]
         del npc['layoutConditions'][0]
         del npc['layoutConditions'][0]
-        return
     
-    if npc['symbol'] == 'ItemSmallKey':
+    elif npc['symbol'] == 'ItemSmallKey':
         npc['graphics']['path'] = '$1'
         npc['graphics']['model'] = '$2'
         npc['eventTriggers'][2]['entryPoint'] = '$3'
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific smallkey actors trigger the shell sensor
-        return
     
-    if npc['symbol'] == 'ItemYoshiDoll': # This is for Ocarina and Instruments since I still want the player to press A to get them
+    elif npc['symbol'] == 'ItemYoshiDoll': # This is for Ocarina and Instruments since I still want the player to press A to get them
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         npc['eventInfo'] = {'eventAsset': 'SinkingSword.bfevfl', 'actorName': 'SinkingSword'}
@@ -40,24 +37,28 @@ def makeNpcChanges(npc, placements, settings):
         npc['collision']['filter'] = 5
         # npc['collision']['offset']['y'] = 0.5
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific yoshidoll actors trigger the shell sensor
-        return
     
-    if npc['symbol'] == 'ItemHoneycomb': # Make the Honeycomb object ring the sensor instead of Tarin
+    elif npc['symbol'] == 'ItemHeartPiece':
+        npc['graphics']['path'] = '$1'
+        npc['graphics']['model'] = '$2'
+        npc['eventInfo'] = {'eventAsset': 'SinkingSword.bfevfl', 'actorName': 'SinkingSword'}
+        npc['eventTriggers'][0]['entryPoint'] = '$3'
+        npc['layoutConditions'].append({'category': 1, 'parameter': '$4', 'layoutID': -1})
+        npc['shellSensor'].append({'category': 9, 'parameter': '$5'}) # make specific ItemHeartPiece actors trigger the shell sensor
+    
+    elif npc['symbol'] == 'ItemHoneycomb': # Make the Honeycomb object ring the sensor instead of Tarin
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         if placements['tarin-ukuku'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['tarin-ukuku']}"})
-        return
     
-    if npc['symbol'] == 'ObjClothBag': # Make it so Papahl's bag appears with him when you get the Pineapple
+    elif npc['symbol'] == 'ObjClothBag': # Make it so Papahl's bag appears with him when you get the Pineapple
         npc['layoutConditions'][1] = {'category': 1, 'parameter': 'TradePineappleGet', 'layoutID': 0}
-        return
 
-    if npc['symbol'] == 'NpcGrandmaUlrira':
+    elif npc['symbol'] == 'NpcGrandmaUlrira':
         npc['layoutConditions'][1] = {'category': 9, 'parameter': 'true', 'layoutID': 4}
-        return
     
-    if npc['symbol'] == 'ObjSinkingSword':
+    elif npc['symbol'] == 'ObjSinkingSword':
         npc['graphics']['path'] = '$0'
         npc['graphics']['model'] = '$1'
         npc['graphics']['waterChannel']['limitDepth'] = 0.5 # idk what this does but probably helps see the item?
@@ -70,137 +71,110 @@ def makeNpcChanges(npc, placements, settings):
         npc['collision']['filter'] = 7
         npc['collision']['offset']['y'] = 0.25
         npc['shellSensor'].append({'category': 9, 'parameter': '$4'}) # make specific sinkingsword actors trigger the shell sensor
-        return
     
-    if npc['symbol'] == 'ObjRoosterBones':
+    elif npc['symbol'] == 'ObjRoosterBones':
         del npc['layoutConditions'][0]
-        return
     
-    if npc['symbol'] == 'ObjTelephone': # since telephones swap tunics, make it so the Fairy Queen is talking
+    elif npc['symbol'] == 'ObjTelephone': # since telephones swap tunics, make it so the Fairy Queen is talking
         npc['talk'] = {'personalSpace': 1.5, 'talkerLabel': 'NpcFairyQueen'}
-        return
     
     # make the bomb refills not appear until you find your bombs
-    if npc['symbol'] == 'ItemBomb' and settings['shuffle-bombs']:
+    elif npc['symbol'] == 'ItemBomb' and settings['shuffle-bombs']:
         npc['layoutConditions'].append({'category': 1, 'parameter': f'!{data.BOMBS_FOUND_FLAG}', 'layoutID': -1})
-        return
-    if npc['symbol'] == 'ItemFeatherBomb' and settings['shuffle-bombs']:
+    elif npc['symbol'] == 'ItemFeatherBomb' and settings['shuffle-bombs']:
         npc['layoutConditions'].append({'category': 1, 'parameter': f'!{data.BOMBS_FOUND_FLAG}', 'layoutID': -1})
-        return
     
     # make the powder refills not appear until you find your powder
-    if npc['symbol'] == 'ItemMagicPowder' and settings['shuffle-powder']:
+    elif npc['symbol'] == 'ItemMagicPowder' and settings['shuffle-powder']:
         npc['layoutConditions'].append({'category': 1, 'parameter': '!GetMagicPowder', 'layoutID': -1})
-        return
-    if npc['symbol'] == 'ItemFeatherMagicPowder' and settings['shuffle-powder']:
+    elif npc['symbol'] == 'ItemFeatherMagicPowder' and settings['shuffle-powder']:
         npc['layoutConditions'].append({'category': 1, 'parameter': '!GetMagicPowder', 'layoutID': -1})
-        return
     
     # Adjustments to NPC layouts and shell sensor trigger conditions
-    if npc['symbol'] == 'NpcBowWow':
+    elif npc['symbol'] == 'NpcBowWow':
         npc['layoutConditions'][2] = {'category': 3, 'parameter': 'BowWow', 'layoutID': -1}
-        return
 
-    if npc['symbol'] == 'NpcMadamMeowMeow':
+    elif npc['symbol'] == 'NpcMadamMeowMeow':
         npc['layoutConditions'][2] = {'category': 1, 'parameter': 'BowWowJoin', 'layoutID': 3}
         del npc['layoutConditions'][1]
-        return
     
-    if npc['symbol'] == 'NpcChorusFrog':
+    elif npc['symbol'] == 'NpcChorusFrog':
         del npc['layoutConditions'][0]
-        return
     
-    if npc['symbol'] == 'NpcKiki' and settings['open-bridge']:
+    elif npc['symbol'] == 'NpcKiki' and settings['open-bridge']:
         npc['layoutConditions'][0] = {'category': 1, 'parameter': 'KikiGone', 'layoutID': -1}
-        return
     
-    if npc['symbol'] == 'NpcChristine':
+    elif npc['symbol'] == 'NpcChristine':
         del npc['shellSensor'][0]
         if placements['christine-trade'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['christine-trade']}"})
         if placements['christine-grateful'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['christine-grateful']}"})
-        return
     
-    if npc['symbol'] == 'NpcTarin':
+    elif npc['symbol'] == 'NpcTarin':
         npc['eventTriggers'][5]['additionalConditions'][0] = {'category': 1, 'parameter': '!ShieldGet'} # Make Tarin detain based on talking to him, not having Shield
         npc['eventTriggers'][1]['additionalConditions'][0] = {'category': 4, 'parameter': '3'} # Only the instance of Tarin-Ukuku should trigger the trade event
         npc['layoutConditions'][2] = {'category': 1, 'parameter': 'HoneycombDrop', 'layoutID': -1}
         npc['layoutConditions'][4] = {'category': 1, 'parameter': 'TradeStickGet', 'layoutID': 3} # Make Tarin-ukuku appear when you get the stick
-        return
     
-    if npc['symbol'] == 'NpcPapahl':
+    elif npc['symbol'] == 'NpcPapahl':
         npc['layoutConditions'][1] = {'category': 1, 'parameter': 'TradePineappleGet', 'layoutID': 2}
         if placements['papahl'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['papahl']}"})
-        return
 
-    if npc['symbol'] == 'NpcMarin':
+    elif npc['symbol'] == 'NpcMarin':
         if placements['marin'] == 'seashell':
             npc['shellSensor'].append({'category': 4, 'parameter': '2'}) # Only the instance of Marin in Mabe should ring the sensor
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['marin']}"})
-        return
 
-    if npc['symbol'] == 'NpcSecretZora':
+    elif npc['symbol'] == 'NpcSecretZora':
         del npc['shellSensor'][0]
         if placements['invisible-zora'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['invisible-zora']}"})
-        return
     
-    if npc['symbol'] == 'NpcGoriya':
+    elif npc['symbol'] == 'NpcGoriya':
         if placements['goriya-trader'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['goriya-trader']}"})
-        return
 
-    if npc['symbol'] == 'ObjGhostsGrave':
+    elif npc['symbol'] == 'ObjGhostsGrave':
         if placements['ghost-reward'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['ghost-reward']}"})
-        return
 
-    if npc['symbol'] == 'NpcWalrus':
+    elif npc['symbol'] == 'NpcWalrus':
         del npc['shellSensor'][0]
         if placements['walrus'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['walrus']}"})
-        return
 
-    if npc['symbol'] == 'NpcFairyQueen':
+    elif npc['symbol'] == 'NpcFairyQueen':
         if placements['D0-fairy-1'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['D0-fairy-1']}"})
         if placements['D0-fairy-2'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['D0-fairy-2']}"})
-        return
 
-    if npc['symbol'] == 'NpcManboTamegoro':
+    elif npc['symbol'] == 'NpcManboTamegoro':
         if placements['manbo'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['manbo']}"})
-        return
 
-    if npc['symbol'] == 'NpcMamu':
+    elif npc['symbol'] == 'NpcMamu':
         del npc['layoutConditions'][0] # removes the frog's song layout condition so he's always there
         if placements['mamu'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['mamu']}"})
-        return
 
-    if npc['symbol'] == 'NpcGameShopOwner':
+    elif npc['symbol'] == 'NpcGameShopOwner':
         if placements['trendy-prize-final'] == 'seashell':
             npc['shellSensor'].append({'category': 2, 'parameter': f"!Seashell:{placements['indexes']['trendy-prize-final']}"})
-        return
 
-    if npc['symbol'] == 'NpcDanpei':
+    elif npc['symbol'] == 'NpcDanpei':
         npc['shellSensor'].append({'category': 9, 'parameter': '!DampeShellsComplete'})
-        return
 
-    if npc['symbol'] == 'NpcRaftShopMan':
+    elif npc['symbol'] == 'NpcRaftShopMan':
         npc['shellSensor'].append({'category': 9, 'parameter': '!RapidsShellsComplete'})
-        return
 
-    if npc['symbol'] == 'NpcFisherman':
+    elif npc['symbol'] == 'NpcFisherman':
         npc['shellSensor'].append({'category': 9, 'parameter': '!FishingShellsComplete'})
-        return
 
-    if npc['symbol'] == 'NpcShellMansionMaster':
+    elif npc['symbol'] == 'NpcShellMansionMaster':
         npc['shellSensor'].append({'category': 9, 'parameter': '!MansionShellsComplete'})
-        return
 
 
 
@@ -212,7 +186,7 @@ def makeNewNpcs(npc_sheet):
     dummy['graphics']['path'] = 'ItemSmallKey.bfres'
     dummy['graphics']['model'] = 'SmallKey'
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
-    
+
     dummy['symbol'] = 'PatchYoshiDoll'
     dummy['graphics']['path'] = 'ItemYoshiDoll.bfres'
     dummy['graphics']['model'] = 'YoshiDoll'
@@ -222,7 +196,12 @@ def makeNewNpcs(npc_sheet):
     dummy['graphics']['path'] = 'ItemHoneycomb.bfres'
     dummy['graphics']['model'] = 'Honeycomb'
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
-    
+
+    dummy['symbol'] = 'PatchHeartPiece'
+    dummy['graphics']['path'] = 'ItemHeartPiece.bfres'
+    dummy['graphics']['model'] = 'HeartPiece'
+    npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
+
     # bombBag = copy.deepcopy(DUMMY_NPC)
     # bombBag['symbol'] = 'ObjBombBag'
     # bombBag['graphics']['path'] = 'ObjBombBag.bfres'

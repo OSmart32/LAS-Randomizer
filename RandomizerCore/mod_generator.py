@@ -1056,6 +1056,8 @@ class ModsProcess(QtCore.QThread):
                     item['npcKey'] = 'PatchSmallKey'
                 if item['symbol'] == 'Honeycomb':
                     item['npcKey'] = 'PatchHoneycomb'
+                if item['symbol'] == 'HeartPiece':
+                    item['npcKey'] = 'PatchHeartPiece'
                 if item['symbol'] == 'YoshiDoll': # ocarina and instruments are ItemYoshiDoll actors
                     item['npcKey'] = 'PatchYoshiDoll'
                     dummy = oead_tools.parseStruct(item) # create copy to use as a base for custom entries
@@ -1403,17 +1405,8 @@ class ModsProcess(QtCore.QThread):
         """Iterates through the nonsunken Heart Piece rooms and edits the Heart Piece actor data"""
 
         flow = self.readFile('SinkingSword.bfevfl')
-        
-        sunken = [
-            'taltal-east-drop',
-            'south-bay-sunken',
-            'bay-passage-sunken',
-            'river-crossing-cave',
-            'kanalet-moat-south'
-        ]
-        non_sunken = (x for x in data.HEART_ROOMS if x not in sunken)
-        
-        for room in non_sunken:
+                
+        for room in data.HEART_ROOMS:
             if not self.thread_active:
                 break
 
