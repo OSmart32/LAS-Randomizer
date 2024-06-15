@@ -286,7 +286,7 @@ class ModsProcess(QtCore.QThread):
         for flowchart in FLOWCHARTS:
             flow = event_tools.readFlow(f"{self.rom_path}/region_common/event/{flowchart}.bfevfl")
             flow_tool.readFlow(flow.flowchart, flowchart, self.placements, self.settings)
-            self.writeModFile(f"{self.romfs_dir}/region_common/event", f"{flowchart}.bfevfl", flow)
+            self.writeFile(f"{flowchart}.bfevfl", flow)
 
 
 
@@ -398,7 +398,7 @@ class ModsProcess(QtCore.QThread):
             sheet = self.readFile('MapPieceTheme.gsheet')
             dampe.makeDatasheetChanges(sheet, 3, 'DampeHeart')
             dampe.makeDatasheetChanges(sheet, 9, 'DampeBottle')
-            self.writeModFile(f'{self.romfs_dir}/region_common/datasheets', 'MapPieceTheme.gsheet', sheet)
+            self.writeFile('MapPieceTheme.gsheet', sheet)
 
 
 
