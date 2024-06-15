@@ -1,6 +1,6 @@
 import sys
 from cx_Freeze import setup, Executable
-from RandomizerCore.Data.randomizer_data import VERSION
+from RandomizerCore.randomizer_data import VERSION
 
 build_exe_options = {"packages": ["os"], 
                     "excludes": ["tkinter", "unittest", "sqlite3", "numpy", "matplotlib", "zstandard"],
@@ -12,9 +12,9 @@ base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 
-build_icon = "Resources/icon.ico"
+build_icon = "RandomizerUI/Resources/icon.ico"
 if sys.platform == "darwin": # mac
-    build_icon = "Resources/icon.icns"
+    build_icon = "RandomizerUI/Resources/icon.icns"
 
 setup(
     name = "Links Awakening Switch Randomizer",

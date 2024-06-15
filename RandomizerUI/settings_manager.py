@@ -1,4 +1,4 @@
-from RandomizerCore.Data.randomizer_data import *
+from RandomizerCore.randomizer_data import *
 import yaml, base64, copy, random
 
 
@@ -30,6 +30,8 @@ BASE_OPTIONS = {
     'farmingCheck': True,
     'shuffledPowderCheck': False,
     'musicCheck': False,
+    'openMabeCheck': False,
+    'quickModeCheck': True,
     'enemyCheck': False,
     'enemySizesCheck': False,
     'spoilerCheck': True,
@@ -41,18 +43,20 @@ BASE_OPTIONS = {
     'stalfosCheck': False,
     'chestSizesCheck': False,
     'songsCheck': False,
-    'fastFishingCheck': True,
+    'fastFishingCheck': False,
     'dungeonsCheck': False,
+    'blurCheck': False,
     'ohkoCheck': False,
     'lv1BeamCheck': False,
-    'niceRodCheck': False,
+    'niceRodCheck': True,
+    'stealingComboBox': 2,
     'rupeesSpinBox': 0,
     'starting_gear': []
 }
 
 EXTRA_OPTIONS = [
     'theme',
-    'fomfs_folder',
+    'romfs_folder',
     'output_folder',
     'seed',
     'platform',
@@ -385,14 +389,18 @@ def loadRandomizerSettings(window, seed):
         # 'shuffle-companions': window.ui.companionCheck.isChecked(),
         # 'randomize-entrances': window.ui.loadingCheck.isChecked(),
         'randomize-music': window.ui.musicCheck.isChecked(),
+        'open-mabe': window.ui.openMabeCheck.isChecked(),
+        'quick-mode': window.ui.quickModeCheck.isChecked(),
         'randomize-enemies': window.ui.enemyCheck.isChecked(),
         'randomize-enemy-sizes': window.ui.enemySizesCheck.isChecked(),
         # 'panel-enemies': True if len([s for s in DAMPE_REWARDS if s not in window.excluded_checks]) > 0 else False,
         'shuffle-dungeons': window.ui.dungeonsCheck.isChecked(),
         # 'dungeon-items': DUNGEON_ITEM_SETTINGS[window.ui.itemsComboBox.currentIndex()],
-        '1HKO': window.ui.ohkoCheck.isChecked(),
+        'blur-removal': window.ui.blurCheck.isChecked(),
+        'OHKO': window.ui.ohkoCheck.isChecked(),
         'lv1-beam': window.ui.lv1BeamCheck.isChecked(),
         'nice-rod': window.ui.niceRodCheck.isChecked(),
+        'stealing': STEALING_REQUIREMENTS[window.ui.stealingComboBox.currentIndex()],
         'starting-items': window.starting_gear,
         'starting-rupees': window.ui.rupeesSpinBox.value(),
         'excluded-locations': window.excluded_checks
