@@ -4,56 +4,79 @@ import yaml, base64, copy, random
 
 BASE_OPTIONS = {
     'chestsCheck': True,
-    'fishingCheck': False,
-    'rapidsCheck': False,
-    'dampeCheck': False,
-    'trendyCheck': False,
-    'shopCheck': True,
     'giftsCheck': True,
-    'tradeGiftsCheck': False,
-    'bossCheck': True,
-    'miscellaneousCheck': True,
-    'heartsCheck': True,
-    'rupCheck': False,
-    'instrumentCheck': False,
-    'instrumentsComboBox': 0,
-    'seashellsComboBox': 2,
-    'owlsComboBox': 0,
-    'trapsComboBox': 1,
+    'tradeCheck': False,
     'leavesCheck': True,
-    'tricksComboBox': 0,
-    'bookCheck': True,
-    'extendedConsumableCheck': True, # Helps beginner players not run into the issue of being too low on resources
-    'dungeonItemsComboBox': 3, # Beginner setting to start with maps, compasses, beaks
-    'unlockedBombsCheck': True,
-    'shuffledBombsCheck': False,
-    'stealingCheck': True,
-    'shuffledPowderCheck': False,
-    'musicCheck': False,
-    'openMabeCheck': False,
-    'bossCutscenesCheck': True,
+    'heartsCheck': True,
+    # 'shellsCheck': True, # Not Yet Implemented
+    'miscCheck': True,
+    'mansionComboBox': 2,
+    # 'shopCheck': True, # Not Yet Implemented
+
+    'rupCheck': False,
+    'bossCheck': True,
+    'instrumentCheck': False,
+    # 'itemsComboBox': 0, # Not Yet Implemented
+    'owlsComboBox': 0,
+
+    'dampeCheck': False,
+    'rapidsCheck': False,
+    'fishingCheck': False,
+    'trendyCheck': False,
+
+    'spoilerCheck': True,
+
     'enemyCheck': False,
     'enemySizesCheck': False,
-    'spoilerCheck': True,
+    'chestsComboBox': 0,
+
     'kanaletCheck': True,
-    'badPetsCheck': False,
-    'bridgeCheck': True,
+    'mabeCheck': False,
     'mazeCheck': True,
-    'swampCheck': False,
-    'stalfosCheck': False,
-    'chestAspectComboBox': 0,
-    'songsCheck': False,
-    'fastFishingCheck': False,
+    'bridgeCheck': True,
+    'classicD2Check': False,
     'dungeonsCheck': False,
-    'blurCheck': True, # May change, lots of people hate the blur and it even hurts some player's eyes
-    'ohkoCheck': False,
-    'lv1BeamCheck': False,
-    'niceRodCheck': True,
+    'consumableCheck': True, # Helps beginner players not run into the issue of being too low on resources
+
+    'petsCheck': False,
+    'fastFishingCheck': False,
+    # 'unlockedBombsCheck': True, # Removed? Not Yet Decided
+    'shuffledBombsCheck': False,
+    'bookCheck': True,
+    'stalfosCheck': False,
+    'shuffledPowderCheck': False,
+
     'niceBombsCheck': False,
-    'stealingComboBox': 0, # May change, but players often feel frustrated at not being able to steal, not knowing sword is needed
-    'chestAnimationsCheck': True,
-    'keyAnimationsCheck': True,
+    'niceRodCheck': True,
+    'niceSwordCheck': False,
+
+    'bossAnimCheck': True,
+    'chestAnimCheck': True,
+    'keyAnimCheck': True,
+    'songAnimCheck': False,
+    # 'pickupAnimCheck': True, # Not Yet Implemented
+    # 'creditsAnimCheck': False, # Not Yet Implemented
+
+    # 'poolComboBox': 0, # Not Yet Implemented
+    'trapsComboBox': 1,
+
+    'fastStealingCheck': True,
+    'stealingComboBox': 0, # Players often feel frustrated not being able to steal, not knowing sword is needed
+
+    'ohkoCheck': False,
+    # 'endingCheck': False, # Not Yet Implemented
+
+    'instrumentsComboBox': 0,
+    'dungeonItemsComboBox': 3, # Beginner setting to start with maps, compasses, beaks
     'rupeesSpinBox': 0,
+
+    'logicComboBox': 0,
+
+    'blurCheck': True, # May change, lots of people hate the blur and it even hurts some player's eyes
+    'musicCheck': False,
+    # 'soundCheck': False, # Not Yet Implemented
+    # 'beepCheck': False, # Not Yet Implemented
+
     'starting_gear': ['sword', 'shield', 'ocarina', 'song-mambo']
 }
 
@@ -78,9 +101,9 @@ CHECK_LOCATIONS = {
     # 'trendyCheck': TRENDY_REWARDS,
     # 'shopCheck': SHOP_ITEMS,
     'giftsCheck': FREE_GIFT_LOCATIONS,
-    'tradeGiftsCheck': TRADE_GIFT_LOCATIONS,
+    'tradeCheck': TRADE_GIFT_LOCATIONS,
     'bossCheck': BOSS_LOCATIONS,
-    'miscellaneousCheck': MISC_LOCATIONS,
+    'miscCheck': MISC_LOCATIONS,
     'heartsCheck': HEART_PIECE_LOCATIONS,
     'rupCheck': BLUE_RUPEES,
     'leavesCheck': LEAF_LOCATIONS,
@@ -125,9 +148,9 @@ def applyDefaults(window):
 def saveSettings(window, for_string=False):
     settings_dict = {
         'theme': window.mode,
-        'romfs_folder': window.ui.lineEdit.text(),
-        'output_folder': window.ui.lineEdit_2.text(),
-        'seed': window.ui.lineEdit_3.text(),
+        'romfs_folder': window.ui.romLineEdit.text(),
+        'output_folder': window.ui.outLineEdit.text(),
+        'seed': window.ui.seedLineEdit.text(),
         'platform': PLATFORMS[window.ui.platformComboBox.currentIndex()],
     }
 
@@ -176,12 +199,12 @@ def loadSettings(window, settings_dict=SETTINGS):
             window.mode = str(settings_dict['theme'].lower())
     if 'romfs_folder' in settings_dict:
         if os.path.exists(settings_dict['romfs_folder']):
-            window.ui.lineEdit.setText(settings_dict['romfs_folder'])
+            window.ui.romLineEdit.setText(settings_dict['romfs_folder'])
     if 'output_folder' in settings_dict:
         if os.path.exists(settings_dict['output_folder']):
-            window.ui.lineEdit_2.setText(settings_dict['output_folder'])
+            window.ui.outLineEdit.setText(settings_dict['output_folder'])
     if 'seed' in settings_dict:
-        window.ui.lineEdit_3.setText(settings_dict['seed'])
+        window.ui.seedLineEdit.setText(settings_dict['seed'])
     try:
         window.ui.platformComboBox.setCurrentIndex(PLATFORMS.index(settings_dict['platform'].lower().strip()))
     except (KeyError, TypeError, IndexError, ValueError):
@@ -202,11 +225,11 @@ def loadSettings(window, settings_dict=SETTINGS):
             window.excluded_checks.update(DAMPE_REWARDS)
         if not window.ui.giftsCheck.isChecked():
             window.excluded_checks.update(FREE_GIFT_LOCATIONS)
-        if not window.ui.tradeGiftsCheck.isChecked():
+        if not window.ui.tradeCheck.isChecked():
             window.excluded_checks.update(TRADE_GIFT_LOCATIONS)
         if not window.ui.bossCheck.isChecked():
             window.excluded_checks.update(BOSS_LOCATIONS)
-        if not window.ui.miscellaneousCheck.isChecked():
+        if not window.ui.miscCheck.isChecked():
             window.excluded_checks.update(MISC_LOCATIONS)
         if not window.ui.heartsCheck.isChecked():
             window.excluded_checks.update(HEART_PIECE_LOCATIONS)
@@ -370,39 +393,39 @@ def loadRandomizerSettings(window, seed):
 
     mod_settings = {
         'seed': seed,
-        'logic': LOGIC_PRESETS[window.ui.tricksComboBox.currentIndex()],
+        'logic': LOGIC_PRESETS[window.ui.logicComboBox.currentIndex()],
         'platform': PLATFORMS[window.ui.platformComboBox.currentIndex()],
         'create-spoiler': window.ui.spoilerCheck.isChecked(),
         'free-book': window.ui.bookCheck.isChecked(),
-        'extended-consumable-drop': window.ui.extendedConsumableCheck.isChecked(),
+        'consumable-drop': window.ui.consumableCheck.isChecked(),
         'dungeon-items': DUNGEON_ITEM_SETTINGS[window.ui.dungeonItemsComboBox.currentIndex()],
-        'unlocked-bombs': window.ui.unlockedBombsCheck.isChecked(),
+        # 'unlocked-bombs': window.ui.unlockedBombsCheck.isChecked(),
         'shuffle-bombs': window.ui.shuffledBombsCheck.isChecked(),
         'shuffle-powder': window.ui.shuffledPowderCheck.isChecked(),
         'fast-fishing': window.ui.fastFishingCheck.isChecked(),
-        'fast-stealing': window.ui.stealingCheck.isChecked(),
-        'fast-songs': window.ui.songsCheck.isChecked(),
+        'fast-stealing': window.ui.fastStealingCheck.isChecked(),
+        'fast-songs': window.ui.songAnimCheck.isChecked(),
         'shuffle-instruments': window.ui.instrumentCheck.isChecked(),
         'starting-instruments': window.ui.instrumentsComboBox.currentIndex(),
-        'bad-pets': window.ui.badPetsCheck.isChecked(),
+        'bad-pets': window.ui.petsCheck.isChecked(),
         'open-kanalet': window.ui.kanaletCheck.isChecked(),
         'open-bridge': window.ui.bridgeCheck.isChecked(),
         'open-mamu': window.ui.mazeCheck.isChecked(),
         'traps': TRAP_SETTINGS[window.ui.trapsComboBox.currentIndex()],
         'blupsanity': window.ui.rupCheck.isChecked(),
-        'classic-d2': window.ui.swampCheck.isChecked(),
+        'classic-d2': window.ui.classicD2Check.isChecked(),
         'owl-overworld-gifts': window.overworld_owls,
         'owl-dungeon-gifts': window.dungeon_owls,
         # 'owl-hints': True if OWLS_SETTINGS[window.ui.owlsComboBox.currentIndex()] in ['hints', 'hybrid'] else False,
         'fast-stalfos': window.ui.stalfosCheck.isChecked(),
-        'chest-aspect': CHEST_ASPECT_SETTINGS[window.ui.chestAspectComboBox.currentIndex()],
+        'chest-aspect': CHEST_ASPECT_SETTINGS[window.ui.chestsComboBox.currentIndex()],
         'seashells-important': True if len([s for s in SEASHELL_REWARDS if s not in window.excluded_checks]) > 0 else False,
         'trade-important': True if len([t for t in TRADE_GIFT_LOCATIONS if t not in window.excluded_checks]) > 0 else False,
         # 'shuffle-companions': window.ui.companionCheck.isChecked(),
         # 'randomize-entrances': window.ui.loadingCheck.isChecked(),
         'randomize-music': window.ui.musicCheck.isChecked(),
-        'open-mabe': window.ui.openMabeCheck.isChecked(),
-        'boss-cutscenes': window.ui.bossCutscenesCheck.isChecked(),
+        'open-mabe': window.ui.mabeCheck.isChecked(),
+        'boss-cutscenes': window.ui.bossAnimCheck.isChecked(),
         'randomize-enemies': window.ui.enemyCheck.isChecked(),
         'randomize-enemy-sizes': window.ui.enemySizesCheck.isChecked(),
         # 'panel-enemies': True if len([s for s in DAMPE_REWARDS if s not in window.excluded_checks]) > 0 else False,
@@ -410,12 +433,12 @@ def loadRandomizerSettings(window, seed):
         # 'keysanity': DUNGEON_ITEM_SETTINGS[window.ui.itemsComboBox.currentIndex()],
         'blur-removal': window.ui.blurCheck.isChecked(),
         'OHKO': window.ui.ohkoCheck.isChecked(),
-        'lv1-beam': window.ui.lv1BeamCheck.isChecked(),
+        'lv1-beam': window.ui.niceSwordCheck.isChecked(),
         'nice-rod': window.ui.niceRodCheck.isChecked(),
         'nice-bombs': window.ui.niceBombsCheck.isChecked(),
         'stealing': STEALING_REQUIREMENTS[window.ui.stealingComboBox.currentIndex()],
-        'fast-chests': window.ui.chestAnimationsCheck.isChecked(),
-        'fast-keys': window.ui.keyAnimationsCheck.isChecked(),
+        'fast-chests': window.ui.chestAnimCheck.isChecked(),
+        'fast-keys': window.ui.keyAnimCheck.isChecked(),
         'starting-items': window.starting_gear,
         'starting-rupees': window.ui.rupeesSpinBox.value(),
         'excluded-locations': window.excluded_checks

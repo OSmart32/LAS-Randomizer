@@ -20,8 +20,6 @@ class MainWindow(QtWidgets.QMainWindow):
         # self.trans = QtCore.QTranslator(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.includeButton_2.setVisible(False)
-        self.ui.excludeButton_2.setVisible(False)
         self.current_option = ''
         self.clipboard = QtGui.QClipboard()
         # self.options = ([('English', ''), ('Français', 'eng-fr' ), ('中文', 'eng-chs'), ])
@@ -45,42 +43,42 @@ class MainWindow(QtWidgets.QMainWindow):
 
         if self.mode == 'light':
             self.setStyleSheet(LIGHT_STYLESHEET)
-            self.ui.explainationLabel.setStyleSheet('color: rgb(80, 80, 80);')
+            self.ui.explanationLabel.setStyleSheet('color: rgb(80, 80, 80);')
         else:
             self.setStyleSheet(DARK_STYLESHEET)
-            self.ui.explainationLabel.setStyleSheet('color: rgb(175, 175, 175);')
+            self.ui.explanationLabel.setStyleSheet('color: rgb(175, 175, 175);')
         
         ### SUBSCRIBE TO EVENTS
         self.ui.actionLight.triggered.connect(self.setLightMode)
         self.ui.actionDark.triggered.connect(self.setDarkMode)
-        self.ui.actionChangelog.triggered.connect(self.showChangelog)
+        self.ui.actionWhats_New.triggered.connect(self.showChangelog)
         self.ui.actionKnown_Issues.triggered.connect(self.showIssues)
-        self.ui.actionHelpful_Tips.triggered.connect(self.showTips)
+        self.ui.actionUseful_Info.triggered.connect(self.showTips)
         self.ui.actionHelp.triggered.connect(self.showInfo)
-        self.ui.browseButton1.clicked.connect(self.romBrowse)
-        self.ui.browseButton2.clicked.connect(self.outBrowse)
+        self.ui.romButton.clicked.connect(self.romBrowse)
+        self.ui.outButton.clicked.connect(self.outBrowse)
         self.ui.seedButton.clicked.connect(self.generateSeed)
-        self.ui.lineEdit_3.textChanged.connect(self.updateSettingsString)
+        self.ui.seedLineEdit.textChanged.connect(self.updateSettingsString)
         self.ui.randomizeButton.clicked.connect(self.randomizeButton_Clicked)
         self.ui.resetButton.clicked.connect(self.applyDefaults)
-        self.ui.copyButton.clicked.connect(lambda x: self.clipboard.setText(self.ui.lineEdit_4.text()))
+        self.ui.copyButton.clicked.connect(lambda x: self.clipboard.setText(self.ui.settingsLineEdit.text()))
         self.ui.pasteButton.clicked.connect(self.pasteSettingsString)
         self.ui.randomizeSettingsButton.clicked.connect(self.randomizeSettings)
-        self.ui.seashellsComboBox.currentIndexChanged.connect(self.updateSeashells)
+        self.ui.mansionComboBox.currentIndexChanged.connect(self.updateSeashells)
         self.ui.owlsComboBox.currentIndexChanged.connect(self.updateOwls)
         self.ui.trapsComboBox.currentIndexChanged.connect(self.updateSettingsString)
         self.ui.instrumentsComboBox.currentIndexChanged.connect(self.updateSettingsString)
-        self.ui.tricksComboBox.currentIndexChanged.connect(self.updateSettingsString)
+        self.ui.logicComboBox.currentIndexChanged.connect(self.updateSettingsString)
         self.ui.stealingComboBox.currentIndexChanged.connect(self.updateSettingsString)
-        self.ui.chestAspectComboBox.currentIndexChanged.connect(self.updateSettingsString)
+        self.ui.chestsComboBox.currentIndexChanged.connect(self.updateSettingsString)
         self.ui.rupeesSpinBox.valueChanged.connect(self.updateSettingsString)
         self.ui.tabWidget.currentChanged.connect(self.tab_Changed)
-        self.ui.includeButton.clicked.connect(self.includeButton_Clicked)
-        self.ui.excludeButton.clicked.connect(self.excludeButton_Clicked)
-        self.ui.includeButton_3.clicked.connect(self.includeButton_3_Clicked)
-        self.ui.excludeButton_3.clicked.connect(self.excludeButton_3_Clicked)
-        # self.ui.includeButton_2.clicked.connect(self.includeButton_2_Clicked)
-        # self.ui.excludeButton_2.clicked.connect(self.excludeButton_2_Clicked)
+        self.ui.itemsIncludeButton.clicked.connect(self.extendRandomPool)
+        self.ui.itemsExcludeButton.clicked.connect(self.extendStartingPool)
+        self.ui.locationsIncludeButton.clicked.connect(self.includeLocations)
+        self.ui.locationsExcludeButton.clicked.connect(self.excludeLocations)
+        # self.ui.logicIncludeButton.clicked.connect(self.includeButton_2_Clicked)
+        # self.ui.logicExcludeButton.clicked.connect(self.excludeButton_2_Clicked)
 
         for option in settings_manager.BASE_OPTIONS:
             widget = self.findChild(QtWidgets.QWidget, option)
@@ -92,14 +90,14 @@ class MainWindow(QtWidgets.QMainWindow):
 
         ### DESCRIPTIONS
         desc_items = [
-            self.ui.seashellsComboBox,
-            self.ui.tricksComboBox,
+            self.ui.mansionComboBox,
+            self.ui.logicComboBox,
             self.ui.instrumentsComboBox,
             self.ui.owlsComboBox,
             self.ui.platformComboBox,
             self.ui.rupeesSpinBox,
             self.ui.trapsComboBox,
-            self.ui.chestAspectComboBox,
+            self.ui.chestsComboBox,
             self.ui.dungeonItemsComboBox,
             self.ui.stealingComboBox
         ]
@@ -108,7 +106,7 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.makeSmartComboBoxes()
 
-        self.setFixedSize(780, 650)
+        # self.setFixedSize(780, 640)
         self.setWindowTitle(f'{self.windowTitle()} v{VERSION}')
         # self.ui.retranslateUi(self)
 
@@ -130,18 +128,18 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def updateSettingsString(self):
-        self.ui.lineEdit_4.setText(settings_manager.encodeSettings(self))
+        self.ui.settingsLineEdit.setText(settings_manager.encodeSettings(self))
 
 
     def makeSmartComboBoxes(self):
         combos = [
-            self.ui.seashellsComboBox,
-            self.ui.tricksComboBox,
+            self.ui.mansionComboBox,
+            self.ui.logicComboBox,
             self.ui.instrumentsComboBox,
             self.ui.owlsComboBox,
             self.ui.platformComboBox,
             self.ui.trapsComboBox,
-            self.ui.chestAspectComboBox,
+            self.ui.chestsComboBox,
             self.ui.dungeonItemsComboBox
         ]
 
@@ -151,29 +149,29 @@ class MainWindow(QtWidgets.QMainWindow):
     
 
     def closeComboBox(self):
-        self.ui.explainationLabel.setText('Hover over an option to see what it does')
+        self.ui.explanationLabel.setText('Hover over an option to see what it does')
         if self.mode == 'light':
-            self.ui.explainationLabel.setStyleSheet('color: rgb(80, 80, 80);')
+            self.ui.explanationLabel.setStyleSheet('color: rgb(80, 80, 80);')
         else:
-            self.ui.explainationLabel.setStyleSheet('color: rgb(175, 175, 175);')
+            self.ui.explanationLabel.setStyleSheet('color: rgb(175, 175, 175);')
     
 
     def eventFilter(self, source, event):
 
         if event.type() == QtCore.QEvent.Type.HoverEnter:
             self.current_option = source.objectName()
-            self.ui.explainationLabel.setText(source.whatsThis())
+            self.ui.explanationLabel.setText(source.whatsThis())
             if self.mode == 'light':
-                self.ui.explainationLabel.setStyleSheet('color: black;')
+                self.ui.explanationLabel.setStyleSheet('color: black;')
             else:
-                self.ui.explainationLabel.setStyleSheet('color: white;')
+                self.ui.explanationLabel.setStyleSheet('color: white;')
         
         elif event.type() == QtCore.QEvent.Type.HoverLeave:
-            self.ui.explainationLabel.setText('Hover over an option to see what it does')
+            self.ui.explanationLabel.setText('Hover over an option to see what it does')
             if self.mode == 'light':
-                self.ui.explainationLabel.setStyleSheet('color: rgb(80, 80, 80);')
+                self.ui.explanationLabel.setStyleSheet('color: rgb(80, 80, 80);')
             else:
-                self.ui.explainationLabel.setStyleSheet('color: rgb(175, 175, 175);')
+                self.ui.explanationLabel.setStyleSheet('color: rgb(175, 175, 175);')
         
         return QtWidgets.QWidget.eventFilter(self, source, event)
     
@@ -249,20 +247,20 @@ class MainWindow(QtWidgets.QMainWindow):
     def romBrowse(self):
         folder_path = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Folder')
         if os.path.exists(folder_path):
-            self.ui.lineEdit.setText(folder_path)
+            self.ui.romLineEdit.setText(folder_path)
     
     
     def outBrowse(self):
         folder_path = QtWidgets.QFileDialog.getExistingDirectory(self, 'Select Folder')
         if os.path.exists(folder_path):
-            self.ui.lineEdit_2.setText(folder_path)
+            self.ui.outLineEdit.setText(folder_path)
     
 
     def generateSeed(self):
         adj1 = random.choice(ADJECTIVES)
         adj2 = random.choice(ADJECTIVES)
         char = random.choice(CHARACTERS)
-        self.ui.lineEdit_3.setText(adj1 + adj2 + char)
+        self.ui.seedLineEdit.setText(adj1 + adj2 + char)
     
     
     def checkClicked(self, checked):
@@ -290,7 +288,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def updateSeashells(self):
-        value = self.ui.seashellsComboBox.currentIndex()
+        value = self.ui.mansionComboBox.currentIndex()
         
         if value == 0:
             self.excluded_checks.update(SEASHELL_REWARDS)
@@ -342,7 +340,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def randomizeButton_Clicked(self):
         
         # verify RomFS before shuffling items
-        rom_path = self.ui.lineEdit.text()
+        rom_path = self.ui.romLineEdit.text()
 
         if not os.path.exists(rom_path):
             self.showUserError('Romfs path does not exist!')
@@ -355,7 +353,7 @@ class MainWindow(QtWidgets.QMainWindow):
             self.showUserError('RomFS path is not valid!')
             return
         
-        if not os.path.exists(self.ui.lineEdit_2.text()):
+        if not os.path.exists(self.ui.outLineEdit.text()):
             self.showUserError('Output path does not exist!')
             return
         
@@ -365,7 +363,7 @@ class MainWindow(QtWidgets.QMainWindow):
         
         logic_defs = yaml.safe_load(self.logic_defs)
         
-        seed = self.ui.lineEdit_3.text().strip()
+        seed = self.ui.seedLineEdit.text().strip()
         if seed.lower() in ('', 'random'):
             random.seed()
             seed = str(random.getrandbits(32))
@@ -380,8 +378,8 @@ class MainWindow(QtWidgets.QMainWindow):
         
         # load mod settings from the UI, no need to decode settings string
         settings = settings_manager.loadRandomizerSettings(self, seed)
-        settings_string = self.ui.lineEdit_4.text()
-        outdir = f"{self.ui.lineEdit_2.text()}/{settings['seed']}"
+        settings_string = self.ui.settingsLineEdit.text()
+        outdir = f"{self.ui.outLineEdit.text()}/{settings['seed']}"
         self.progress_window = ProgressWindow(rom_path, outdir, ITEM_DEFS, logic_defs, settings, settings_string)
         self.progress_window.setFixedSize(472, 125)
         self.progress_window.setWindowTitle(f"{settings['seed']}")
@@ -393,7 +391,55 @@ class MainWindow(QtWidgets.QMainWindow):
         
         self.progress_window.show()
 
+
+    ########################################################################
+    ## START ==> TAB REFRESH
+    ########################################################################
+    def tab_Changed(self):
+        """Handles refreshing the info on the tab whenever it is changed"""
+
+        # starting items
+        if self.ui.tabWidget.currentIndex() == 1:
+            randomized_gear = STARTING_ITEMS[:]
+            for x in self.starting_gear:
+                randomized_gear.remove(x)
+
+            # refresh random items list
+            self.ui.randomItemsList.clear()
+            for item in randomized_gear:
+                self.ui.randomItemsList.addItem(self.checkToList(str(item)))
+
+            # refresh starting items list
+            self.ui.startingItemsList.clear()
+            for item in self.starting_gear:
+                self.ui.startingItemsList.addItem(self.checkToList(str(item)))
+            
+            return
+        
+        # locations
+        if self.ui.tabWidget.currentIndex() == 2:
+            # refresh included locations list
+            self.ui.includedLocationsList.clear()
+            checks = self.getValidLocationChecks(TOTAL_CHECKS.difference(self.excluded_checks))
+            for check in checks:
+                self.ui.includedLocationsList.addItem(SmartListWidget(self.checkToList(str(check))))
+
+            # refresh excluded locations list
+            self.ui.excludedLocationsList.clear()
+            checks = self.getValidLocationChecks(self.excluded_checks)
+            for check in checks:
+                self.ui.excludedLocationsList.addItem(SmartListWidget(self.checkToList(str(check))))
+            
+            return
+        
+        # logic tricks
+        if self.ui.tabWidget.currentIndex() == 3:
+            return
+
+
     def getValidLocationChecks(self, locationList):
+        """Returns a list of locations that are valid given the current user settings"""
+
         return [loc for loc in locationList
                 if (loc in DUNGEON_OWLS and self.dungeon_owls)
                 or (loc in OVERWORLD_OWLS and self.overworld_owls)
@@ -401,151 +447,147 @@ class MainWindow(QtWidgets.QMainWindow):
                 or (loc not in DUNGEON_OWLS and loc not in OVERWORLD_OWLS and loc not in BLUE_RUPEES)
                 ]
 
-    def tab_Changed(self):
 
-        # starting items
-        if self.ui.tabWidget.currentIndex() == 1:
-            randomized_gear = STARTING_ITEMS[:]
-            for x in self.starting_gear:
-                randomized_gear.remove(x)
-            
-            self.ui.listWidget_5.clear()
-            for item in randomized_gear:
-                self.ui.listWidget_5.addItem(self.checkToList(str(item)))
-            
-            self.ui.listWidget_6.clear()
-            for item in self.starting_gear:
-                self.ui.listWidget_6.addItem(self.checkToList(str(item)))
-            
-            return
+    # some-check to Some Check
+    def checkToList(self, check):
+        """Converts internal location names to appear nicely in the list
         
-        # locations
-        if self.ui.tabWidget.currentIndex() == 2:
-            self.ui.listWidget.clear()
-            checks = self.getValidLocationChecks(TOTAL_CHECKS.difference(self.excluded_checks))
-            for check in checks:
-                self.ui.listWidget.addItem(SmartListWidget(self.checkToList(str(check))))
-            
-            self.ui.listWidget_2.clear()
-            checks = self.getValidLocationChecks(self.excluded_checks)
-            for check in checks:
-                self.ui.listWidget_2.addItem(SmartListWidget(self.checkToList(str(check))))
-            
-            return
-        
-        # logic tricks
-        if self.ui.tabWidget.currentIndex() == 3:
-            return
-    
+        beach-chest -> Beach Chest"""
 
-    def includeButton_Clicked(self):
-        for i in self.ui.listWidget_2.selectedItems():
-            self.ui.listWidget_2.takeItem(self.ui.listWidget_2.row(i))
-            self.excluded_checks.remove(self.listToCheck(i.text()))
-            self.ui.listWidget.addItem(SmartListWidget(i.text()))
-        self.updateSettingsString()
+        s = sub("-", " ", check).title()
+        return s
+
+    ## ==> END ##
 
 
-    def excludeButton_Clicked(self):
-        for i in self.ui.listWidget.selectedItems():
-            self.ui.listWidget.takeItem(self.ui.listWidget.row(i))
-            self.ui.listWidget_2.addItem(SmartListWidget(i.text()))
-            self.excluded_checks.add(self.listToCheck(i.text()))
-        self.updateSettingsString()
+    ########################################################################
+    ## START ==> STARTING ITEMS TAB
+    ########################################################################
+    def extendRandomPool(self):
+        """Adds items to the randomized pool"""
 
-
-    def includeButton_3_Clicked(self):
-        for i in self.ui.listWidget_6.selectedItems():
-            self.ui.listWidget_6.takeItem(self.ui.listWidget_6.row(i))
+        for i in self.ui.startingItemsList.selectedItems():
+            self.ui.startingItemsList.takeItem(self.ui.startingItemsList.row(i))
             self.starting_gear.remove(self.listToItem(i.text()))
-            self.ui.listWidget_5.addItem(i.text())
+            self.ui.randomItemsList.addItem(i.text())
         self.updateSettingsString()
 
 
-    def excludeButton_3_Clicked(self):
-        for i in self.ui.listWidget_5.selectedItems():
-            self.ui.listWidget_5.takeItem(self.ui.listWidget_5.row(i))
-            self.ui.listWidget_6.addItem(i.text())
+    def extendStartingPool(self):
+        """Adds items to the starting pool"""
+
+        for i in self.ui.randomItemsList.selectedItems():
+            self.ui.randomItemsList.takeItem(self.ui.randomItemsList.row(i))
+            self.ui.startingItemsList.addItem(i.text())
             self.starting_gear.append(self.listToItem(i.text()))
         self.updateSettingsString()
 
 
-    # some-check to Some Check
-    def checkToList(self, check):
-        # slots = ('1St', '2Nd', '3Rd', '4Th', '5Th', '6Th', '7Th')
-
-        s = sub("-", " ", check).title()
-
-        # for slot in slots:
-        #     s = s.replace(slot, slot.lower())
+    def listToItem(self, item):
+        """Converts item names from the list to how they are named internally in the rando
         
+        Tail Key -> tail-key"""
+        s = sub(" ", "-", item).lower()
         return s
-    
-    
-    # Some Check to some-check
+
+    ## ==> END ##
+
+
+    ########################################################################
+    ## START ==> LOCATIONS TAB
+    ########################################################################
+    def includeLocations(self):
+        """Adds locations to the logic"""
+
+        for i in self.ui.startingItemsList.selectedItems():
+            self.ui.startingItemsList.takeItem(self.ui.startingItemsList.row(i))
+            self.excluded_checks.remove(self.listToCheck(i.text()))
+            self.ui.randomItemsList.addItem(SmartListWidget(i.text()))
+        self.updateSettingsString()
+
+
+    def excludeLocations(self):
+        """Removes locations from the logic. This means that they are forced to be junk items"""
+
+        for i in self.ui.randomItemsList.selectedItems():
+            self.ui.randomItemsList.takeItem(self.ui.randomItemsList.row(i))
+            self.ui.startingItemsList.addItem(SmartListWidget(i.text()))
+            self.excluded_checks.add(self.listToCheck(i.text()))
+        self.updateSettingsString()
+
+
     def listToCheck(self, check):
+        """Converts location names from the list to how they are named internally in the rando
+        
+        Beach Chest -> beach-chest"""
+
         stayUpper = ('d0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8')
-        
+
         s = sub(" ", "-", check).lower()
-        
+
         if s.startswith(stayUpper):
             s = s.replace('d', 'D', 1)
-        
+
         return s
+
+    ## ==> END ##    
     
 
-    # Starting Item to starting-item and also converts names that were changed to look nicer
-    def listToItem(self, item):
-        s = sub(" ", "-", item).lower()
-        
-        return s
-    
-
-    # Sets the app to Light Mode
+    ########################################################################
+    ## START ==> MENU BAR ITEMS
+    ########################################################################
     def setLightMode(self):
+        """Sets the app to Light Mode"""
+
         self.mode = str('light')
         self.setStyleSheet(LIGHT_STYLESHEET)
-        if self.ui.explainationLabel.text() == 'Hover over an option to see what it does':
-            self.ui.explainationLabel.setStyleSheet('color: rgb(80, 80, 80);')
+        if self.ui.explanationLabel.text() == 'Hover over an option to see what it does':
+            self.ui.explanationLabel.setStyleSheet('color: rgb(80, 80, 80);')
         else:
-            self.ui.explainationLabel.setStyleSheet('color: black;')
+            self.ui.explanationLabel.setStyleSheet('color: black;')
     
 
-    # Sets the app to Dark Mode
     def setDarkMode(self):
+        """Sets the app to Dark Mode"""
+
         self.mode = str('dark')
         self.setStyleSheet(DARK_STYLESHEET)
-        if self.ui.explainationLabel.text() == 'Hover over an option to see what it does':
-            self.ui.explainationLabel.setStyleSheet('color: rgb(175, 175, 175);')
+        if self.ui.explanationLabel.text() == 'Hover over an option to see what it does':
+            self.ui.explanationLabel.setStyleSheet('color: rgb(175, 175, 175);')
         else:
-            self.ui.explainationLabel.setStyleSheet('color: white;')
+            self.ui.explanationLabel.setStyleSheet('color: white;')
     
 
-    # Display new window listing the new features and bug fixes
     def showChangelog(self):
+        """Display new window listing the new features and bug fixes"""
         self.createMessageWindow("What's New", CHANGE_LOG)
     
 
-    # Display new window to let the user know what went wrong - missing romfs/output path, bad custom logic, etc.
     def showUserError(self, msg):
+        """Display new window to let the user know what went wrong - missing paths, bad logic, etc."""
         self.createMessageWindow("Error", msg)
     
 
-    # Display new window listing the currently known issues
     def showIssues(self):
+        """Display new window listing the currently known issues"""
         self.createMessageWindow("Known Issues", KNOWN_ISSUES)
     
 
     def showTips(self):
+        """Display new window listing helpful tips for the player"""
         self.createMessageWindow("Helpful Tips", HELPFUL_TIPS)
 
 
-    # Display new window with information about the randomizer
     def showInfo(self):
+        """Display new window with information about the randomizer"""
         self.createMessageWindow("Link's Awakening Switch Randomizer", ABOUT_INFO)
     
 
     def createMessageWindow(self, title, text):
+        """Creates a new QMessageBox with the given window title and text
+        
+        This also matches the current Light/Dark Mode"""
+
         message = QtWidgets.QMessageBox()
         message.setWindowTitle(title)
         message.setText(text)
@@ -557,13 +599,15 @@ class MainWindow(QtWidgets.QMainWindow):
         
         message.exec()
     
+    ## ==> END ##
+
 
     def pasteSettingsString(self):
         try:
             new_settings = settings_manager.decodeSettings(self.clipboard.text())
             if new_settings:
                 settings_manager.loadSettings(self, new_settings)
-                self.ui.lineEdit_4.setText(self.clipboard.text())
+                self.ui.settingsLineEdit.setText(self.clipboard.text())
                 self.tab_Changed()
         except: # Lots of potential different errors, so we use a general except to be safe
             self.showUserError('Could not decode settings string!')
