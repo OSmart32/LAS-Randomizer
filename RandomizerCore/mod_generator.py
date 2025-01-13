@@ -1122,10 +1122,13 @@ class ModsProcess(QtCore.QThread):
             for item in sheet['values']:
                 if not self.thread_active:
                     break
-                
+
                 if item['symbol'] == 'Flippers': # this custom flag is for water loading zones to use
                     item['gettingFlag'] = 'FlippersFound'
-                
+
+                if item['symbol'] == 'Bombs': # set a flag when bombs are obtained so that they show up in the shop
+                    item['gettingFlag'] = data.BOMBS_FOUND_FLAG
+
                 # Set new npcKeys for items to change how they appear when Link holds it up
                 if item['symbol'] == 'SmallKey':
                     item['npcKey'] = 'PatchSmallKey'
@@ -1136,7 +1139,7 @@ class ModsProcess(QtCore.QThread):
                 if item['symbol'] == 'YoshiDoll': # ocarina and instruments are ItemYoshiDoll actors
                     item['npcKey'] = 'PatchYoshiDoll'
                     dummy = oead_tools.parseStruct(item) # create copy to use as a base for custom entries
-                
+
                 # songs and tunics are patched to use the model from the npcKey
                 # capacity upgrades have the same patch, but we don't need to edit them here
                 if item['symbol'] == 'Song_WindFish':
@@ -1145,7 +1148,7 @@ class ModsProcess(QtCore.QThread):
                     item['npcKey'] = 'NpcManboTamegoro'
                 if item['symbol'] == 'Song_Soul':
                     item['npcKey'] = 'NpcMamu'
-                
+
                 # set the tunic npcKeys to empty strings so that nothing gets held up
                 if item['symbol'] == 'ClothesGreen':
                     item['npcKey'] = ''
@@ -1153,10 +1156,10 @@ class ModsProcess(QtCore.QThread):
                     item['npcKey'] = ''
                 if item['symbol'] == 'ClothesBlue':
                     item['npcKey'] = ''
-            
+
             if dummy is None:
                 raise KeyError('ItemYoshiDoll was not found in Items.gsheet')
-            
+
             # create new entries for Dampe, which we will use to set the gettingFlag
             # can likely use this same method for trendy and shop in the future
             dummy['symbol'] = 'Dampe1'
@@ -1621,34 +1624,34 @@ class ModsProcess(QtCore.QThread):
 
 
 
-    def makeShopChanges(self):
-        """Edits the shop items datasheet as well as event files relating to buying/stealing
+    # def makeShopChanges(self):
+    #     """Edits the shop items datasheet as well as event files relating to buying/stealing
         
-        NOT FINISHED!!!
+    #     NOT FINISHED!!!
         
-        This needs ASM to set the GettingFlag of the stolen items"""
+    #     This needs ASM to set the GettingFlag of the stolen items"""
 
-        if self.thread_active:
-            sheet = self.readFile('ShopItem.gsheet')
-            shop.makeDatasheetChanges(sheet, self.placements, self.item_defs)
-            self.writeFile('ShopItem.gsheet', sheet)
+    #     if self.thread_active:
+    #         sheet = self.readFile('ShopItem.gsheet')
+    #         shop.makeDatasheetChanges(sheet, self.placements, self.item_defs)
+    #         self.writeFile('ShopItem.gsheet', sheet)
         
-        # ### ToolShopkeeper event - edit events related to manually buying items
-        # if self.thread_active:
-        #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/ToolShopkeeper.bfevfl')
-        #     shop.makeBuyingEventChanges(flow.flowchart, self.placements, self.item_defs)
-        #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
-        #     self.progress_value += 1 # update progress bar
-        #     self.progress_update.emit(self.progress_value)
+    #     # ### ToolShopkeeper event - edit events related to manually buying items
+    #     # if self.thread_active:
+    #     #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/ToolShopkeeper.bfevfl')
+    #     #     shop.makeBuyingEventChanges(flow.flowchart, self.placements, self.item_defs)
+    #     #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
+    #     #     self.progress_value += 1 # update progress bar
+    #     #     self.progress_update.emit(self.progress_value)
         
-        # ### PlayerStart event - edit events related to stealing items
-        # if self.thread_active:
-        #     # flow = event_tools.readFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl')
-        #     shop.makeStealingEventChanges(flow.flowchart, self.placements, self.item_defs)
-        #     event_tools.writeFlow(f'{self.romfs_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
-        #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl', flow)
-        #     self.progress_value += 1 # udate progress bar
-        #     self.progress_update.emit(self.progress_value)
+    #     # ### PlayerStart event - edit events related to stealing items
+    #     # if self.thread_active:
+    #     #     # flow = event_tools.readFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl')
+    #     #     shop.makeStealingEventChanges(flow.flowchart, self.placements, self.item_defs)
+    #     #     event_tools.writeFlow(f'{self.romfs_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
+    #     #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl', flow)
+    #     #     self.progress_value += 1 # udate progress bar
+    #     #     self.progress_update.emit(self.progress_value)
     
 
 

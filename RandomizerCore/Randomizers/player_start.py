@@ -76,9 +76,6 @@ def makeStartChanges(flowchart, settings):
     if settings['open-mamu']:
         player_start_event_flags.append('MamuMazeClear')
     
-    if not settings['shuffle-bombs'] and settings['unlocked-bombs']:
-        player_start_event_flags.append(data.BOMBS_FOUND_FLAG)
-    
     if settings['randomize-enemies']: # special case where we need stairs under armos to be visible and open
         player_start_event_flags.append('AppearStairsFld10N')
         player_start_event_flags.append('AppearStairsFld11O')
