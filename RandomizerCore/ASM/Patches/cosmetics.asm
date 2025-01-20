@@ -1,4 +1,4 @@
-; This contains patches that effect the visuals of the game
+; This contains patches that effect the visuals and audio of the game
 
 
 ;* NPCs hold the proper item model before giving it to the player
@@ -28,3 +28,12 @@ b 0xd799f8
 ;settings blur-removal
 .offset 0x16cbd73
 .string "NoTiltShift"
+
+
+;* Removes the low health beep
+; This is done by removing any function calls for playing the sound effect
+;settings low-hp-removal
+.offset 0xeabeb0
+nop
+.offset 0xeabf44
+nop

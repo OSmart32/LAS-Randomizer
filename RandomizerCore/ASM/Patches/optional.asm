@@ -28,7 +28,9 @@ sub w8, w23, #80
 
 ;* Beam slash with base sword
 ;settings lv1-beam
-.offset 0xde1ba8
+.offset 0xd94d9c ; midair slash
+ldrb w9, [x8, #0xa8]
+.offset 0xde1ba8 ; grounded slash
 ldrb w9, [x8, #0xa8]
 
 
