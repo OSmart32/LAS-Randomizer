@@ -10,7 +10,7 @@ class Patcher:
         self.patches = []
 
 
-    def addPatch(self, address: int, instruction: str, comment=None):
+    def addPatch(self, address: int, instruction: str, comment=''):
         """Changes the ASM instruction at address
         
         Multi-line instructions do not change what address we write to afterwards"""
@@ -19,13 +19,13 @@ class Patcher:
         self.patches.append((address, instruction, comment))
 
 
-    def replaceString(self, address: int, new_string: str, comment=None):
+    def replaceString(self, address: int, new_string: str, comment=''):
         """Changes a string in the data section into new_string"""
 
         self.patches.append((address, new_string, comment))
 
 
-    def replaceShort(self, address: int, value: int, comment=None):
+    def replaceShort(self, address: int, value: int, comment=''):
         """Changes a short in the data section into value"""
 
         instruction = value.to_bytes(1, 'little', signed=True)
@@ -67,9 +67,8 @@ class Patcher:
             address = address.to_bytes(4, 'big')
             if isinstance(instruction, bytes):
                 instruction = instruction.hex().upper()
-            if len(comment) > 0:
-                outText += f"\n{comment}\n"
-                outText += "@enabled\n"
+            outText += f"\n{comment}\n"
+            outText += "@enabled\n"
             outText += f"{address.hex().upper()} {instruction}\n"
 
         outBuffer = bytearray(outText, "ascii")
