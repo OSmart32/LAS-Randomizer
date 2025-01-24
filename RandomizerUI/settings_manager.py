@@ -40,7 +40,6 @@ BASE_OPTIONS = {
 
     'petsCheck': False,
     'fastFishingCheck': False,
-    # 'unlockedBombsCheck': True, # Removed? Not Yet Decided
     'shuffledBombsCheck': False,
     'bookCheck': True,
     'stalfosCheck': False,
@@ -75,7 +74,7 @@ BASE_OPTIONS = {
     'blurCheck': True, # May change, lots of people hate the blur and it even hurts some player's eyes
     'musicCheck': False,
     # 'soundCheck': False, # Not Yet Implemented
-    # 'beepCheck': False, # Not Yet Implemented
+    'beepCheck': False,
 
     'starting_gear': ['sword', 'shield', 'ocarina', 'song-mambo']
 }
@@ -90,6 +89,7 @@ EXTRA_OPTIONS = [
 
 STRING_EXCLUSIONS = [
     'musicCheck',
+    'beepCheck',
     'blurCheck',
 ]
 
@@ -399,7 +399,6 @@ def loadRandomizerSettings(window, seed):
         'free-book': window.ui.bookCheck.isChecked(),
         'consumable-drop': window.ui.consumableCheck.isChecked(),
         'dungeon-items': DUNGEON_ITEM_SETTINGS[window.ui.dungeonItemsComboBox.currentIndex()],
-        # 'unlocked-bombs': window.ui.unlockedBombsCheck.isChecked(),
         'shuffle-bombs': window.ui.shuffledBombsCheck.isChecked(),
         'shuffle-powder': window.ui.shuffledPowderCheck.isChecked(),
         'fast-fishing': window.ui.fastFishingCheck.isChecked(),
@@ -424,6 +423,7 @@ def loadRandomizerSettings(window, seed):
         # 'shuffle-companions': window.ui.companionCheck.isChecked(),
         # 'randomize-entrances': window.ui.loadingCheck.isChecked(),
         'randomize-music': window.ui.musicCheck.isChecked(),
+        'low-hp-removal': window.ui.beepCheck.isChecked(),
         'open-mabe': window.ui.mabeCheck.isChecked(),
         'boss-cutscenes': window.ui.bossAnimCheck.isChecked(),
         'randomize-enemies': window.ui.enemyCheck.isChecked(),
