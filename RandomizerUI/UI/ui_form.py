@@ -134,44 +134,67 @@ class Ui_MainWindow(object):
         self.verticalLayout_9 = QVBoxLayout(self.groupBox)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.verticalLayout_8 = QVBoxLayout()
-        self.verticalLayout_8.setSpacing(12)
         self.verticalLayout_8.setObjectName(u"verticalLayout_8")
         self.horizontalLayout_5 = QHBoxLayout()
-        self.horizontalLayout_5.setSpacing(92)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.chestsCheck = QCheckBox(self.groupBox)
         self.chestsCheck.setObjectName(u"chestsCheck")
+        self.chestsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_5.addWidget(self.chestsCheck)
 
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_2)
+
         self.giftsCheck = QCheckBox(self.groupBox)
         self.giftsCheck.setObjectName(u"giftsCheck")
+        self.giftsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_5.addWidget(self.giftsCheck)
 
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_5.addItem(self.horizontalSpacer_3)
+
         self.tradeCheck = QCheckBox(self.groupBox)
         self.tradeCheck.setObjectName(u"tradeCheck")
+        self.tradeCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_5.addWidget(self.tradeCheck)
 
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_5)
 
+        self.verticalSpacer_12 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_8.addItem(self.verticalSpacer_12)
+
         self.horizontalLayout_6 = QHBoxLayout()
-        self.horizontalLayout_6.setSpacing(92)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.leavesCheck = QCheckBox(self.groupBox)
         self.leavesCheck.setObjectName(u"leavesCheck")
+        self.leavesCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_6.addWidget(self.leavesCheck)
 
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_4)
+
         self.heartsCheck = QCheckBox(self.groupBox)
         self.heartsCheck.setObjectName(u"heartsCheck")
+        self.heartsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_6.addWidget(self.heartsCheck)
 
+        self.horizontalSpacer_5 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_6.addItem(self.horizontalSpacer_5)
+
         self.shellsCheck = QCheckBox(self.groupBox)
         self.shellsCheck.setObjectName(u"shellsCheck")
+        self.shellsCheck.setMinimumSize(QSize(150, 0))
         font = QFont()
         font.setStrikeOut(True)
         self.shellsCheck.setFont(font)
@@ -183,13 +206,21 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addLayout(self.horizontalLayout_6)
 
+        self.verticalSpacer_13 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_8.addItem(self.verticalSpacer_13)
+
         self.horizontalLayout_7 = QHBoxLayout()
-        self.horizontalLayout_7.setSpacing(92)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
         self.miscCheck = QCheckBox(self.groupBox)
         self.miscCheck.setObjectName(u"miscCheck")
+        self.miscCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_7.addWidget(self.miscCheck)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_6)
 
         self.mansionComboBox = QComboBox(self.groupBox)
         self.mansionComboBox.addItem("")
@@ -204,12 +235,17 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.mansionComboBox.sizePolicy().hasHeightForWidth())
         self.mansionComboBox.setSizePolicy(sizePolicy)
-        self.mansionComboBox.setMinimumSize(QSize(0, 0))
+        self.mansionComboBox.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_7.addWidget(self.mansionComboBox)
 
+        self.horizontalSpacer_7 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer_7)
+
         self.shopCheck = QCheckBox(self.groupBox)
         self.shopCheck.setObjectName(u"shopCheck")
+        self.shopCheck.setMinimumSize(QSize(150, 0))
         self.shopCheck.setFont(font)
         self.shopCheck.setStyleSheet(u"color: rgb(80, 80, 80);")
         self.shopCheck.setCheckable(False)
@@ -231,31 +267,43 @@ class Ui_MainWindow(object):
         self.verticalLayout_11 = QVBoxLayout(self.groupBox_2)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.verticalLayout_10 = QVBoxLayout()
-        self.verticalLayout_10.setSpacing(12)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.horizontalLayout_10 = QHBoxLayout()
-        self.horizontalLayout_10.setSpacing(92)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.rupCheck = QCheckBox(self.groupBox_2)
         self.rupCheck.setObjectName(u"rupCheck")
+        self.rupCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_10.addWidget(self.rupCheck)
 
+        self.horizontalSpacer_8 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_8)
+
         self.bossCheck = QCheckBox(self.groupBox_2)
         self.bossCheck.setObjectName(u"bossCheck")
+        self.bossCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_10.addWidget(self.bossCheck)
 
+        self.horizontalSpacer_9 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_10.addItem(self.horizontalSpacer_9)
+
         self.instrumentCheck = QCheckBox(self.groupBox_2)
         self.instrumentCheck.setObjectName(u"instrumentCheck")
+        self.instrumentCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_10.addWidget(self.instrumentCheck)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_10)
 
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer_9)
+
         self.horizontalLayout_11 = QHBoxLayout()
-        self.horizontalLayout_11.setSpacing(92)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.itemsComboBox = QComboBox(self.groupBox_2)
         self.itemsComboBox.addItem("")
@@ -265,10 +313,14 @@ class Ui_MainWindow(object):
         self.itemsComboBox.setEnabled(False)
         sizePolicy.setHeightForWidth(self.itemsComboBox.sizePolicy().hasHeightForWidth())
         self.itemsComboBox.setSizePolicy(sizePolicy)
-        self.itemsComboBox.setMinimumSize(QSize(0, 0))
+        self.itemsComboBox.setMinimumSize(QSize(150, 0))
         self.itemsComboBox.setFont(font)
 
         self.horizontalLayout_11.addWidget(self.itemsComboBox)
+
+        self.horizontalSpacer_10 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_10)
 
         self.owlsComboBox = QComboBox(self.groupBox_2)
         self.owlsComboBox.addItem("")
@@ -278,17 +330,31 @@ class Ui_MainWindow(object):
         self.owlsComboBox.setObjectName(u"owlsComboBox")
         sizePolicy.setHeightForWidth(self.owlsComboBox.sizePolicy().hasHeightForWidth())
         self.owlsComboBox.setSizePolicy(sizePolicy)
-        self.owlsComboBox.setMinimumSize(QSize(0, 0))
+        self.owlsComboBox.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_11.addWidget(self.owlsComboBox)
 
+        self.horizontalSpacer_11 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_11.addItem(self.horizontalSpacer_11)
+
         self.label_5 = QLabel(self.groupBox_2)
         self.label_5.setObjectName(u"label_5")
+        self.label_5.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_11.addWidget(self.label_5)
 
 
         self.verticalLayout_10.addLayout(self.horizontalLayout_11)
+
+        self.verticalSpacer_23 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_10.addItem(self.verticalSpacer_23)
+
+        self.horizontalLayout_30 = QHBoxLayout()
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+
+        self.verticalLayout_10.addLayout(self.horizontalLayout_30)
 
 
         self.verticalLayout_11.addLayout(self.verticalLayout_10)
@@ -297,15 +363,19 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.groupBox_2)
 
         self.horizontalLayout_8 = QHBoxLayout()
-        self.horizontalLayout_8.setSpacing(68)
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.groupBox_3 = QGroupBox(self.tab_5)
         self.groupBox_3.setObjectName(u"groupBox_3")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.groupBox_3.sizePolicy().hasHeightForWidth())
+        self.groupBox_3.setSizePolicy(sizePolicy1)
+        self.groupBox_3.setMinimumSize(QSize(300, 0))
         self.groupBox_3.setAlignment(Qt.AlignCenter)
         self.verticalLayout_34 = QVBoxLayout(self.groupBox_3)
         self.verticalLayout_34.setObjectName(u"verticalLayout_34")
         self.verticalLayout_33 = QVBoxLayout()
-        self.verticalLayout_33.setSpacing(12)
         self.verticalLayout_33.setObjectName(u"verticalLayout_33")
         self.horizontalLayout_9 = QHBoxLayout()
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
@@ -321,6 +391,10 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_33.addLayout(self.horizontalLayout_9)
+
+        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_33.addItem(self.verticalSpacer_10)
 
         self.horizontalLayout_23 = QHBoxLayout()
         self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
@@ -339,24 +413,38 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_33.addLayout(self.horizontalLayout_23)
 
+        self.verticalSpacer_24 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_33.addItem(self.verticalSpacer_24)
+
 
         self.verticalLayout_34.addLayout(self.verticalLayout_33)
 
 
         self.horizontalLayout_8.addWidget(self.groupBox_3)
 
+        self.horizontalSpacer_12 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_8.addItem(self.horizontalSpacer_12)
+
         self.groupBox_12 = QGroupBox(self.tab_5)
         self.groupBox_12.setObjectName(u"groupBox_12")
+        sizePolicy1.setHeightForWidth(self.groupBox_12.sizePolicy().hasHeightForWidth())
+        self.groupBox_12.setSizePolicy(sizePolicy1)
+        self.groupBox_12.setMinimumSize(QSize(300, 0))
         self.groupBox_12.setAlignment(Qt.AlignCenter)
         self.verticalLayout_36 = QVBoxLayout(self.groupBox_12)
         self.verticalLayout_36.setObjectName(u"verticalLayout_36")
         self.verticalLayout_35 = QVBoxLayout()
-        self.verticalLayout_35.setSpacing(12)
         self.verticalLayout_35.setObjectName(u"verticalLayout_35")
         self.spoilerCheck = QCheckBox(self.groupBox_12)
         self.spoilerCheck.setObjectName(u"spoilerCheck")
 
         self.verticalLayout_35.addWidget(self.spoilerCheck)
+
+        self.verticalSpacer_11 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_35.addItem(self.verticalSpacer_11)
 
         self.platformComboBox = QComboBox(self.groupBox_12)
         self.platformComboBox.addItem("")
@@ -365,12 +453,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_35.addWidget(self.platformComboBox)
 
+        self.verticalSpacer_25 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_35.addItem(self.verticalSpacer_25)
+
 
         self.verticalLayout_36.addLayout(self.verticalLayout_35)
 
 
         self.horizontalLayout_8.addWidget(self.groupBox_12)
 
+        self.horizontalLayout_8.setStretch(0, 3)
+        self.horizontalLayout_8.setStretch(1, 1)
+        self.horizontalLayout_8.setStretch(2, 3)
 
         self.verticalLayout.addLayout(self.horizontalLayout_8)
 
@@ -395,19 +490,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.enemyCheck = QCheckBox(self.groupBox_4)
         self.enemyCheck.setObjectName(u"enemyCheck")
+        self.enemyCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_12.addWidget(self.enemyCheck)
 
+        self.horizontalSpacer_13 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_12.addItem(self.horizontalSpacer_13)
+
         self.enemySizesCheck = QCheckBox(self.groupBox_4)
         self.enemySizesCheck.setObjectName(u"enemySizesCheck")
+        self.enemySizesCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_12.addWidget(self.enemySizesCheck)
+
+        self.horizontalSpacer_14 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_12.addItem(self.horizontalSpacer_14)
 
         self.chestsComboBox = QComboBox(self.groupBox_4)
         self.chestsComboBox.addItem("")
         self.chestsComboBox.addItem("")
         self.chestsComboBox.addItem("")
         self.chestsComboBox.setObjectName(u"chestsComboBox")
+        self.chestsComboBox.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_12.addWidget(self.chestsComboBox)
 
@@ -426,57 +532,88 @@ class Ui_MainWindow(object):
         self.verticalLayout_15 = QVBoxLayout(self.groupBox_5)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.verticalLayout_14 = QVBoxLayout()
-        self.verticalLayout_14.setSpacing(12)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.horizontalLayout_14 = QHBoxLayout()
-        self.horizontalLayout_14.setSpacing(92)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
         self.kanaletCheck = QCheckBox(self.groupBox_5)
         self.kanaletCheck.setObjectName(u"kanaletCheck")
+        self.kanaletCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_14.addWidget(self.kanaletCheck)
 
+        self.horizontalSpacer_15 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_15)
+
         self.mabeCheck = QCheckBox(self.groupBox_5)
         self.mabeCheck.setObjectName(u"mabeCheck")
+        self.mabeCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_14.addWidget(self.mabeCheck)
 
+        self.horizontalSpacer_16 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_16)
+
         self.mazeCheck = QCheckBox(self.groupBox_5)
         self.mazeCheck.setObjectName(u"mazeCheck")
+        self.mazeCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_14.addWidget(self.mazeCheck)
 
 
         self.verticalLayout_14.addLayout(self.horizontalLayout_14)
 
+        self.verticalSpacer_14 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_14.addItem(self.verticalSpacer_14)
+
         self.horizontalLayout_15 = QHBoxLayout()
-        self.horizontalLayout_15.setSpacing(92)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.bridgeCheck = QCheckBox(self.groupBox_5)
         self.bridgeCheck.setObjectName(u"bridgeCheck")
+        self.bridgeCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_15.addWidget(self.bridgeCheck)
 
+        self.horizontalSpacer_17 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_15.addItem(self.horizontalSpacer_17)
+
         self.classicD2Check = QCheckBox(self.groupBox_5)
         self.classicD2Check.setObjectName(u"classicD2Check")
+        self.classicD2Check.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_15.addWidget(self.classicD2Check)
 
+        self.horizontalSpacer_18 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_15.addItem(self.horizontalSpacer_18)
+
         self.dungeonsCheck = QCheckBox(self.groupBox_5)
         self.dungeonsCheck.setObjectName(u"dungeonsCheck")
+        self.dungeonsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_15.addWidget(self.dungeonsCheck)
 
 
         self.verticalLayout_14.addLayout(self.horizontalLayout_15)
 
+        self.verticalSpacer_15 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_14.addItem(self.verticalSpacer_15)
+
         self.horizontalLayout_16 = QHBoxLayout()
-        self.horizontalLayout_16.setSpacing(92)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.consumableCheck = QCheckBox(self.groupBox_5)
         self.consumableCheck.setObjectName(u"consumableCheck")
+        self.consumableCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_16.addWidget(self.consumableCheck)
+
+        self.horizontalSpacer_19 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_16.addItem(self.horizontalSpacer_19)
 
 
         self.verticalLayout_14.addLayout(self.horizontalLayout_16)
@@ -493,49 +630,76 @@ class Ui_MainWindow(object):
         self.verticalLayout_17 = QVBoxLayout(self.groupBox_6)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.verticalLayout_16 = QVBoxLayout()
-        self.verticalLayout_16.setSpacing(12)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
         self.horizontalLayout_17 = QHBoxLayout()
-        self.horizontalLayout_17.setSpacing(92)
         self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
         self.petsCheck = QCheckBox(self.groupBox_6)
         self.petsCheck.setObjectName(u"petsCheck")
+        self.petsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_17.addWidget(self.petsCheck)
 
+        self.horizontalSpacer_20 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_17.addItem(self.horizontalSpacer_20)
+
         self.fastFishingCheck = QCheckBox(self.groupBox_6)
         self.fastFishingCheck.setObjectName(u"fastFishingCheck")
+        self.fastFishingCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_17.addWidget(self.fastFishingCheck)
 
+        self.horizontalSpacer_21 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_17.addItem(self.horizontalSpacer_21)
+
         self.shuffledBombsCheck = QCheckBox(self.groupBox_6)
         self.shuffledBombsCheck.setObjectName(u"shuffledBombsCheck")
+        self.shuffledBombsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_17.addWidget(self.shuffledBombsCheck)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_17)
 
+        self.verticalSpacer_16 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_16.addItem(self.verticalSpacer_16)
+
         self.horizontalLayout_18 = QHBoxLayout()
-        self.horizontalLayout_18.setSpacing(92)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.bookCheck = QCheckBox(self.groupBox_6)
         self.bookCheck.setObjectName(u"bookCheck")
+        self.bookCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_18.addWidget(self.bookCheck)
 
+        self.horizontalSpacer_22 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_18.addItem(self.horizontalSpacer_22)
+
         self.stalfosCheck = QCheckBox(self.groupBox_6)
         self.stalfosCheck.setObjectName(u"stalfosCheck")
+        self.stalfosCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_18.addWidget(self.stalfosCheck)
 
+        self.horizontalSpacer_23 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_18.addItem(self.horizontalSpacer_23)
+
         self.shuffledPowderCheck = QCheckBox(self.groupBox_6)
         self.shuffledPowderCheck.setObjectName(u"shuffledPowderCheck")
+        self.shuffledPowderCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_18.addWidget(self.shuffledPowderCheck)
 
 
         self.verticalLayout_16.addLayout(self.horizontalLayout_18)
+
+        self.verticalSpacer_30 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_16.addItem(self.verticalSpacer_30)
 
 
         self.verticalLayout_17.addLayout(self.verticalLayout_16)
@@ -543,8 +707,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_12.addWidget(self.groupBox_6)
 
-        self.verticalLayout_12.setStretch(1, 1)
-        self.verticalLayout_12.setStretch(2, 1)
+        self.verticalLayout_12.setStretch(0, 1)
+        self.verticalLayout_12.setStretch(1, 3)
+        self.verticalLayout_12.setStretch(2, 2)
 
         self.verticalLayout_13.addLayout(self.verticalLayout_12)
 
@@ -563,20 +728,30 @@ class Ui_MainWindow(object):
         self.verticalLayout_20 = QVBoxLayout()
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
         self.horizontalLayout_19 = QHBoxLayout()
-        self.horizontalLayout_19.setSpacing(92)
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.niceBombsCheck = QCheckBox(self.groupBox_7)
         self.niceBombsCheck.setObjectName(u"niceBombsCheck")
+        self.niceBombsCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_19.addWidget(self.niceBombsCheck)
 
+        self.horizontalSpacer_24 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_19.addItem(self.horizontalSpacer_24)
+
         self.niceRodCheck = QCheckBox(self.groupBox_7)
         self.niceRodCheck.setObjectName(u"niceRodCheck")
+        self.niceRodCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_19.addWidget(self.niceRodCheck)
 
+        self.horizontalSpacer_25 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_19.addItem(self.horizontalSpacer_25)
+
         self.niceSwordCheck = QCheckBox(self.groupBox_7)
         self.niceSwordCheck.setObjectName(u"niceSwordCheck")
+        self.niceSwordCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_19.addWidget(self.niceSwordCheck)
 
@@ -595,47 +770,70 @@ class Ui_MainWindow(object):
         self.verticalLayout_23 = QVBoxLayout(self.groupBox_8)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
         self.verticalLayout_22 = QVBoxLayout()
-        self.verticalLayout_22.setSpacing(12)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
         self.horizontalLayout_20 = QHBoxLayout()
-        self.horizontalLayout_20.setSpacing(92)
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
         self.bossAnimCheck = QCheckBox(self.groupBox_8)
         self.bossAnimCheck.setObjectName(u"bossAnimCheck")
+        self.bossAnimCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_20.addWidget(self.bossAnimCheck)
 
+        self.horizontalSpacer_26 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_20.addItem(self.horizontalSpacer_26)
+
         self.chestAnimCheck = QCheckBox(self.groupBox_8)
         self.chestAnimCheck.setObjectName(u"chestAnimCheck")
+        self.chestAnimCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_20.addWidget(self.chestAnimCheck)
 
+        self.horizontalSpacer_27 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_20.addItem(self.horizontalSpacer_27)
+
         self.keyAnimCheck = QCheckBox(self.groupBox_8)
         self.keyAnimCheck.setObjectName(u"keyAnimCheck")
+        self.keyAnimCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_20.addWidget(self.keyAnimCheck)
 
 
         self.verticalLayout_22.addLayout(self.horizontalLayout_20)
 
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_2)
+
         self.horizontalLayout_21 = QHBoxLayout()
-        self.horizontalLayout_21.setSpacing(92)
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
         self.songAnimCheck = QCheckBox(self.groupBox_8)
         self.songAnimCheck.setObjectName(u"songAnimCheck")
+        self.songAnimCheck.setMinimumSize(QSize(150, 0))
 
         self.horizontalLayout_21.addWidget(self.songAnimCheck)
 
+        self.horizontalSpacer_28 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_21.addItem(self.horizontalSpacer_28)
+
         self.pickupAnimCheck = QCheckBox(self.groupBox_8)
         self.pickupAnimCheck.setObjectName(u"pickupAnimCheck")
+        self.pickupAnimCheck.setMinimumSize(QSize(150, 0))
         self.pickupAnimCheck.setFont(font)
         self.pickupAnimCheck.setStyleSheet(u"color: rgb(80, 80, 80);")
         self.pickupAnimCheck.setCheckable(False)
 
         self.horizontalLayout_21.addWidget(self.pickupAnimCheck)
 
+        self.horizontalSpacer_29 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_21.addItem(self.horizontalSpacer_29)
+
         self.creditsAnimCheck = QCheckBox(self.groupBox_8)
         self.creditsAnimCheck.setObjectName(u"creditsAnimCheck")
+        self.creditsAnimCheck.setMinimumSize(QSize(150, 0))
         self.creditsAnimCheck.setFont(font)
         self.creditsAnimCheck.setStyleSheet(u"color: rgb(80, 80, 80);")
         self.creditsAnimCheck.setCheckable(False)
@@ -645,17 +843,17 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_22.addLayout(self.horizontalLayout_21)
 
+        self.verticalSpacer_26 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_26)
+
 
         self.verticalLayout_23.addLayout(self.verticalLayout_22)
 
 
         self.verticalLayout_18.addWidget(self.groupBox_8)
 
-
-        self.verticalLayout_19.addLayout(self.verticalLayout_18)
-
         self.horizontalLayout_22 = QHBoxLayout()
-        self.horizontalLayout_22.setSpacing(68)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
         self.verticalLayout_24 = QVBoxLayout()
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
@@ -665,7 +863,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_28 = QVBoxLayout(self.groupBox_9)
         self.verticalLayout_28.setObjectName(u"verticalLayout_28")
         self.verticalLayout_27 = QVBoxLayout()
-        self.verticalLayout_27.setSpacing(12)
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.poolComboBox = QComboBox(self.groupBox_9)
         self.poolComboBox.addItem("")
@@ -678,6 +875,10 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addWidget(self.poolComboBox)
 
+        self.verticalSpacer_17 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_27.addItem(self.verticalSpacer_17)
+
         self.trapsComboBox = QComboBox(self.groupBox_9)
         self.trapsComboBox.addItem("")
         self.trapsComboBox.addItem("")
@@ -686,6 +887,10 @@ class Ui_MainWindow(object):
         self.trapsComboBox.setObjectName(u"trapsComboBox")
 
         self.verticalLayout_27.addWidget(self.trapsComboBox)
+
+        self.verticalSpacer_27 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_27.addItem(self.verticalSpacer_27)
 
 
         self.verticalLayout_28.addLayout(self.verticalLayout_27)
@@ -704,12 +909,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_30 = QVBoxLayout(self.groupBox_10)
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.verticalLayout_29 = QVBoxLayout()
-        self.verticalLayout_29.setSpacing(12)
         self.verticalLayout_29.setObjectName(u"verticalLayout_29")
         self.fastStealingCheck = QCheckBox(self.groupBox_10)
         self.fastStealingCheck.setObjectName(u"fastStealingCheck")
 
         self.verticalLayout_29.addWidget(self.fastStealingCheck)
+
+        self.verticalSpacer_18 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_29.addItem(self.verticalSpacer_18)
 
         self.stealingComboBox = QComboBox(self.groupBox_10)
         self.stealingComboBox.addItem("")
@@ -718,6 +926,10 @@ class Ui_MainWindow(object):
         self.stealingComboBox.setObjectName(u"stealingComboBox")
 
         self.verticalLayout_29.addWidget(self.stealingComboBox)
+
+        self.verticalSpacer_28 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_29.addItem(self.verticalSpacer_28)
 
 
         self.verticalLayout_30.addLayout(self.verticalLayout_29)
@@ -736,17 +948,24 @@ class Ui_MainWindow(object):
         self.verticalLayout_32 = QVBoxLayout(self.groupBox_11)
         self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.verticalLayout_31 = QVBoxLayout()
-        self.verticalLayout_31.setSpacing(12)
         self.verticalLayout_31.setObjectName(u"verticalLayout_31")
         self.ohkoCheck = QCheckBox(self.groupBox_11)
         self.ohkoCheck.setObjectName(u"ohkoCheck")
 
         self.verticalLayout_31.addWidget(self.ohkoCheck)
 
+        self.verticalSpacer_19 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_19)
+
         self.endingCheck = QCheckBox(self.groupBox_11)
         self.endingCheck.setObjectName(u"endingCheck")
 
         self.verticalLayout_31.addWidget(self.endingCheck)
+
+        self.verticalSpacer_29 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_29)
 
 
         self.verticalLayout_32.addLayout(self.verticalLayout_31)
@@ -758,11 +977,13 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addLayout(self.verticalLayout_26)
 
 
-        self.verticalLayout_19.addLayout(self.horizontalLayout_22)
+        self.verticalLayout_18.addLayout(self.horizontalLayout_22)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalLayout_18.setStretch(0, 1)
+        self.verticalLayout_18.setStretch(1, 2)
+        self.verticalLayout_18.setStretch(2, 2)
 
-        self.verticalLayout_19.addItem(self.verticalSpacer_2)
+        self.verticalLayout_19.addLayout(self.verticalLayout_18)
 
         self.tabWidget_2.addTab(self.tab_7, "")
         self.tab = QWidget()
@@ -772,25 +993,25 @@ class Ui_MainWindow(object):
         self.verticalLayout_48 = QVBoxLayout()
         self.verticalLayout_48.setObjectName(u"verticalLayout_48")
         self.horizontalLayout_29 = QHBoxLayout()
-        self.horizontalLayout_29.setSpacing(68)
         self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
         self.groupBox_13 = QGroupBox(self.tab)
         self.groupBox_13.setObjectName(u"groupBox_13")
+        sizePolicy1.setHeightForWidth(self.groupBox_13.sizePolicy().hasHeightForWidth())
+        self.groupBox_13.setSizePolicy(sizePolicy1)
+        self.groupBox_13.setMinimumSize(QSize(300, 0))
         self.groupBox_13.setAlignment(Qt.AlignCenter)
         self.verticalLayout_51 = QVBoxLayout(self.groupBox_13)
         self.verticalLayout_51.setObjectName(u"verticalLayout_51")
         self.verticalLayout_50 = QVBoxLayout()
-        self.verticalLayout_50.setSpacing(12)
         self.verticalLayout_50.setObjectName(u"verticalLayout_50")
         self.blurCheck = QCheckBox(self.groupBox_13)
         self.blurCheck.setObjectName(u"blurCheck")
 
         self.verticalLayout_50.addWidget(self.blurCheck)
 
-        self.label = QLabel(self.groupBox_13)
-        self.label.setObjectName(u"label")
+        self.verticalSpacer_20 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_50.addWidget(self.label)
+        self.verticalLayout_50.addItem(self.verticalSpacer_20)
 
 
         self.verticalLayout_51.addLayout(self.verticalLayout_50)
@@ -798,18 +1019,40 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_29.addWidget(self.groupBox_13)
 
+        self.horizontalSpacer_30 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_29.addItem(self.horizontalSpacer_30)
+
         self.groupBox_14 = QGroupBox(self.tab)
         self.groupBox_14.setObjectName(u"groupBox_14")
+        sizePolicy1.setHeightForWidth(self.groupBox_14.sizePolicy().hasHeightForWidth())
+        self.groupBox_14.setSizePolicy(sizePolicy1)
+        self.groupBox_14.setMinimumSize(QSize(300, 0))
         self.groupBox_14.setAlignment(Qt.AlignCenter)
         self.verticalLayout_53 = QVBoxLayout(self.groupBox_14)
         self.verticalLayout_53.setObjectName(u"verticalLayout_53")
         self.verticalLayout_52 = QVBoxLayout()
-        self.verticalLayout_52.setSpacing(12)
         self.verticalLayout_52.setObjectName(u"verticalLayout_52")
+        self.beepCheck = QCheckBox(self.groupBox_14)
+        self.beepCheck.setObjectName(u"beepCheck")
+        font1 = QFont()
+        font1.setStrikeOut(False)
+        self.beepCheck.setFont(font1)
+
+        self.verticalLayout_52.addWidget(self.beepCheck)
+
+        self.verticalSpacer_21 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_52.addItem(self.verticalSpacer_21)
+
         self.musicCheck = QCheckBox(self.groupBox_14)
         self.musicCheck.setObjectName(u"musicCheck")
 
         self.verticalLayout_52.addWidget(self.musicCheck)
+
+        self.verticalSpacer_22 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_52.addItem(self.verticalSpacer_22)
 
         self.soundCheck = QCheckBox(self.groupBox_14)
         self.soundCheck.setObjectName(u"soundCheck")
@@ -819,19 +1062,15 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_52.addWidget(self.soundCheck)
 
-        self.beepCheck = QCheckBox(self.groupBox_14)
-        self.beepCheck.setObjectName(u"beepCheck")
-        self.beepCheck.setFont(font)
-        self.beepCheck.setStyleSheet(u"color: rgb(80, 80, 80);")
-
-        self.verticalLayout_52.addWidget(self.beepCheck)
-
 
         self.verticalLayout_53.addLayout(self.verticalLayout_52)
 
 
         self.horizontalLayout_29.addWidget(self.groupBox_14)
 
+        self.horizontalLayout_29.setStretch(0, 3)
+        self.horizontalLayout_29.setStretch(1, 1)
+        self.horizontalLayout_29.setStretch(2, 3)
 
         self.verticalLayout_48.addLayout(self.horizontalLayout_29)
 
@@ -839,6 +1078,8 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_48.addItem(self.verticalSpacer_8)
 
+        self.verticalLayout_48.setStretch(0, 1)
+        self.verticalLayout_48.setStretch(1, 2)
 
         self.verticalLayout_49.addLayout(self.verticalLayout_48)
 
@@ -862,9 +1103,9 @@ class Ui_MainWindow(object):
         self.label_6 = QLabel(self.tab_2)
         self.label_6.setObjectName(u"label_6")
         self.label_6.setMinimumSize(QSize(0, 31))
-        font1 = QFont()
-        font1.setPointSize(12)
-        self.label_6.setFont(font1)
+        font2 = QFont()
+        font2.setPointSize(12)
+        self.label_6.setFont(font2)
         self.label_6.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_39.addWidget(self.label_6)
@@ -911,16 +1152,16 @@ class Ui_MainWindow(object):
         self.itemsExcludeButton = QPushButton(self.tab_2)
         self.itemsExcludeButton.setObjectName(u"itemsExcludeButton")
         self.itemsExcludeButton.setMinimumSize(QSize(0, 81))
-        font2 = QFont()
-        font2.setPointSize(11)
-        self.itemsExcludeButton.setFont(font2)
+        font3 = QFont()
+        font3.setPointSize(11)
+        self.itemsExcludeButton.setFont(font3)
 
         self.verticalLayout_40.addWidget(self.itemsExcludeButton)
 
         self.itemsIncludeButton = QPushButton(self.tab_2)
         self.itemsIncludeButton.setObjectName(u"itemsIncludeButton")
         self.itemsIncludeButton.setMinimumSize(QSize(0, 81))
-        self.itemsIncludeButton.setFont(font2)
+        self.itemsIncludeButton.setFont(font3)
 
         self.verticalLayout_40.addWidget(self.itemsIncludeButton)
 
@@ -931,9 +1172,9 @@ class Ui_MainWindow(object):
         self.rupeesSpinBox = QSpinBox(self.tab_2)
         self.rupeesSpinBox.setObjectName(u"rupeesSpinBox")
         self.rupeesSpinBox.setMinimumSize(QSize(0, 41))
-        font3 = QFont()
-        font3.setPointSize(10)
-        self.rupeesSpinBox.setFont(font3)
+        font4 = QFont()
+        font4.setPointSize(10)
+        self.rupeesSpinBox.setFont(font4)
         self.rupeesSpinBox.setMaximum(9999)
 
         self.verticalLayout_40.addWidget(self.rupeesSpinBox)
@@ -947,7 +1188,7 @@ class Ui_MainWindow(object):
         self.label_7 = QLabel(self.tab_2)
         self.label_7.setObjectName(u"label_7")
         self.label_7.setMinimumSize(QSize(0, 31))
-        self.label_7.setFont(font1)
+        self.label_7.setFont(font2)
         self.label_7.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_41.addWidget(self.label_7)
@@ -979,7 +1220,7 @@ class Ui_MainWindow(object):
         self.label_8 = QLabel(self.tab_3)
         self.label_8.setObjectName(u"label_8")
         self.label_8.setMinimumSize(QSize(0, 31))
-        self.label_8.setFont(font1)
+        self.label_8.setFont(font2)
         self.label_8.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_42.addWidget(self.label_8)
@@ -1003,14 +1244,14 @@ class Ui_MainWindow(object):
         self.locationsExcludeButton = QPushButton(self.tab_3)
         self.locationsExcludeButton.setObjectName(u"locationsExcludeButton")
         self.locationsExcludeButton.setMinimumSize(QSize(0, 81))
-        self.locationsExcludeButton.setFont(font2)
+        self.locationsExcludeButton.setFont(font3)
 
         self.verticalLayout_43.addWidget(self.locationsExcludeButton)
 
         self.locationsIncludeButton = QPushButton(self.tab_3)
         self.locationsIncludeButton.setObjectName(u"locationsIncludeButton")
         self.locationsIncludeButton.setMinimumSize(QSize(0, 81))
-        self.locationsIncludeButton.setFont(font2)
+        self.locationsIncludeButton.setFont(font3)
 
         self.verticalLayout_43.addWidget(self.locationsIncludeButton)
 
@@ -1028,7 +1269,7 @@ class Ui_MainWindow(object):
         self.label_9 = QLabel(self.tab_3)
         self.label_9.setObjectName(u"label_9")
         self.label_9.setMinimumSize(QSize(0, 31))
-        self.label_9.setFont(font1)
+        self.label_9.setFont(font2)
         self.label_9.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_44.addWidget(self.label_9)
@@ -1060,7 +1301,7 @@ class Ui_MainWindow(object):
         self.label_10 = QLabel(self.tab_4)
         self.label_10.setObjectName(u"label_10")
         self.label_10.setMinimumSize(QSize(0, 31))
-        self.label_10.setFont(font1)
+        self.label_10.setFont(font2)
         self.label_10.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_45.addWidget(self.label_10)
@@ -1094,14 +1335,14 @@ class Ui_MainWindow(object):
         self.logicExcludeButton = QPushButton(self.tab_4)
         self.logicExcludeButton.setObjectName(u"logicExcludeButton")
         self.logicExcludeButton.setMinimumSize(QSize(0, 81))
-        self.logicExcludeButton.setFont(font2)
+        self.logicExcludeButton.setFont(font3)
 
         self.verticalLayout_46.addWidget(self.logicExcludeButton)
 
         self.logicIncludeButton = QPushButton(self.tab_4)
         self.logicIncludeButton.setObjectName(u"logicIncludeButton")
         self.logicIncludeButton.setMinimumSize(QSize(0, 81))
-        self.logicIncludeButton.setFont(font2)
+        self.logicIncludeButton.setFont(font3)
 
         self.verticalLayout_46.addWidget(self.logicIncludeButton)
 
@@ -1117,7 +1358,7 @@ class Ui_MainWindow(object):
         self.label_11 = QLabel(self.tab_4)
         self.label_11.setObjectName(u"label_11")
         self.label_11.setMinimumSize(QSize(0, 31))
-        self.label_11.setFont(font1)
+        self.label_11.setFont(font2)
         self.label_11.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_47.addWidget(self.label_11)
@@ -1308,7 +1549,7 @@ class Ui_MainWindow(object):
         self.bridgeCheck.setText(QCoreApplication.translate("MainWindow", u"Completed Bridge", None))
         self.classicD2Check.setText(QCoreApplication.translate("MainWindow", u"Classic D2", None))
         self.dungeonsCheck.setText(QCoreApplication.translate("MainWindow", u"Shuffled Dungeons", None))
-        self.consumableCheck.setText(QCoreApplication.translate("MainWindow", u"Extra Consumable Drops", None))
+        self.consumableCheck.setText(QCoreApplication.translate("MainWindow", u"Consumable Drops", None))
         self.groupBox_6.setTitle(QCoreApplication.translate("MainWindow", u"Logic", None))
         self.petsCheck.setText(QCoreApplication.translate("MainWindow", u"Bad Pets", None))
         self.fastFishingCheck.setText(QCoreApplication.translate("MainWindow", u"Fast Fishing", None))
@@ -1350,11 +1591,10 @@ class Ui_MainWindow(object):
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab_7), QCoreApplication.translate("MainWindow", u"Gameplay Settings", None))
         self.groupBox_13.setTitle(QCoreApplication.translate("MainWindow", u"Visuals", None))
         self.blurCheck.setText(QCoreApplication.translate("MainWindow", u"Blur Removal", None))
-        self.label.setText("")
         self.groupBox_14.setTitle(QCoreApplication.translate("MainWindow", u"Audio", None))
+        self.beepCheck.setText(QCoreApplication.translate("MainWindow", u"Disable Low HP Beeps", None))
         self.musicCheck.setText(QCoreApplication.translate("MainWindow", u"Randomize Music", None))
         self.soundCheck.setText(QCoreApplication.translate("MainWindow", u"Randomize Sound Effects", None))
-        self.beepCheck.setText(QCoreApplication.translate("MainWindow", u"Disable Low HP Beeps", None))
         self.tabWidget_2.setTabText(self.tabWidget_2.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Cosmetic Settings", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_1), QCoreApplication.translate("MainWindow", u"Randomizer Settings", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Randomized Items", None))
@@ -1398,7 +1638,7 @@ class Ui_MainWindow(object):
         self.copyButton.setText(QCoreApplication.translate("MainWindow", u"Copy Settings", None))
         self.pasteButton.setText(QCoreApplication.translate("MainWindow", u"Paste Settings", None))
         self.resetButton.setText(QCoreApplication.translate("MainWindow", u"Reset Settings", None))
-        self.randomizeSettingsButton.setText(QCoreApplication.translate("MainWindow", u"Randomize Settings", None))
+        self.randomizeSettingsButton.setText(QCoreApplication.translate("MainWindow", u"Random Settings", None))
         self.randomizeButton.setText(QCoreApplication.translate("MainWindow", u"Randomize", None))
         self.menuTheme.setTitle(QCoreApplication.translate("MainWindow", u"Theme", None))
         self.menuAbout.setTitle(QCoreApplication.translate("MainWindow", u"About", None))

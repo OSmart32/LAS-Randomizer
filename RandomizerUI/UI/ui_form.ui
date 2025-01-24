@@ -133,7 +133,7 @@
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_7">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout">
+                 <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,0">
                   <property name="spacing">
                    <number>6</number>
                   </property>
@@ -148,30 +148,68 @@
                     <layout class="QVBoxLayout" name="verticalLayout_9">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_8">
-                       <property name="spacing">
-                        <number>12</number>
-                       </property>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_5">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="chestsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Chests</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_2">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="giftsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Free Gifts</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_3">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="tradeCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Trade Quest</string>
                            </property>
@@ -180,26 +218,80 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_6">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_12">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_6">
                          <item>
                           <widget class="QCheckBox" name="leavesCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Golden Leaves</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_4">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="heartsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Heart Pieces</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_5">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="shellsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <strikeout>true</strikeout>
@@ -219,16 +311,45 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_7">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_13">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_7">
                          <item>
                           <widget class="QCheckBox" name="miscCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Miscellaneous</string>
                            </property>
                           </widget>
+                         </item>
+                         <item>
+                          <spacer name="horizontalSpacer_6">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                          <item>
                           <widget class="QComboBox" name="mansionComboBox">
@@ -240,7 +361,7 @@
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>0</width>
+                             <width>150</width>
                              <height>0</height>
                             </size>
                            </property>
@@ -277,7 +398,26 @@
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_7">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="shopCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <strikeout>true</strikeout>
@@ -312,30 +452,68 @@
                     <layout class="QVBoxLayout" name="verticalLayout_11">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_10">
-                       <property name="spacing">
-                        <number>12</number>
-                       </property>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_10">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="rupCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Blupsanity</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_8">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="bossCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Boss Drops</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_9">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="instrumentCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Instruments</string>
                            </property>
@@ -344,10 +522,20 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_11">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_9">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_11">
                          <item>
                           <widget class="QComboBox" name="itemsComboBox">
                            <property name="enabled">
@@ -361,7 +549,7 @@
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>0</width>
+                             <width>150</width>
                              <height>0</height>
                             </size>
                            </property>
@@ -391,6 +579,19 @@
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_10">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QComboBox" name="owlsComboBox">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
@@ -400,7 +601,7 @@
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>0</width>
+                             <width>150</width>
                              <height>0</height>
                             </size>
                            </property>
@@ -430,7 +631,26 @@
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_11">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QLabel" name="label_5">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string/>
                            </property>
@@ -438,18 +658,43 @@
                          </item>
                         </layout>
                        </item>
+                       <item>
+                        <spacer name="verticalSpacer_23">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_30"/>
+                       </item>
                       </layout>
                      </item>
                     </layout>
                    </widget>
                   </item>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_8">
-                    <property name="spacing">
-                     <number>68</number>
-                    </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="3,1,3">
                     <item>
                      <widget class="QGroupBox" name="groupBox_3">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>300</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="title">
                        <string>Minigames</string>
                       </property>
@@ -459,9 +704,6 @@
                       <layout class="QVBoxLayout" name="verticalLayout_34">
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_33">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_9">
                            <item>
@@ -479,6 +721,19 @@
                             </widget>
                            </item>
                           </layout>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_10">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                          <item>
                           <layout class="QHBoxLayout" name="horizontalLayout_23">
@@ -506,13 +761,51 @@
                            </item>
                           </layout>
                          </item>
+                         <item>
+                          <spacer name="verticalSpacer_24">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
                         </layout>
                        </item>
                       </layout>
                      </widget>
                     </item>
                     <item>
+                     <spacer name="horizontalSpacer_12">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QGroupBox" name="groupBox_12">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>300</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="title">
                        <string>Output Settings</string>
                       </property>
@@ -522,15 +815,25 @@
                       <layout class="QVBoxLayout" name="verticalLayout_36">
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_35">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="spoilerCheck">
                            <property name="text">
                             <string>Create Spoiler Log</string>
                            </property>
                           </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_11">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                          <item>
                           <widget class="QComboBox" name="platformComboBox">
@@ -549,6 +852,19 @@
                            </item>
                           </widget>
                          </item>
+                         <item>
+                          <spacer name="verticalSpacer_25">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
                         </layout>
                        </item>
                       </layout>
@@ -566,7 +882,7 @@
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_13">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,1,1">
+                 <layout class="QVBoxLayout" name="verticalLayout_12" stretch="1,3,2">
                   <item>
                    <widget class="QGroupBox" name="groupBox_4">
                     <property name="title">
@@ -582,20 +898,64 @@
                         <layout class="QHBoxLayout" name="horizontalLayout_12">
                          <item>
                           <widget class="QCheckBox" name="enemyCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Randomize Enemies</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_13">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="enemySizesCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Randomize Enemy Sizes</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_14">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QComboBox" name="chestsComboBox">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="currentIndex">
                             <number>0</number>
                            </property>
@@ -634,30 +994,68 @@
                     <layout class="QVBoxLayout" name="verticalLayout_15">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_14">
-                       <property name="spacing">
-                        <number>12</number>
-                       </property>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_14">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="kanaletCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Open Kanalet</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_15">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="mabeCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Open Mabe</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_16">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="mazeCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Open Mamu</string>
                            </property>
@@ -666,26 +1064,80 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_15">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_14">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_15">
                          <item>
                           <widget class="QCheckBox" name="bridgeCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Completed Bridge</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_17">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="classicD2Check">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Classic D2</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_18">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="dungeonsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Shuffled Dungeons</string>
                            </property>
@@ -694,16 +1146,45 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_16">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_15">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_16">
                          <item>
                           <widget class="QCheckBox" name="consumableCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
-                            <string>Extra Consumable Drops</string>
+                            <string>Consumable Drops</string>
                            </property>
                           </widget>
+                         </item>
+                         <item>
+                          <spacer name="horizontalSpacer_19">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                         </layout>
                        </item>
@@ -723,30 +1204,68 @@
                     <layout class="QVBoxLayout" name="verticalLayout_17">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_16">
-                       <property name="spacing">
-                        <number>12</number>
-                       </property>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_17">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="petsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Bad Pets</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_20">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="fastFishingCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Fast Fishing</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_21">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="shuffledBombsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Shuffled Bombs</string>
                            </property>
@@ -755,32 +1274,99 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_18">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_16">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_18">
                          <item>
                           <widget class="QCheckBox" name="bookCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Free Book</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_22">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="stalfosCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Fast Stalfos</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_23">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="shuffledPowderCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Shuffled Powder</string>
                            </property>
                           </widget>
                          </item>
                         </layout>
+                       </item>
+                       <item>
+                        <spacer name="verticalSpacer_30">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
                        </item>
                       </layout>
                      </item>
@@ -797,7 +1383,7 @@
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_19">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <layout class="QVBoxLayout" name="verticalLayout_18" stretch="1,2,2">
                   <item>
                    <widget class="QGroupBox" name="groupBox_7">
                     <property name="title">
@@ -811,25 +1397,66 @@
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_19">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="niceBombsCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Nice Bombs</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_24">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="niceRodCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Nice Magic Rod</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_25">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="niceSwordCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Nice Sword</string>
                            </property>
@@ -853,30 +1480,68 @@
                     <layout class="QVBoxLayout" name="verticalLayout_23">
                      <item>
                       <layout class="QVBoxLayout" name="verticalLayout_22">
-                       <property name="spacing">
-                        <number>12</number>
-                       </property>
                        <item>
                         <layout class="QHBoxLayout" name="horizontalLayout_20">
-                         <property name="spacing">
-                          <number>92</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="bossAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Boss Cutscenes</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_26">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="chestAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Chest Animations</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_27">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="keyAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Key Animations</string>
                            </property>
@@ -885,19 +1550,54 @@
                         </layout>
                        </item>
                        <item>
-                        <layout class="QHBoxLayout" name="horizontalLayout_21">
-                         <property name="spacing">
-                          <number>92</number>
+                        <spacer name="verticalSpacer_2">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
                          </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
+                       <item>
+                        <layout class="QHBoxLayout" name="horizontalLayout_21">
                          <item>
                           <widget class="QCheckBox" name="songAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="text">
                             <string>Song Cutscenes</string>
                            </property>
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_28">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="pickupAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <strikeout>true</strikeout>
@@ -915,7 +1615,26 @@
                           </widget>
                          </item>
                          <item>
+                          <spacer name="horizontalSpacer_29">
+                           <property name="orientation">
+                            <enum>Qt::Horizontal</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>40</width>
+                             <height>20</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
+                         <item>
                           <widget class="QCheckBox" name="creditsAnimCheck">
+                           <property name="minimumSize">
+                            <size>
+                             <width>150</width>
+                             <height>0</height>
+                            </size>
+                           </property>
                            <property name="font">
                             <font>
                              <strikeout>true</strikeout>
@@ -934,201 +1653,267 @@
                          </item>
                         </layout>
                        </item>
+                       <item>
+                        <spacer name="verticalSpacer_26">
+                         <property name="orientation">
+                          <enum>Qt::Vertical</enum>
+                         </property>
+                         <property name="sizeHint" stdset="0">
+                          <size>
+                           <width>20</width>
+                           <height>40</height>
+                          </size>
+                         </property>
+                        </spacer>
+                       </item>
                       </layout>
                      </item>
                     </layout>
                    </widget>
                   </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_22">
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_24">
+                      <item>
+                       <widget class="QGroupBox" name="groupBox_9">
+                        <property name="title">
+                         <string>Item Pool</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_28">
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_27">
+                           <item>
+                            <widget class="QComboBox" name="poolComboBox">
+                             <property name="enabled">
+                              <bool>false</bool>
+                             </property>
+                             <property name="font">
+                              <font>
+                               <strikeout>true</strikeout>
+                              </font>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">color: rgb(80, 80, 80);</string>
+                             </property>
+                             <property name="currentIndex">
+                              <number>1</number>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>Item Pool:  Plentiful</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Item Pool:  Standard</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Item Pool:  Reduced</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_17">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="trapsComboBox">
+                             <item>
+                              <property name="text">
+                               <string>Traps:  None</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Traps:  Few</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Traps:  Many</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Traps:  Trapsanity</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_27">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_25">
+                      <item>
+                       <widget class="QGroupBox" name="groupBox_10">
+                        <property name="title">
+                         <string>Shop</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_30">
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_29">
+                           <item>
+                            <widget class="QCheckBox" name="fastStealingCheck">
+                             <property name="text">
+                              <string>Fast Stealing</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_18">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QComboBox" name="stealingComboBox">
+                             <property name="currentIndex">
+                              <number>2</number>
+                             </property>
+                             <item>
+                              <property name="text">
+                               <string>Stealing:  Always</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Stealing:  Never</string>
+                              </property>
+                             </item>
+                             <item>
+                              <property name="text">
+                               <string>Stealing:  Normal</string>
+                              </property>
+                             </item>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_28">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                    <item>
+                     <layout class="QVBoxLayout" name="verticalLayout_26">
+                      <item>
+                       <widget class="QGroupBox" name="groupBox_11">
+                        <property name="title">
+                         <string>Other</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_32">
+                         <item>
+                          <layout class="QVBoxLayout" name="verticalLayout_31">
+                           <item>
+                            <widget class="QCheckBox" name="ohkoCheck">
+                             <property name="text">
+                              <string>One Hit KO Mode</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_19">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                           <item>
+                            <widget class="QCheckBox" name="endingCheck">
+                             <property name="text">
+                              <string>Perfect Ending</string>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <spacer name="verticalSpacer_29">
+                             <property name="orientation">
+                              <enum>Qt::Vertical</enum>
+                             </property>
+                             <property name="sizeHint" stdset="0">
+                              <size>
+                               <width>20</width>
+                               <height>40</height>
+                              </size>
+                             </property>
+                            </spacer>
+                           </item>
+                          </layout>
+                         </item>
+                        </layout>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </item>
                  </layout>
-                </item>
-                <item>
-                 <layout class="QHBoxLayout" name="horizontalLayout_22">
-                  <property name="spacing">
-                   <number>68</number>
-                  </property>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_24">
-                    <item>
-                     <widget class="QGroupBox" name="groupBox_9">
-                      <property name="title">
-                       <string>Item Pool</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_28">
-                       <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_27">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
-                         <item>
-                          <widget class="QComboBox" name="poolComboBox">
-                           <property name="enabled">
-                            <bool>false</bool>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <strikeout>true</strikeout>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color: rgb(80, 80, 80);</string>
-                           </property>
-                           <property name="currentIndex">
-                            <number>1</number>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>Item Pool:  Plentiful</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Item Pool:  Standard</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Item Pool:  Reduced</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="trapsComboBox">
-                           <item>
-                            <property name="text">
-                             <string>Traps:  None</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Traps:  Few</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Traps:  Many</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Traps:  Trapsanity</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_25">
-                    <item>
-                     <widget class="QGroupBox" name="groupBox_10">
-                      <property name="title">
-                       <string>Shop</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_30">
-                       <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_29">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
-                         <item>
-                          <widget class="QCheckBox" name="fastStealingCheck">
-                           <property name="text">
-                            <string>Fast Stealing</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QComboBox" name="stealingComboBox">
-                           <property name="currentIndex">
-                            <number>2</number>
-                           </property>
-                           <item>
-                            <property name="text">
-                             <string>Stealing:  Always</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Stealing:  Never</string>
-                            </property>
-                           </item>
-                           <item>
-                            <property name="text">
-                             <string>Stealing:  Normal</string>
-                            </property>
-                           </item>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QVBoxLayout" name="verticalLayout_26">
-                    <item>
-                     <widget class="QGroupBox" name="groupBox_11">
-                      <property name="title">
-                       <string>Other</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <layout class="QVBoxLayout" name="verticalLayout_32">
-                       <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_31">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
-                         <item>
-                          <widget class="QCheckBox" name="ohkoCheck">
-                           <property name="text">
-                            <string>One Hit KO Mode</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QCheckBox" name="endingCheck">
-                           <property name="text">
-                            <string>Perfect Ending</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
-                       </item>
-                      </layout>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                 </layout>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_2">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
                 </item>
                </layout>
               </widget>
@@ -1138,14 +1923,23 @@
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_49">
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_48">
+                 <layout class="QVBoxLayout" name="verticalLayout_48" stretch="1,2">
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_29">
-                    <property name="spacing">
-                     <number>68</number>
-                    </property>
+                   <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="3,1,3">
                     <item>
                      <widget class="QGroupBox" name="groupBox_13">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>300</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="title">
                        <string>Visuals</string>
                       </property>
@@ -1155,9 +1949,6 @@
                       <layout class="QVBoxLayout" name="verticalLayout_51">
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_50">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
                          <item>
                           <widget class="QCheckBox" name="blurCheck">
                            <property name="text">
@@ -1166,11 +1957,17 @@
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLabel" name="label">
-                           <property name="text">
-                            <string/>
+                          <spacer name="verticalSpacer_20">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
                            </property>
-                          </widget>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                         </layout>
                        </item>
@@ -1178,7 +1975,32 @@
                      </widget>
                     </item>
                     <item>
+                     <spacer name="horizontalSpacer_30">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QGroupBox" name="groupBox_14">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>300</width>
+                        <height>0</height>
+                       </size>
+                      </property>
                       <property name="title">
                        <string>Audio</string>
                       </property>
@@ -1188,15 +2010,50 @@
                       <layout class="QVBoxLayout" name="verticalLayout_53">
                        <item>
                         <layout class="QVBoxLayout" name="verticalLayout_52">
-                         <property name="spacing">
-                          <number>12</number>
-                         </property>
+                         <item>
+                          <widget class="QCheckBox" name="beepCheck">
+                           <property name="font">
+                            <font>
+                             <strikeout>false</strikeout>
+                            </font>
+                           </property>
+                           <property name="text">
+                            <string>Disable Low HP Beeps</string>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_21">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
+                         </item>
                          <item>
                           <widget class="QCheckBox" name="musicCheck">
                            <property name="text">
                             <string>Randomize Music</string>
                            </property>
                           </widget>
+                         </item>
+                         <item>
+                          <spacer name="verticalSpacer_22">
+                           <property name="orientation">
+                            <enum>Qt::Vertical</enum>
+                           </property>
+                           <property name="sizeHint" stdset="0">
+                            <size>
+                             <width>20</width>
+                             <height>40</height>
+                            </size>
+                           </property>
+                          </spacer>
                          </item>
                          <item>
                           <widget class="QCheckBox" name="soundCheck">
@@ -1213,21 +2070,6 @@
                            </property>
                            <property name="checkable">
                             <bool>false</bool>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QCheckBox" name="beepCheck">
-                           <property name="font">
-                            <font>
-                             <strikeout>true</strikeout>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">color: rgb(80, 80, 80);</string>
-                           </property>
-                           <property name="text">
-                            <string>Disable Low HP Beeps</string>
                            </property>
                           </widget>
                          </item>
@@ -1904,7 +2746,7 @@
           <item>
            <widget class="QPushButton" name="randomizeSettingsButton">
             <property name="text">
-             <string>Randomize Settings</string>
+             <string>Random Settings</string>
             </property>
            </widget>
           </item>
