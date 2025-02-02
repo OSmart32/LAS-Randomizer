@@ -1,0 +1,118 @@
+# 0.42
+
+chestsCheck:
+  Chests outside of dungeons can contain progress items
+giftsCheck:
+  Free gifts from NPCs can contain progress items
+tradeCheck:
+  Trade Quest checks can contain progress items
+leavesCheck:
+  Golden Leaves can become progress items
+heartsCheck:
+  Freestanding Heart Pieces can become progress items
+shellsCheck:
+  Freestanding Seashells can become progress items
+miscCheck:
+  Freestanding miscellaneous items can become progress items
+mansionComboBox:
+  This controls the maximum number of seashells that the Seashell Mansion may require
+shopCheck:
+  The shop can sell progress items
+rupCheck:
+  The 28 blue rupees in Color Dungeon can become progress items
+bossCheck:
+  Bosses can drop progress items
+instrumentCheck:
+  Instruments will be randomized
+itemsComboBox:
+  This controls where dungeon items can be found
+owlsComboBox:
+  This controls if Owl Statues can give items
+dampeCheck:
+  Rewards from completing chamber dungeons can be progress items
+rapidsCheck:
+  Items inside and from the Rapids Race can be progress items
+fishingCheck:
+  Rewards from the fishing minigame can be progress items
+trendyCheck:
+  Trendy game can contain progress items
+spoilerCheck:
+  A spoiler log will be generated
+enemyCheck:
+  Randomizes enemies
+enemySizesCheck:
+  Randomizes enemy sizes
+chestsComboBox:
+  This controls if chest sizes and/or textures will reflect the contents
+kanaletCheck:
+  The Kanalet Castle gate will always be open
+mabeCheck:
+  Opens up Mabe Village from the start of the game
+mazeCheck:
+  Sign Maze will already be completed
+bridgeCheck:
+  The bridge next to Kanalet Castle will already be built
+classicD2Check:
+  Adds back the flower in front of D2 that the remake replaced with a rock
+dungeonsCheck:
+  Randomizes the front entrances to dungeons
+consumableCheck:
+  Allows finding powder, bombs, and arrows by cutting grass
+petsCheck:
+  Allows companions to go inside dungeons with Link
+fastFishingCheck:
+  Removes the instrument requirements for finding fish
+shuffledBombsCheck:
+  Bombs can not be obtained until the player finds them as an item check
+bookCheck:
+  The book revealing the egg path will not need the Magnifying Lens to read
+stalfosCheck:
+  The first 3 Master Stalfos fights are already completed
+shuffledPowderCheck:
+  Magic Powder can not be obtained until the player finds it as an item check
+niceBombsCheck:
+  Bombs can be placed with no cooldown
+niceRodCheck:
+  The Magic Rod can attack with no cooldown
+niceSwordCheck:
+  Lv1 Sword can shoot beams at full health
+bossAnimCheck:
+  Boss animations are sped up
+chestAnimCheck:
+  Chest animations are sped up
+keyAnimCheck:
+  Key animations are sped up
+songAnimCheck:
+  Song learning cutscenes will be skipped
+pickupAnimCheck:
+  Animations from getting items will be sped up
+creditsAnimCheck:
+  The credits will be sped up
+poolComboBox:
+  This controls how many progress items will be added to the item pool
+trapsComboBox:
+  This controls how many traps will be added to the item pool
+fastStealingCheck:
+  The shopkeeper will not kill the player after stealing
+stealingComboBox:
+  This controls the requirements for being able to steal from the shop
+ohkoCheck:
+  Link will die in a single hit
+instrumentsComboBox:
+  This controls how many instruments the player starts with
+dungeonItemsComboBox:
+  This controls what dungeon items the player starts with
+rupeesSpinBox:
+  This controls how many rupees the player starts with
+logicComboBox:
+  This controls how advanced the logic will be
+blurCheck:
+  Removes the blur around the edge of the screen
+musicCheck:
+  Randomizes the music
+soundCheck:
+  Randomizes sound effects
+beepCheck:
+  Removes the low health sound effect
+platformComboBox:
+  This controls which platform the randomizer generates for

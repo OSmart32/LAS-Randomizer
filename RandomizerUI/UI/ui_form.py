@@ -16,11 +16,11 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QComboBox, QGroupBox,
-    QHBoxLayout, QLabel, QLineEdit, QListWidget,
-    QListWidgetItem, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QSpacerItem, QSpinBox,
-    QTabWidget, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QCheckBox, QComboBox,
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QListWidget, QListWidgetItem, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
+    QSpinBox, QTabWidget, QVBoxLayout, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1112,6 +1112,7 @@ class Ui_MainWindow(object):
 
         self.randomItemsList = QListWidget(self.tab_2)
         self.randomItemsList.setObjectName(u"randomItemsList")
+        self.randomItemsList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_39.addWidget(self.randomItemsList)
 
@@ -1195,6 +1196,7 @@ class Ui_MainWindow(object):
 
         self.startingItemsList = QListWidget(self.tab_2)
         self.startingItemsList.setObjectName(u"startingItemsList")
+        self.startingItemsList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_41.addWidget(self.startingItemsList)
 
@@ -1227,6 +1229,7 @@ class Ui_MainWindow(object):
 
         self.includedLocationsList = QListWidget(self.tab_3)
         self.includedLocationsList.setObjectName(u"includedLocationsList")
+        self.includedLocationsList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_42.addWidget(self.includedLocationsList)
 
@@ -1276,6 +1279,7 @@ class Ui_MainWindow(object):
 
         self.excludedLocationsList = QListWidget(self.tab_3)
         self.excludedLocationsList.setObjectName(u"excludedLocationsList")
+        self.excludedLocationsList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_44.addWidget(self.excludedLocationsList)
 
@@ -1308,6 +1312,7 @@ class Ui_MainWindow(object):
 
         self.includedLogicList = QListWidget(self.tab_4)
         self.includedLogicList.setObjectName(u"includedLogicList")
+        self.includedLogicList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_45.addWidget(self.includedLogicList)
 
@@ -1365,6 +1370,7 @@ class Ui_MainWindow(object):
 
         self.excludedLogicList = QListWidget(self.tab_4)
         self.excludedLogicList.setObjectName(u"excludedLogicList")
+        self.excludedLogicList.setSelectionMode(QAbstractItemView.ExtendedSelection)
 
         self.verticalLayout_47.addWidget(self.excludedLogicList)
 

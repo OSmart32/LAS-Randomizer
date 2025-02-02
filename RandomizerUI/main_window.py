@@ -1,7 +1,7 @@
 from PySide6 import QtCore, QtWidgets, QtGui
 from RandomizerUI.UI.ui_form import Ui_MainWindow
 from RandomizerUI.progress_window import ProgressWindow
-from RandomizerUI.update import UpdateProcess, LogicUpdateProcess
+from RandomizerUI.update import UpdateProcess, LogicUpdateProcess, SettingsUpdateProcess
 from RandomizerCore.randomizer_data import *
 from re import sub
 
@@ -27,7 +27,9 @@ class MainWindow(QtWidgets.QMainWindow):
         # Keep track of stuff
         self.mode = str('light')
         self.logic_version = LOGIC_VERSION
-        self.logic_defs = LOGIC_RAW
+        self.logic_defs = yaml.safe_load(LOGIC_RAW)
+        self.desc_version = DESC_VERSION
+        self.descriptions = yaml.safe_load(DESC_RAW)
         self.excluded_checks = set()
         self.starting_gear = list()
         self.overworld_owls = bool(False)
@@ -160,7 +162,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         if event.type() == QtCore.QEvent.Type.HoverEnter:
             self.current_option = source.objectName()
-            self.ui.explanationLabel.setText(source.whatsThis())
+            self.ui.explanationLabel.setText(self.descriptions[self.current_option])
             if self.mode == 'light':
                 self.ui.explanationLabel.setStyleSheet('color: black;')
             else:
@@ -183,6 +185,7 @@ class MainWindow(QtWidgets.QMainWindow):
     def showUpdate(self, update):
         if not update:
             self.checkLogic()
+            self.checkDescriptions()
             return
         
         update_menu = self.ui.menuBar.addMenu('NEW VERSION AVAILABLE!')
@@ -210,36 +213,69 @@ class MainWindow(QtWidgets.QMainWindow):
             message.setStyleSheet(DARK_STYLESHEET)
         
         message.exec()
-    
-    
-    def checkLogic(self):
+
+
+    def checkDescriptions(self) -> None:
+        self.desc_process = SettingsUpdateProcess(ver=self.desc_version)
+        self.desc_process.can_update.connect(self.showDescUpdate)
+        self.desc_process.give_desc.connect(self.obtainDesc)
+        self.desc_process.start()
+        self.desc_process.exec()
+
+
+    def obtainDesc(self, version_and_desc: tuple) -> None:
+        self.desc_version, desc = version_and_desc
+        self.descriptions = yaml.safe_load(desc)
+        with open(os.path.join(RESOURCE_PATH, 'descriptions.yml'), 'w+') as f:
+            f.write(f'# {self.desc_version}\n')
+            f.write(desc)
+
+
+    def showDescUpdate(self, update: bool) -> None:
+        if not update:
+            return
+
+        message = QtWidgets.QMessageBox()
+        message.setWindowTitle("Updater")
+
+        if self.mode == 'light':
+            message.setStyleSheet(LIGHT_STYLESHEET)
+        else:
+            message.setStyleSheet(DARK_STYLESHEET)
+
+        message.setText('UI has been updated')
+        message.exec()
+
+
+    def checkLogic(self) -> None:
         self.logic_process = LogicUpdateProcess(ver=self.logic_version)
         self.logic_process.can_update.connect(self.showLogicUpdate)
         self.logic_process.give_logic.connect(self.obtainLogic)
         self.logic_process.start()
         self.logic_process.exec()
-    
 
-    def obtainLogic(self, version_and_logic):
-        self.logic_version = version_and_logic[0]
-        self.logic_defs = version_and_logic[1]
+
+    def obtainLogic(self, version_and_logic: tuple) -> None:
+        self.logic_version, logic_defs = version_and_logic
+        self.logic_defs = yaml.safe_load(logic_defs)
         with open(LOGIC_PATH, 'w+') as f:
             f.write(f'# {self.logic_version}\n')
-            f.write(self.logic_defs)
+            f.write(logic_defs)
+        
 
 
-    def showLogicUpdate(self, update):
+    def showLogicUpdate(self, update: bool) -> None:
         if not update:
             return
-        
+
         message = QtWidgets.QMessageBox()
-        message.setWindowTitle("Logic Updater")
-        
+        message.setWindowTitle("Updater")
+
         if self.mode == 'light':
             message.setStyleSheet(LIGHT_STYLESHEET)
         else:
             message.setStyleSheet(DARK_STYLESHEET)
-        
+
         message.setText('Logic has been updated')
         message.exec()
     
@@ -338,31 +374,28 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # Randomize Button Clicked
     def randomizeButton_Clicked(self):
-        
         # verify RomFS before shuffling items
         rom_path = self.ui.romLineEdit.text()
 
         if not os.path.exists(rom_path):
             self.showUserError('Romfs path does not exist!')
             return
-        
+
         if os.path.exists(os.path.join(rom_path, 'romfs')):
             rom_path = os.path.join(rom_path, 'romfs')
-        
+
         if not os.path.isfile(f'{rom_path}/region_common/event/PlayerStart.bfevfl'):
             self.showUserError('RomFS path is not valid!')
             return
-        
+
         if not os.path.exists(self.ui.outLineEdit.text()):
             self.showUserError('Output path does not exist!')
             return
-        
+
         if not os.path.isfile(LOGIC_PATH):
             self.showUserError('Logic file not found!')
             return
-        
-        logic_defs = yaml.safe_load(self.logic_defs)
-        
+
         seed = self.ui.seedLineEdit.text().strip()
         if seed.lower() in ('', 'random'):
             random.seed()
@@ -375,13 +408,13 @@ class MainWindow(QtWidgets.QMainWindow):
                 if c not in valid_chars:
                     self.showUserError(f"Invalid seed character: {c}")
                     return
-        
+
         # load mod settings from the UI, no need to decode settings string
         settings = settings_manager.loadRandomizerSettings(self, seed)
         settings_string = self.ui.settingsLineEdit.text()
         outdir = f"{self.ui.outLineEdit.text()}/{settings['seed']}"
-        self.progress_window = ProgressWindow(rom_path, outdir, ITEM_DEFS, logic_defs, settings, settings_string)
-        self.progress_window.setFixedSize(472, 125)
+        self.progress_window =\
+            ProgressWindow(rom_path, outdir, ITEM_DEFS, self.logic_defs, settings, settings_string)
         self.progress_window.setWindowTitle(f"{settings['seed']}")
 
         if self.mode == 'light':

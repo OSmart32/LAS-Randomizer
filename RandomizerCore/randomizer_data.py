@@ -48,6 +48,10 @@ with open(os.path.join(RESOURCE_PATH, 'adjectives.txt'), 'r') as f:
 with open(os.path.join(RESOURCE_PATH, 'characters.txt'), 'r') as f:
     CHARACTERS = f.read().splitlines()
 
+with open(os.path.join(RESOURCE_PATH, 'descriptions.yml'), 'r') as f:
+    DESC_VERSION = float(f.readline().strip('#'))
+    DESC_RAW = f.read()
+
 try:
     with open(SETTINGS_PATH, 'r') as settingsFile:
         SETTINGS = yaml.safe_load(settingsFile)

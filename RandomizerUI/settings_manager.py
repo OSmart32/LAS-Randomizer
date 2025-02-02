@@ -63,9 +63,8 @@ BASE_OPTIONS = {
     'stealingComboBox': 0, # Players often feel frustrated not being able to steal, not knowing sword is needed
 
     'ohkoCheck': False,
-    # 'endingCheck': False, # Not Yet Implemented
 
-    'instrumentsComboBox': 0,
+    'instrumentsComboBox': 0, # might be changed to #instruments for egg
     'dungeonItemsComboBox': 3, # Beginner setting to start with maps, compasses, beaks
     'rupeesSpinBox': 0,
 

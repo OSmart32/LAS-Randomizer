@@ -2137,7 +2137,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="randomItemsList"/>
+               <widget class="QListWidget" name="randomItemsList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2346,7 +2350,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="startingItemsList"/>
+               <widget class="QListWidget" name="startingItemsList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2388,7 +2396,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="includedLocationsList"/>
+               <widget class="QListWidget" name="includedLocationsList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2491,7 +2503,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="excludedLocationsList"/>
+               <widget class="QListWidget" name="excludedLocationsList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2533,7 +2549,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="includedLogicList"/>
+               <widget class="QListWidget" name="includedLogicList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>
@@ -2668,7 +2688,11 @@
                </widget>
               </item>
               <item>
-               <widget class="QListWidget" name="excludedLogicList"/>
+               <widget class="QListWidget" name="excludedLogicList">
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::ExtendedSelection</enum>
+                </property>
+               </widget>
               </item>
              </layout>
             </item>

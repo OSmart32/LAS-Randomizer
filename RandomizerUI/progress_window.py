@@ -2,8 +2,7 @@ import platform
 import subprocess
 from pathlib import Path
 
-from PySide6 import QtWidgets
-from RandomizerUI.UI.ui_progress_form import Ui_ProgressWindow
+from PySide6 import QtCore, QtWidgets
 from RandomizerCore.shuffler import ItemShuffler
 from RandomizerCore.mod_generator import ModsProcess
 import os
@@ -13,11 +12,9 @@ import shutil
 
 
 class ProgressWindow(QtWidgets.QMainWindow):
-    
     def __init__(self, rom_path, out_dir, item_defs, logic_defs, settings, settings_string):
         super (ProgressWindow, self).__init__()
-        self.ui = Ui_ProgressWindow()
-        self.ui.setupUi(self)
+        self.setupUi()
 
         self.rom_path : str = rom_path
         self.out_dir : str = out_dir
@@ -28,11 +25,8 @@ class ProgressWindow(QtWidgets.QMainWindow):
         self.logic_defs = copy.deepcopy(logic_defs)
         self.settings = copy.deepcopy(settings)
         self.settings_string : str = settings_string
-        
-        self.num_of_mod_tasks = 255
 
-        self.ui.openOutputFolder.setVisible(False)
-        self.ui.openOutputFolder.clicked.connect(self.openOutputFolderButtonClicked)
+        self.num_of_mod_tasks = 255
 
         # if not settings['shuffle-companions']:
         #     self.num_of_mod_files += 8
@@ -84,8 +78,8 @@ class ProgressWindow(QtWidgets.QMainWindow):
 
         # initialize the shuffler thread
         self.current_job = 'shuffler'
-        self.ui.progressBar.setMaximum(0) # busy status instead of direct progress
-        self.ui.label.setText(f'Shuffling item placements...')
+        self.progressBar.setMaximum(0) # busy status instead of direct progress
+        self.label.setText(f'Shuffling item placements...')
         self.shuffler_process =\
             ItemShuffler(self.out_dir, self.seed, self.logic, self.settings, self.item_defs, self.logic_defs)
         self.shuffler_process.setParent(self)
@@ -93,11 +87,28 @@ class ProgressWindow(QtWidgets.QMainWindow):
         self.shuffler_process.is_done.connect(self.shufflerDone)
         self.shuffler_process.error.connect(self.shufflerError)
         self.shuffler_process.start() # start the item shuffler
-    
+
+
+    def setupUi(self):
+        self.label = QtWidgets.QLabel("Getting ready...", self)
+        self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
+        self.progressBar = QtWidgets.QProgressBar(self)
+        self.outputButton = QtWidgets.QPushButton("Open output folder", self)
+        self.outputButton.setVisible(False)
+        self.outputButton.clicked.connect(self.openOutputFolderButtonClicked)
+        v_layout = QtWidgets.QVBoxLayout()
+        v_layout.addWidget(self.label, 2)
+        v_layout.addWidget(self.progressBar, 1)
+        v_layout.addWidget(self.outputButton, 1)
+        widget = QtWidgets.QWidget()
+        widget.setLayout(v_layout)
+        self.setCentralWidget(widget)
+        self.setMinimumSize(472, 125)
+
 
     # receives the int signal as a parameter named progress
     def updateProgress(self, progress):
-        self.ui.progressBar.setValue(progress)
+        self.progressBar.setValue(progress)
     
 
     # receive the placements from the shuffler thread to the modgenerator
@@ -119,7 +130,7 @@ class ProgressWindow(QtWidgets.QMainWindow):
     # receive signals when threads are done
     def shufflerDone(self):
         if self.shuffle_error:
-            self.ui.label.setText("Something went wrong! Please report this to either GitHub or Discord!")
+            self.label.setText("Something went wrong! Please report this to either GitHub or Discord!")
             self.done = True
             return
         
@@ -130,11 +141,11 @@ class ProgressWindow(QtWidgets.QMainWindow):
         
         # initialize the modgenerator thread
         self.current_job = 'modgenerator'
-        self.ui.progressBar.setValue(0)
-        self.ui.progressBar.setMaximum(self.num_of_mod_tasks)
-        self.ui.progressBar.setTextVisible(True)
-        self.ui.progressBar.setFormat("%p%")
-        self.ui.label.setText(f'Generating mod files...')
+        self.progressBar.setValue(0)
+        self.progressBar.setMaximum(self.num_of_mod_tasks)
+        self.progressBar.setTextVisible(True)
+        self.progressBar.setFormat("%p%")
+        self.label.setText(f'Generating mod files...')
         self.mods_process = ModsProcess(self.placements, self.rom_path, f'{self.out_dir}', self.item_defs, self.seed, self.randstate)
         self.mods_process.setParent(self)
         self.mods_process.progress_update.connect(self.updateProgress)
@@ -155,24 +166,24 @@ class ProgressWindow(QtWidgets.QMainWindow):
 
     def modsDone(self):
         if self.mods_error:
-            self.ui.label.setText("Error detected! Please check that your romfs are valid!")
+            self.label.setText("Error detected! Please check that your romfs are valid!")
             if os.path.exists(self.out_dir): # delete files if user canceled
                 shutil.rmtree(self.out_dir, ignore_errors=True)
             self.done = True
             return
         
         if self.cancel:
-            self.ui.label.setText("Canceling...")
+            self.label.setText("Canceling...")
             if os.path.exists(self.out_dir): # delete files if user canceled
                 shutil.rmtree(self.out_dir, ignore_errors=True)
             self.done = True
             self.close()
             return
         
-        self.ui.progressBar.setValue(self.num_of_mod_tasks)
-        self.ui.label.setText("All done! Check the README for instructions on how to play!")
-        self.ui.progressBar.setVisible(False)
-        self.ui.openOutputFolder.setVisible(True)
+        self.progressBar.setValue(self.num_of_mod_tasks)
+        self.label.setText("All done! Check the README for instructions on how to play!")
+        self.progressBar.setVisible(False)
+        self.outputButton.setVisible(True)
         self.done = True
 
 
@@ -183,7 +194,7 @@ class ProgressWindow(QtWidgets.QMainWindow):
         else:
             event.ignore()
             self.cancel = True
-            self.ui.label.setText('Canceling...')
+            self.label.setText('Canceling...')
             if self.current_job == 'shuffler':
                 self.shuffler_process.stop()
             elif self.current_job == 'modgenerator':
