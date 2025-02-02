@@ -1,7 +1,6 @@
 from RandomizerCore.Randomizers import data
 import RandomizerCore.Tools.oead_tools as oead_tools
-import copy
-
+import copy, random
 
 
 def makeNpcChanges(npc, placements, settings):
@@ -212,7 +211,8 @@ def makeNpcChanges(npc, placements, settings):
         npc['graphics']['model'] = '$7'
         return
 
-def makeNewNpcs(npc_sheet, placements, item_defs):
+
+def makeNewNpcs(npc_sheet, placements, item_defs, rand_state: tuple) -> tuple:
     """We change the graphics for some items, so create new npcs to show the correct model when obtaining them"""
 
     dummy = copy.deepcopy(DUMMY_NPC)
@@ -236,22 +236,27 @@ def makeNewNpcs(npc_sheet, placements, item_defs):
     dummy['graphics']['model'] = 'Stick'
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
 
+    random.setstate(rand_state) # set state so that any traps will pick a seeded random model
+
     item = placements['syrup']
     dummy['symbol'] = 'SyrupPowder'
-    dummy['graphics']['path'] = item_defs[item]['model-path']
-    dummy['graphics']['model'] = item_defs[item]['model-name']
+    path, model = getItemGraphics(item_defs[item])
+    dummy['graphics']['path'] = path
+    dummy['graphics']['model'] = model
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
 
     item = placements['walrus']
     dummy['symbol'] = 'WalrusShell'
-    dummy['graphics']['path'] = item_defs[item]['model-path']
-    dummy['graphics']['model'] = item_defs[item]['model-name']
+    path, model = getItemGraphics(item_defs[item])
+    dummy['graphics']['path'] = path
+    dummy['graphics']['model'] = model
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
 
     item = placements['bay-fisherman']
     dummy['symbol'] = 'FishNecklace'
-    dummy['graphics']['path'] = item_defs[item]['model-path']
-    dummy['graphics']['model'] = item_defs[item]['model-name']
+    path, model = getItemGraphics(item_defs[item])
+    dummy['graphics']['path'] = path
+    dummy['graphics']['model'] = model
     npc_sheet['values'].append(oead_tools.dictToStruct(dummy))
 
     # bombBag['symbol'] = 'ObjBombBag'
@@ -264,7 +269,16 @@ def makeNewNpcs(npc_sheet, placements, item_defs):
     # arrowBag['graphics']['model'] = 'ArrowBag'
     # npc_sheet['values'].append(oead_tools.dictToStruct(arrowBag))
 
+    return random.getstate()
 
+
+def getItemGraphics(item_info) -> tuple:
+    path = item_info['model-path']
+    model = item_info['model-name']
+    if model == 'ToolShopkeeper':
+        model = random.choice(list(data.ITEM_MODELS.keys()))
+        path = data.ITEM_MODELS[model]
+    return path, model
 
 
 DUMMY_NPC = {

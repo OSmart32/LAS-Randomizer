@@ -125,7 +125,7 @@ class ModsProcess(QtCore.QThread):
             if self.thread_active: self.makeSmallKeyChanges() # also handles the golden leaves
             if self.thread_active: self.makeHeartPieceChanges()
             if self.thread_active: self.makeInstrumentChanges()
-            # if self.thread_active: self.makeShopChanges()
+            if self.thread_active: self.makeShopChanges()
             
             if self.thread_active: self.makeOwlStatueChanges()
             if self.thread_active: self.makeTelephoneChanges()
@@ -1107,7 +1107,7 @@ class ModsProcess(QtCore.QThread):
                     break
                 npcs.makeNpcChanges(npc, self.placements, self.settings)
             
-            npcs.makeNewNpcs(sheet, self.placements, self.item_defs)
+            random.setstate(npcs.makeNewNpcs(sheet, self.placements, self.item_defs, random.getstate()))
             self.writeFile('Npc.gsheet', sheet)
 
         if self.thread_active:
@@ -1190,15 +1190,15 @@ class ModsProcess(QtCore.QThread):
 
             dummy['symbol'] = 'ShopShovel'
             dummy['itemID'] = 68
-            dummy['gettingFlag'] = ''
+            dummy['gettingFlag'] = 'ShopShovelSteal'
             sheet['values'].append(oead_tools.dictToStruct(dummy))
             dummy['symbol'] = 'ShopBow'
             dummy['itemID'] = 69
-            # dummy['gettingFlag'] = 'ShopBowSteal'
+            dummy['gettingFlag'] = 'ShopBowSteal'
             sheet['values'].append(oead_tools.dictToStruct(dummy))
             dummy['symbol'] = 'ShopHeart'
             dummy['itemID'] = 70
-            # dummy['gettingFlag'] = 'ShopHeartSteal'
+            dummy['gettingFlag'] = 'ShopHeartSteal'
             sheet['values'].append(oead_tools.dictToStruct(dummy))
 
             # seashell mansion presents need traps to be items entries each with a unique ID, otherwise gives a GreenRupee
@@ -1624,34 +1624,29 @@ class ModsProcess(QtCore.QThread):
 
 
 
-    # def makeShopChanges(self):
-    #     """Edits the shop items datasheet as well as event files relating to buying/stealing
+    def makeShopChanges(self):
+        """Edits the shop items datasheet as well as event files relating to buying/stealing
         
-    #     NOT FINISHED!!!
+        NOT FINISHED!!!
         
-    #     This needs ASM to set the GettingFlag of the stolen items"""
+        This needs ASM to set the GettingFlag of the stolen items"""
 
-    #     if self.thread_active:
-    #         sheet = self.readFile('ShopItem.gsheet')
-    #         shop.makeDatasheetChanges(sheet, self.placements, self.item_defs)
-    #         self.writeFile('ShopItem.gsheet', sheet)
+        if self.thread_active:
+            sheet = self.readFile('ShopItem.gsheet')
+            random.setstate(shop.makeDatasheetChanges(sheet, self.placements, self.item_defs, random.getstate()))
+            self.writeFile('ShopItem.gsheet', sheet)
         
-    #     # ### ToolShopkeeper event - edit events related to manually buying items
-    #     # if self.thread_active:
-    #     #     flow = event_tools.readFlow(f'{self.rom_path}/region_common/event/ToolShopkeeper.bfevfl')
-    #     #     shop.makeBuyingEventChanges(flow.flowchart, self.placements, self.item_defs)
-    #     #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
-    #     #     self.progress_value += 1 # update progress bar
-    #     #     self.progress_update.emit(self.progress_value)
+        ### ToolShopkeeper event - edit events related to manually buying items
+        if self.thread_active:
+            flow = self.readFile('ToolShopkeeper.bfevfl')
+            shop.makeBuyingEventChanges(flow.flowchart, self.placements, self.item_defs)
+            self.writeFile('ToolShopkeeper.bfevfl', flow)
         
-    #     # ### PlayerStart event - edit events related to stealing items
-    #     # if self.thread_active:
-    #     #     # flow = event_tools.readFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl')
-    #     #     shop.makeStealingEventChanges(flow.flowchart, self.placements, self.item_defs)
-    #     #     event_tools.writeFlow(f'{self.romfs_dir}/region_common/event/ToolShopkeeper.bfevfl', flow)
-    #     #     # event_tools.writeFlow(f'{self.out_dir}/region_common/event/PlayerStart.bfevfl', flow)
-    #     #     self.progress_value += 1 # udate progress bar
-    #     #     self.progress_update.emit(self.progress_value)
+        ### PlayerStart event - edit events related to stealing items
+        if self.thread_active:
+            flow = self.readFile('PlayerStart.bfevfl')
+            shop.makeStealingEventChanges(flow.flowchart, self.placements, self.item_defs)
+            self.writeFile('PlayerStart.bfevfl', flow)
     
 
 

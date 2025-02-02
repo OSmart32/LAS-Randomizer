@@ -6,7 +6,8 @@ import copy
 import random
 import traceback
 
-TEST_PLACEMENTS = { # example: testing specific items in chests
+TEST_PLACEMENTS = {
+    # 'shop-slot3-1st': 'zap-trap'
     # 'woods-crossing-cave-chest': 'bottle',
     # 'woods-south-chest': 'bottle',
     # 'beach-chest': 'bottle'
@@ -55,6 +56,10 @@ class ItemShuffler(QtCore.QThread):
         self.vanilla_locations.add('trendy-prize-5')
         self.vanilla_locations.add('trendy-prize-6')
         self.vanilla_locations.add('trendy-prize-final')
+
+        self.vanilla_locations.remove('shop-slot3-1st')
+        self.vanilla_locations.remove('shop-slot3-2nd')
+        self.vanilla_locations.remove('shop-slot6')
 
         # if blupsanity is not enabled, add the checks to the vanilla locations
         if not self.settings['blupsanity']:
@@ -681,7 +686,7 @@ class ItemShuffler(QtCore.QThread):
                 if not success:
                     items.insert(items.index('seashell'), items[0])
                     items.pop(0)
-                        
+            
             placement_tracker.append('tarin')
             
             if verbose: print(items[0]+' -> tarin')

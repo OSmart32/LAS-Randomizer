@@ -412,12 +412,12 @@ ITEM_MODELS = {
     'Shield': 'ItemShield.bfres',
     # 'MirrorShield': 'ItemMirrorShield.bfres',
     'Bomb': 'ItemBomb.bfres',
-    # 'Bow': 'ItemBow.bfres',
+    'Bow': 'ItemBow.bfres',
     'Arrow': 'ItemArrow.bfres',
     'HookShot': 'ItemHookShot.bfres',
     'Boomerang': 'ItemBoomerang.bfres',
     'MagicRod': 'ItemMagicRod.bfres',
-    # 'Shovel': 'ItemShovel.bfres',
+    'Shovel': 'ItemShovel.bfres',
     'SleepyMushroom': 'ItemSleepyMushroom.bfres',
     'MagicPowder': 'ItemMagicPowder.bfres',
     'RocsFeather': 'ItemRocsFeather.bfres',
@@ -545,20 +545,3 @@ WATER_LOADING_ZONES = {
     'Field_14J': [5, 6],
     'Field_15K': [1]
 }
-
-
-# CHEAT CODES
-INFINITE_BOMBS = '01000000 01CC077E 0000001E'
-INFINITE_ARROWS = '01000000 01CC077F 0000001E'
-INFINITE_POWDER = '01000000 01CC0780 00000014'
-HIGH_JUMP = """
-80000100
-580F0000 01CC8B50
-580F1000 00001528
-580F1000 00000928
-580F1000 00000018
-780F0000 000000C8
-640F0000 00000000 C1800000
-20000000
-"""
-# BGM_ADDRESSES = {}

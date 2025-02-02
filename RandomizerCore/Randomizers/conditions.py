@@ -72,21 +72,21 @@ def editConditions(condition, settings):
         condition['conditions'][0] = {'category': 1, 'parameter': data.BOMBS_FOUND_FLAG}
         return
     
-    # # Edit the shop conditions for the shovel, bow, and heart
-    # if condition['symbol'] == 'ShopShovelCondition':
-    #     condition['conditions'].pop(0)
-    #     condition['conditions'][0] = {'category': 1, 'parameter': '!ShopShovelGet'}
-    #     return
+    # Edit the shop conditions for the shovel, bow, and heart
+    if condition['symbol'] == 'ShopShovelCondition':
+        condition['conditions'].pop(0)
+        condition['conditions'][0] = {'category': 1, 'parameter': '!ShopShovelGet'}
+        return
     
-    # if condition['symbol'] == 'ShopBowCondition':
-    #     condition['conditions'][0] = {'category': 1, 'parameter': 'ShopShovelGet'}
-    #     condition['conditions'][1] = {'category': 1, 'parameter': '!ShopBowGet'}
-    #     return
+    if condition['symbol'] == 'ShopBowCondition':
+        condition['conditions'][0] = {'category': 1, 'parameter': 'ShopShovelGet'}
+        condition['conditions'][1] = {'category': 1, 'parameter': '!ShopBowGet'}
+        return
     
-    # # if condition['symbol'] == 'ShopArrowCondition':
-    # #     condition['conditions'][0]['category'] = 2 # change Bow check to category 2 instead of the weird category 11
-    # #     condition['conditions'].append({'category': 1, 'parameter': 'ShopBowGet'})
-    # #     return
+    if condition['symbol'] == 'ShopArrowCondition':
+        condition['conditions'][0]['category'] = 2 # change Bow check to category 2 instead of the weird category 11
+        condition['conditions'].append({'category': 1, 'parameter': 'ShopBowGet'})
+        return
     
-    # if condition['symbol'] == 'ShopHeartPieceCondition':
-    #     condition['conditions'][0] = {'category': 1, 'parameter': '!ShopHeartGet'}
+    if condition['symbol'] == 'ShopHeartPieceCondition':
+        condition['conditions'][0] = {'category': 1, 'parameter': '!ShopHeartGet'}
